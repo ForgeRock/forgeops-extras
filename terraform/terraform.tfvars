@@ -26,7 +26,13 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
+      release_channel    = null # "REGULAR"
+      auto_repair        = true
+      auto_upgrade       = true
+
+      enable_monitoring  = true
+      enable_logging     = true
     }
 
     location = {
@@ -34,11 +40,39 @@ clusters = {
       zones  = ["us-east1-b", "us-east1-c", "us-east1-d"]
     }
 
-    node_pool = {
-      type          = "n2-standard-8"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "n2-standard-8"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+
+          min_cpu_platform = ""
+          auto_repair      = true
+          auto_upgrade     = true
+          oauth_scopes     = [
+            "https://www.googleapis.com/auth/cloud-platform",
+          ]
+        }
+      },
+      #extra = {
+      #  type          = "n2-standard-8"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
     }
 
     helm = {
@@ -153,7 +187,13 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
+      release_channel    = null # "REGULAR"
+      auto_repair        = true
+      auto_upgrade       = true
+
+      enable_monitoring  = true
+      enable_logging     = true
     }
 
     location = {
@@ -161,11 +201,38 @@ clusters = {
       zones  = ["us-east1-b", "us-east1-c", "us-east1-d"]
     }
 
-    node_pool = {
-      type          = "c2-standard-30"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "c2-standard-30"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+
+          min_cpu_platform = ""
+          auto_repair      = true
+          auto_upgrade     = true
+          oauth_scopes     = [
+            "https://www.googleapis.com/auth/cloud-platform",
+          ]
+        }
+      },
+      #extra = {
+      #  type          = "c2-standard-30"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
     }
 
     helm = {
@@ -280,7 +347,13 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
+      release_channel    = null # "REGULAR"
+      auto_repair        = true
+      auto_upgrade       = true
+
+      enable_monitoring  = true
+      enable_logging     = true
     }
 
     location = {
@@ -288,11 +361,39 @@ clusters = {
       zones  = ["us-east1-b", "us-east1-c", "us-east1-d"]
     }
 
-    node_pool = {
-      type          = "c2-standard-30"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "c2-standard-30"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
+
+          min_cpu_platform  = ""
+          auto_repair       = true
+          auto_upgrade      = true
+          oauth_scopes      = [
+            "https://www.googleapis.com/auth/cloud-platform",
+          ]
+        }
+      },
+      #extra = {
+      #  type          = "c2-standard-30"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    min_cpu_platform  = ""
+      #    auto_repair       = true
+      #    auto_upgrade      = true
+      #    oauth_scopes      = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
     }
 
     helm = {
@@ -407,7 +508,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -415,11 +516,25 @@ clusters = {
       zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
     }
 
-    node_pool = {
-      type          = "m5.xlarge"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "m5.xlarge"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+        }
+      },
+      #extra = {
+      #  type          = "m5.xlarge"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
     }
 
     helm = {
@@ -532,7 +647,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -540,11 +655,25 @@ clusters = {
       zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
     }
 
-    node_pool = {
-      type          = "c5.9xlarge"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "c5.9xlarge"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+        }
+      },
+      #extra = {
+      #  type          = "c5.9xlarge"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
     }
 
     helm = {
@@ -657,7 +786,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -665,11 +794,25 @@ clusters = {
       zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
     }
 
-    node_pool = {
-      type          = "c5.9xlarge"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "c5.9xlarge"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+        }
+      },
+      #extra = {
+      #  type          = "c5.9xlarge"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
     }
 
     helm = {
@@ -780,7 +923,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -788,11 +931,25 @@ clusters = {
       zones  = ["1", "2", "3"]
     }
 
-    node_pool = {
-      type          = "Standard_DS4_v2"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "Standard_DS4_v2"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          default_pool = true
+        }
+      },
+      #extra = {
+      #  type          = "Standard_DS4_v2"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
     }
 
     helm = {
@@ -905,7 +1062,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -913,11 +1070,25 @@ clusters = {
       zones  = ["1", "2", "3"]
     }
 
-    node_pool = {
-      type          = "Standard_F32s_v2"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "Standard_F32s_v2"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          default_pool = true
+        }
+      },
+      #extra = {
+      #  type          = "Standard_F32s_v2"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
     }
 
     helm = {
@@ -1030,7 +1201,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.22"
+      kubernetes_version = "1.23"
     }
 
     location = {
@@ -1038,11 +1209,25 @@ clusters = {
       zones  = ["1", "2", "3"]
     }
 
-    node_pool = {
-      type          = "Standard_F32s_v2"
-      initial_count = 3
-      min_count     = 3
-      max_count     = 6
+    node_pools = {
+      default = {
+        type          = "Standard_F32s_v2"
+        initial_count = 3
+        min_count     = 3
+        max_count     = 6
+        meta = {
+          default_pool = true
+        }
+      },
+      #extra = {
+      #  type          = "Standard_F32s_v2"
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
     }
 
     helm = {

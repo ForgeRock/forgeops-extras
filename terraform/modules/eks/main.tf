@@ -175,41 +175,43 @@ module "eks" {
   }
 
   self_managed_node_groups = {
-    default_node_pool = {
-      name = "default-node-pool"
-      #create_launch_template = false
-      #launch_template_id = aws_launch_template.compute[pool_name].id
-      instance_type = var.cluster.node_pool.type
-      ami_id = lookup(var.cluster.meta, "arch", "") == "arm64" ? data.aws_ami.eks_arm64.id : data.aws_ami.eks_amd64.id
-      desired_size = var.cluster.node_pool.initial_count
-      min_size = var.cluster.node_pool.min_count
-      max_size = var.cluster.node_pool.max_count
-      key_name = ""
-      #instance_refresh = {
-      #  strategy = "Rolling"
-      #  preferences = {
-      #    checkpoint_delay       = 600
-      #    checkpoint_percentages = [35, 70, 100]
-      #    instance_warmup        = 300
-      #    min_healthy_percentage = 50
-      #  }
-      #}
-      #network_interfaces = [
-      #  {
-      #    device_index = 0
-      #    associate_public_ip_address = true
-      #  }
-      #]
-      tags = merge(
-        module.common.asset_labels,
-        {
-          "k8s.io/cluster-autoscaler/enabled" = "true"
-          "k8s.io/cluster-autoscaler/${local.cluster_name}" = "owned"
-          "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/instance-type" = var.cluster.node_pool.type
-          "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/arch" = lookup(var.cluster.meta, "arch", null) == "arm64" ? "arm64" : "amd64"
-        }
-      )
-    },
+    for pool_name, pool in var.cluster["node_pools"]:
+      pool_name => {
+        name = pool_name
+        #create_launch_template = false
+        #launch_template_id = aws_launch_template.compute[pool_name].id
+        instance_type = pool.type
+        ami_id = lookup(var.cluster.meta, "arch", "") == "arm64" ? data.aws_ami.eks_arm64.id : data.aws_ami.eks_amd64.id
+        disk_size = lookup(pool, "disk_size_gb", 50)
+        desired_size = pool.initial_count
+        min_size = pool.min_count
+        max_size = pool.max_count
+        key_name = ""
+        #instance_refresh = {
+        #  strategy = "Rolling"
+        #  preferences = {
+        #    checkpoint_delay       = 600
+        #    checkpoint_percentages = [35, 70, 100]
+        #    instance_warmup        = 300
+        #    min_healthy_percentage = 50
+        #  }
+        #}
+        #network_interfaces = [
+        #  {
+        #    device_index = 0
+        #    associate_public_ip_address = true
+        #  }
+        #]
+        tags = merge(
+          module.common.asset_labels,
+          {
+            "k8s.io/cluster-autoscaler/enabled" = "true"
+            "k8s.io/cluster-autoscaler/${local.cluster_name}" = "owned"
+            "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/instance-type" = pool.type
+            "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/arch" = lookup(var.cluster.meta, "arch", null) == "arm64" ? "arm64" : "amd64"
+          }
+        )
+      }
   }
 
   tags = merge(

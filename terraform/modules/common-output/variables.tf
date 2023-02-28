@@ -4,19 +4,26 @@ variable "cluster" {
   type = object({
     type = string
     auth = map(string)
-    meta = map(string)
+    meta = object({
+      cluster_name       = string
+      kubernetes_version = string
+    })
 
     location = object({
       region = string
-      zones = list(string)
+      zones  = list(string)
     })
 
-    node_pool = object({
-      type = string
+    node_pools = map(object({
+      type          = string
       initial_count = number
-      min_count = number
-      max_count = number
-    })
+      min_count     = number
+      max_count     = number
+      disk_size_gb  = optional(number)
+      meta          = object({
+        zones = optional(list(string))
+      })
+    }))
 
     helm = map(
       map(string)
@@ -30,14 +37,18 @@ variable "cluster" {
 
     location = {
       region = null
-      zones = null
+      zones  = null
     }
 
-    node_pool = {
-      type = null
-      initial_count = null
-      min_count = null
-      max_count = null
+    node_pools = {
+      default = {
+        type          = null
+        initial_count = null
+        min_count     = null
+        max_count     = null
+        disk_size_gb  = null
+        meta          = {}
+      }
     }
 
     helm = {}
