@@ -41,19 +41,43 @@ variable "clusters" {
     enabled = bool
     type    = string
     auth    = map(string)
-    meta    = map(string)
+    meta    = object({
+      cluster_name       = string
+      kubernetes_version = string
+
+      # GKE specific options
+      release_channel    = optional(string)
+      auto_repair        = optional(bool)
+      auto_upgrade       = optional(bool)
+
+      enable_monitoring  = optional(bool)
+      enable_logging     = optional(bool)
+    })
 
     location = object({
       region = string
       zones  = list(string)
     })
 
-    node_pool = object({
+    node_pools = map(object({
       type          = string
       initial_count = number
       min_count     = number
       max_count     = number
-    })
+      disk_size_gb  = optional(number)
+      meta          = object({
+        zones            = optional(list(string))
+
+        # GKE specific options
+        min_cpu_platform = optional(string)
+        auto_repair      = optional(bool)
+        auto_upgrade     = optional(bool)
+        oauth_scopes     = optional(list(string))
+
+        # AKS specific options
+        default_pool     = optional(bool)
+      })
+    }))
 
     helm = map(
       map(string)
@@ -70,11 +94,15 @@ variable "clusters" {
   #    zones  = null
   #  }
   #
-  #  node_pool = {
-  #    type          = null
-  #    initial_count = null
-  #    min_count     = null
-  #    max_count     = null
+  #  node_pools = {
+  #    default = {
+  #      type          = null
+  #      initial_count = null
+  #      min_count     = null
+  #      max_count     = null
+  #      disk_size_gb  = null
+  #      meta          = {}
+  #    }
   #  }
   #
   #  helm = null

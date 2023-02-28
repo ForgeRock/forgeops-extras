@@ -3,48 +3,46 @@
 resource "azurerm_role_assignment" "network_contributor" {
   scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   role_definition_name = "Network Contributor"
-  principal_id = module.aks.cluster_identity.principal_id
+  principal_id = azurerm_kubernetes_cluster.cluster.identity[0].principal_id
   #skip_service_principal_aad_check = true
 }
 
 resource "azurerm_role_assignment" "virtual_machine_contributor" {
   scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   role_definition_name = "Virtual Machine Contributor"
-  principal_id = module.aks.cluster_identity.principal_id
+  principal_id = azurerm_kubernetes_cluster.cluster.identity[0].principal_id
   #skip_service_principal_aad_check = true
 }
 
 #resource "azurerm_role_assignment" "key_vault_administrator" {
 #  scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
 #  role_definition_name = "Key Vault Administrator"
-#  principal_id = module.aks.kubelet_identity[0].object_id
 #  #skip_service_principal_aad_check = true
 #}
 
 resource "azurerm_role_assignment" "dns_zone_contributor" {
   scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   role_definition_name = "DNS Zone Contributor"
-  principal_id = module.aks.kubelet_identity[0].object_id
+  principal_id = azurerm_kubernetes_cluster.cluster.kubelet_identity[0].object_id
   #skip_service_principal_aad_check = true
 }
 
 resource "azurerm_role_assignment" "private_dns_zone_contributor" {
   scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
   role_definition_name = "Private DNS Zone Contributor"
-  principal_id = module.aks.kubelet_identity[0].object_id
+  principal_id = azurerm_kubernetes_cluster.cluster.kubelet_identity[0].object_id
   #skip_service_principal_aad_check = true
 }
 
 #resource "azurerm_role_assignment" "managed_identity_operator" {
 #  scope = "/subscriptions/${data.azurerm_subscription.current.subscription_id}"
 #  role_definition_name = "Managed Identity Operator"
-#  principal_id = module.aks.kubelet_identity[0].object_id
 #  #skip_service_principal_aad_check = true
 #}
 
 #resource "azuread_application" "external_secrets" {
 #  display_name = local.cluster_name
-#  owners       = [module.aks.kubelet_identity[0].object_id]
+#  owners       = [azurerm_kubernetes_cluster.cluster.kubelet_identity[0].object_id]
 #}
 
 #resource "azuread_application_federated_identity_credential" "external_secrets" {
@@ -60,15 +58,15 @@ resource "azurerm_key_vault" "current" {
   resource_group_name         = azurerm_resource_group.main.name
   location                    = azurerm_resource_group.main.location
   enabled_for_disk_encryption = true
-  tenant_id                   = module.aks.cluster_identity.tenant_id
+  tenant_id                   = azurerm_kubernetes_cluster.cluster.identity[0].tenant_id
   soft_delete_retention_days  = 7
   purge_protection_enabled    = false
 
   sku_name = "standard"
 
   access_policy {
-    tenant_id = module.aks.cluster_identity.tenant_id
-    object_id = module.aks.kubelet_identity[0].object_id
+    tenant_id = azurerm_kubernetes_cluster.cluster.identity[0].tenant_id
+    object_id = azurerm_kubernetes_cluster.cluster.kubelet_identity[0].object_id
 
     key_permissions = [
       "Get",
@@ -92,7 +90,7 @@ resource "azurerm_key_vault" "current" {
 locals {
   values_workload_identity_webhook = <<-EOF
   # Values from terraform AKS module
-  azureTenantID: "${module.aks.cluster_identity.tenant_id}"
+  azureTenantID: "${azurerm_kubernetes_cluster.cluster.identity[0].tenant_id}"
   EOF
 }
 
@@ -113,7 +111,7 @@ resource "helm_release" "workload_identity_webhook" {
 
   values = [local.values_workload_identity_webhook]
 
-  #depends_on = [module.aks]
+  #depends_on = [azurerm_kubernetes_cluster.cluster]
 }
 
 locals {
@@ -144,7 +142,7 @@ resource "helm_release" "aad_pod_identity" {
 
   values = [local.values_aad_pod_identity]
 
-  #depends_on = [module.aks]
+  #depends_on = [azurerm_kubernetes_cluster.cluster]
 }
 
 locals {
@@ -162,8 +160,8 @@ module "helm" {
       # Values from terraform AKS module
       #serviceAccount:
       #  annotations:
-      #    azure.workload.identity/client-id: "${module.aks.kubelet_identity[0].client_id}"
-      #    azure.workload.identity/tenant-id: "${module.aks.cluster_identity.tenant_id}"
+      #    azure.workload.identity/client-id: "${azurerm_kubernetes_cluster.cluster.kubelet_identity[0].client_id}"
+      #    azure.workload.identity/tenant-id: "${azurerm_kubernetes_cluster.cluster.identity[0].tenant_id}"
       #  extraLabels:
       #    #azure.workload.identity/use: "true"
       #    aadpodidentity:
@@ -176,10 +174,10 @@ module "helm" {
 
       azure:
         resourceGroup: "${local.cluster_name}"
-        tenantId: "${module.aks.cluster_identity.tenant_id}"
+        tenantId: "${azurerm_kubernetes_cluster.cluster.identity[0].tenant_id}"
         subscriptionId: "${data.azurerm_subscription.current.subscription_id}"
         useManagedIdentityExtension: true
-        userAssignedIdentityID: "${module.aks.kubelet_identity[0].client_id}"
+        userAssignedIdentityID: "${azurerm_kubernetes_cluster.cluster.kubelet_identity[0].client_id}"
 
       txtOwnerId: "${local.cluster_name}.${var.cluster.location.region}"
       EOF
@@ -320,6 +318,6 @@ EOF
 
   #depends_on = [module.aks, azurerm_public_ip.ingress, helm_release.workload_identity_webhook, azuread_application_federated_identity_credential.external_secrets]
   #depends_on = [module.aks, azurerm_public_ip.ingress, helm_release.workload_identity_webhook]
-  depends_on = [module.aks, azurerm_public_ip.ingress, helm_release.aad_pod_identity]
+  depends_on = [azurerm_kubernetes_cluster.cluster, azurerm_kubernetes_cluster_node_pool.extra, azurerm_public_ip.ingress, helm_release.aad_pod_identity]
 }
 

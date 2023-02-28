@@ -79,7 +79,7 @@ resource "local_file" "kube_config" {
 module "common-output" {
   source = "../common-output"
 
-  cluster       = merge(var.cluster, {type = "EKS", meta = {cluster_name = local.cluster_name}})
+  cluster       = merge(var.cluster, {type = "EKS", meta = {cluster_name = local.cluster_name, kubernetes_version = module.eks.cluster_platform_version}})
   kube_config   = local.kube_config
   helm_metadata = module.helm.metadata
 

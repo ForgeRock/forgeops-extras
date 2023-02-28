@@ -65,58 +65,83 @@ data "azurerm_kubernetes_service_versions" "kubernetes_version" {
     depends_on = [azurerm_resource_group.main]
 }
 
-module "aks" {
-  source                     = "Azure/aks/azurerm"
-  version                    = "~> 6.0"
+locals {
+  node_pool_names = keys(var.cluster.node_pools)
+  default_node_pools = {
+    for pool_name in local.node_pool_names:
+      pool_name => var.cluster.node_pools[pool_name] if tobool(lookup(var.cluster.node_pools[pool_name].meta, "default_pool", false)) == true
+  }
+  # An error will be thrown if there isn't exactly one default node pool
+  default_node_pool_name = one(keys(local.default_node_pools))
+  default_node_pool = local.default_node_pools[local.default_node_pool_name]
+}
 
-  cluster_name                            = local.cluster_name
-  location                                = azurerm_resource_group.main.location
-  resource_group_name                     = azurerm_resource_group.main.name
-  prefix                                  = local.cluster_name
-  kubernetes_version                      = data.azurerm_kubernetes_service_versions.kubernetes_version.latest_version
+resource "azurerm_kubernetes_cluster" "cluster" {
+  name                = local.cluster_name
+  kubernetes_version  = data.azurerm_kubernetes_service_versions.kubernetes_version.latest_version
 
-  agents_pool_name                        = "default"
-  agents_availability_zones               = var.cluster.location.zones
-  agents_size                             = var.cluster.node_pool.type
-  os_disk_size_gb                         = 100
-  agents_count                            = var.cluster.node_pool.initial_count
-  agents_min_count                        = var.cluster.node_pool.min_count
-  agents_max_count                        = var.cluster.node_pool.max_count
-  #agents_max_pods                         = 100
-  agents_type                             = "VirtualMachineScaleSets"
-  agents_labels                           = module.common.asset_labels
-  agents_tags                             = module.common.asset_labels
-  enable_auto_scaling                     = true
-  #enable_host_encryption                  = true
+  dns_prefix          = local.cluster_name
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
 
-  identity_type                           = "SystemAssigned"
+  default_node_pool {
+    name                = local.default_node_pool_name
+    zones               = lookup(local.default_node_pool.meta, "zones", var.cluster.location.zones)
 
-  #network_plugin                          = "azure"
-  #network_policy                          = "azure"
-  network_plugin                          = "kubenet"
+    vm_size             = local.default_node_pool.type
+    os_disk_size_gb     = lookup(local.default_node_pool.meta, "disk_size_gb", 50)
+    enable_auto_scaling = true
+    node_count          = local.default_node_pool.initial_count
+    min_count           = local.default_node_pool.min_count
+    max_count           = local.default_node_pool.max_count
+    node_labels         = module.common.asset_labels
+    tags                = module.common.asset_labels
+  }
 
-  oidc_issuer_enabled                      = true
+  identity {
+    type = "SystemAssigned"
+  }
 
-  #http_application_routing_enabled        = true
-  #ingress_application_gateway_enabled     = true
-  #ingress_application_gateway_name        = "${random_id.prefix.hex}-agw"
-  #ingress_application_gateway_subnet_cidr = "10.52.1.0/24"
+  network_profile {
+    network_plugin = "kubenet"
+  }
 
-  #azure_policy_enabled                    = true
-  #client_id                               = var.client_id
-  #client_secret                           = var.client_secret
-  #disk_encryption_set_id                  = azurerm_disk_encryption_set.des.id
+  http_application_routing_enabled = false
 
-  #local_account_disabled                  = true
-  log_analytics_workspace_enabled         = true
+  depends_on = [azurerm_public_ip.ingress, data.azurerm_kubernetes_service_versions.kubernetes_version]
 
-  #private_cluster_enabled                 = true
-  #rbac_aad_managed                        = true
-  #role_based_access_control_enabled       = true
+  lifecycle {
+    ignore_changes = [kubernetes_version]
+  }
+}
 
-  sku_tier                                = "Paid"
-  #vnet_subnet_id                          = azurerm_subnet.test.id
+locals {
+  extra_node_pools = {
+    for pool_name in local.node_pool_names:
+      pool_name => var.cluster.node_pools[pool_name] if tobool(lookup(var.cluster.node_pools[pool_name].meta, "default_pool", false)) != true
+  }
+}
 
-  depends_on = [azurerm_resource_group.main]
+resource "azurerm_kubernetes_cluster_node_pool" "extra" {
+  for_each              = local.extra_node_pools
+
+  name                  = each.key
+  zones                 = lookup(each.value.meta, "zones", var.cluster.location.zones)
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.cluster.id
+
+  vm_size               = each.value.type
+  os_type               = "Linux"
+  os_disk_size_gb       = lookup(each.value.meta, "disk_size_db", 50)
+
+  enable_auto_scaling   = true
+  node_count            = each.value.initial_count
+  min_count             = each.value.min_count
+  max_count             = each.value.max_count
+
+  node_labels           = module.common.asset_labels
+
+  lifecycle {
+    ignore_changes = [node_count]
+  }
 }
 
