@@ -26,7 +26,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
       release_channel    = null # "REGULAR"
       auto_repair        = true
       auto_upgrade       = true
@@ -187,7 +187,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
       release_channel    = null # "REGULAR"
       auto_repair        = true
       auto_upgrade       = true
@@ -347,7 +347,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
       release_channel    = null # "REGULAR"
       auto_repair        = true
       auto_upgrade       = true
@@ -508,7 +508,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
@@ -647,7 +647,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
@@ -786,7 +786,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
@@ -923,7 +923,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
@@ -1062,7 +1062,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
@@ -1201,7 +1201,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.23"
+      kubernetes_version = "1.25"
     }
 
     location = {
