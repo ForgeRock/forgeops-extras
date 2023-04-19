@@ -65,13 +65,21 @@ variable "clusters" {
       min_count     = number
       max_count     = number
       disk_size_gb  = optional(number)
+      labels        = optional(map(string))
+      taints        = optional(list(object({
+        key    = string
+        value  = string
+        effect = string
+      })))
       meta          = object({
         zones            = optional(list(string))
 
         # GKE specific options
+        disk_type        = optional(string)
         min_cpu_platform = optional(string)
         auto_repair      = optional(bool)
         auto_upgrade     = optional(bool)
+        preemptible      = optional(bool)
         oauth_scopes     = optional(list(string))
 
         # AKS specific options

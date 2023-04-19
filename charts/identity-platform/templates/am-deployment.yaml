@@ -174,8 +174,10 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.am.tolerations }}
       tolerations:
-        {{- toYaml . | nindent 8 }}
+      {{- if .Values.am.tolerations }}
+        {{- toYaml .Values.am.tolerations | nindent 8 }}
+      {{- else if .Values.platform.tolerations }}
+        {{- toYaml .Values.platform.tolerations | nindent 8 }}
       {{- end }}
 {{- end }}

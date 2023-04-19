@@ -27,9 +27,7 @@ clusters = {
     meta = {
       cluster_name       = "tf-idp-<id>"
       kubernetes_version = "1.25"
-      release_channel    = null # "REGULAR"
-      auto_repair        = true
-      auto_upgrade       = true
+      release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring  = true
       enable_logging     = true
@@ -43,15 +41,18 @@ clusters = {
     node_pools = {
       default = {
         type          = "n2-standard-8"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
         meta = {
           #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
+          disk_type        = "pd-standard"  # "pd-ssd"
           min_cpu_platform = ""
           auto_repair      = true
           auto_upgrade     = true
+          preemptible      = false
           oauth_scopes     = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
@@ -59,15 +60,76 @@ clusters = {
       },
       #extra = {
       #  type          = "n2-standard-8"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-standard"  # "pd-ssd"
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    preemptible      = false
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "n2-standard-8"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-ssd"
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    preemptible      = false
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "t2a-standard-8"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
       #  meta = {
       #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
       #
+      #    disk_type        = "pd-standard"  # "pd-ssd"
       #    min_cpu_platform = ""
       #    auto_repair      = true
       #    auto_upgrade     = true
+      #    preemptible      = false
       #    oauth_scopes     = [
       #      "https://www.googleapis.com/auth/cloud-platform",
       #    ]
@@ -188,9 +250,7 @@ clusters = {
     meta = {
       cluster_name       = "tf-idp-<id>"
       kubernetes_version = "1.25"
-      release_channel    = null # "REGULAR"
-      auto_repair        = true
-      auto_upgrade       = true
+      release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring  = true
       enable_logging     = true
@@ -204,15 +264,18 @@ clusters = {
     node_pools = {
       default = {
         type          = "c2-standard-30"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
         meta = {
           #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
+          disk_type        = "pd-standard"  # "pd-ssd"
           min_cpu_platform = ""
           auto_repair      = true
           auto_upgrade     = true
+          preemptible      = false
           oauth_scopes     = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
@@ -220,14 +283,76 @@ clusters = {
       },
       #extra = {
       #  type          = "c2-standard-30"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-standard"  # "pd-ssd"
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    preemptible      = false
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "c2-standard-30"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-ssd"
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    preemptible      = false
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "t2a-standard-32"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
       #  meta = {
       #    #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-standard"  # "pd-ssd"
       #    min_cpu_platform = ""
       #    auto_repair      = true
       #    auto_upgrade     = true
+      #    preemptible      = false
       #    oauth_scopes     = [
       #      "https://www.googleapis.com/auth/cloud-platform",
       #    ]
@@ -348,9 +473,7 @@ clusters = {
     meta = {
       cluster_name       = "tf-idp-<id>"
       kubernetes_version = "1.25"
-      release_channel    = null # "REGULAR"
-      auto_repair        = true
-      auto_upgrade       = true
+      release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring  = true
       enable_logging     = true
@@ -364,15 +487,18 @@ clusters = {
     node_pools = {
       default = {
         type          = "c2-standard-30"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
         meta = {
           #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
+          disk_type         = "pd-standard"  # "pd-ssd"
           min_cpu_platform  = ""
           auto_repair       = true
           auto_upgrade      = true
+          preemptible      = false
           oauth_scopes      = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
@@ -380,15 +506,76 @@ clusters = {
       },
       #extra = {
       #  type          = "c2-standard-30"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type         = "pd-standard"  # "pd-ssd"
+      #    min_cpu_platform  = ""
+      #    auto_repair       = true
+      #    auto_upgrade      = true
+      #    preemptible       = false
+      #    oauth_scopes      = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "c2-standard-30"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
+      #
+      #    disk_type        = "pd-ssd"
+      #    min_cpu_platform = ""
+      #    auto_repair      = true
+      #    auto_upgrade     = true
+      #    preemptible      = false
+      #    oauth_scopes     = [
+      #      "https://www.googleapis.com/auth/cloud-platform",
+      #    ]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "t2a-standard-32"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
       #  meta = {
       #    #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
       #
+      #    disk_type         = "pd-standard"  # "pd-ssd"
       #    min_cpu_platform  = ""
       #    auto_repair       = true
       #    auto_upgrade      = true
+      #    preemptible       = false
       #    oauth_scopes      = [
       #      "https://www.googleapis.com/auth/cloud-platform",
       #    ]
@@ -518,7 +705,8 @@ clusters = {
 
     node_pools = {
       default = {
-        type          = "m5.xlarge"
+        type          = "m5.2xlarge"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -527,7 +715,48 @@ clusters = {
         }
       },
       #extra = {
-      #  type          = "m5.xlarge"
+      #  type          = "m5.2xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "m5.2xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "m6g.2xlarge"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
@@ -658,6 +887,7 @@ clusters = {
     node_pools = {
       default = {
         type          = "c5.9xlarge"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -667,6 +897,47 @@ clusters = {
       },
       #extra = {
       #  type          = "c5.9xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "c5.9xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "c6g.12xlarge"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
@@ -797,6 +1068,7 @@ clusters = {
     node_pools = {
       default = {
         type          = "c5.9xlarge"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -806,11 +1078,52 @@ clusters = {
       },
       #extra = {
       #  type          = "c5.9xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "c5.9xlarge"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "c6g.12xlarge"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
       #  meta = {
-      #    #zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+      #    #zones  = ["us-east-1a", "us-east-1b", "us-east-1c"]
       #  }
       #},
     }
@@ -934,6 +1247,7 @@ clusters = {
     node_pools = {
       default = {
         type          = "Standard_DS4_v2"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -943,6 +1257,47 @@ clusters = {
       },
       #extra = {
       #  type          = "Standard_DS4_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "Standard_DS4_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "Standard_D8pds_v5""
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
@@ -1073,6 +1428,7 @@ clusters = {
     node_pools = {
       default = {
         type          = "Standard_F32s_v2"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -1082,6 +1438,47 @@ clusters = {
       },
       #extra = {
       #  type          = "Standard_F32s_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "Standard_F32s_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "Standard_D32plds_v5"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6
@@ -1212,6 +1609,7 @@ clusters = {
     node_pools = {
       default = {
         type          = "Standard_F32s_v2"
+        disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
         max_count     = 6
@@ -1221,6 +1619,47 @@ clusters = {
       },
       #extra = {
       #  type          = "Standard_F32s_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicated = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicated"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-ds = {
+      #  type          = "Standard_F32s_v2"
+      #  disk_size_gb  = 50
+      #  initial_count = 3
+      #  min_count     = 3
+      #  max_count     = 6
+      #  labels = {
+      #    WorkerDedicatedDS = "true",
+      #  }
+      #  taints = [
+      #    {
+      #      key    = "WorkerDedicatedDS"
+      #      value  = "true"
+      #      effect = "NoSchedule"
+      #    },
+      #  ]
+      #  meta = {
+      #    #zones = ["1", "2", "3"]
+      #  }
+      #},
+      #extra-arm64 = {
+      #  type          = "Standard_D32plds_v5"
+      #  disk_size_gb  = 50
       #  initial_count = 3
       #  min_count     = 3
       #  max_count     = 6

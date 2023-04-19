@@ -180,7 +180,7 @@ locals {
             "Resource": "*",
             "Condition": {
               "StringEquals": {
-                "autoscaling:ResourceTag/kubernetes.io/cluster/${module.eks.cluster_id}": "owned"
+                "autoscaling:ResourceTag/kubernetes.io/cluster/${local.cluster_name}": "owned"
               },
               "StringEquals": {
                 "autoscaling:ResourceTag/k8s.io/cluster-autoscaler/enabled": "true"
@@ -436,7 +436,7 @@ resource "aws_iam_policy" "policy" {
   for_each    = local.iam_policies
 
   name_prefix = "${local.cluster_name}-${each.key}"
-  description = "EKS ${each.key} policy for cluster ${module.eks.cluster_id}"
+  description = "EKS ${each.key} policy for cluster ${local.cluster_name}"
   policy      = jsonencode(each.value["policy"])
 }
 
@@ -444,7 +444,7 @@ module "iam_assumable_role_admin" {
   for_each         = local.iam_policies
 
   source           = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version          = "~> 5.4"
+  version          = "~> 5.16"
 
   create_role      = true
   role_name_prefix = substr("${local.cluster_name}-${each.key}", 0, 32)

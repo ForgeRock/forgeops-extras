@@ -2,9 +2,9 @@
 
 locals {
   kube_config = {
-    "config_path" = "~/.kube/config-tf.gke.${module.gke.region}.${module.gke.name}"
-    "host" = "https://${module.gke.endpoint}",
-    "cluster_ca_certificate" = module.gke.ca_certificate,
+    "config_path" = "~/.kube/config-tf.gke.${var.cluster.location.region}.${local.cluster_name}"
+    "host" = "https://${tostring(try(module.gke.endpoint, null))}",
+    "cluster_ca_certificate" = tostring(try(module.gke.ca_certificate, null)),
     "client_certificate" = "",
     "client_key" = "",
     "token" = data.google_client_config.default.access_token
@@ -24,35 +24,32 @@ resource "local_file" "kube_config" {
   kind: Config
   preferences:
     colors: true
-  current-context: ${module.gke.name}
+  current-context: ${tostring(try(module.gke.name, null))}
   contexts:
   - context:
-      cluster: ${module.gke.name}
+      cluster: ${tostring(try(module.gke.name, null))}
       namespace: default
-      user: ${module.gke.name}
+      user: ${tostring(try(module.gke.name, null))}
     name: ${module.gke.name}
   clusters:
   - cluster:
       server: ${local.kube_config["host"]}
       certificate-authority-data: ${local.kube_config["cluster_ca_certificate"]}
-    name: ${module.gke.name}
+    name: ${tostring(try(module.gke.name))}
   users:
-  - name: ${module.gke.name}
+  - name: ${tostring(try(module.gke.name))}
     user:
-      auth-provider:
-        config:
-          cmd-args: config config-helper --format=json
-          cmd-path: gcloud
-          expiry-key: '{.credential.token_expiry}'
-          token-key: '{.credential.access_token}'
-        name: gcp
+      exec:
+        apiVersion: client.authentication.k8s.io/v1beta1
+        command: gke-gcloud-auth-plugin
+        provideClusterInfo: true
   EOF
 }
 
 module "common-output" {
   source = "../common-output"
 
-  cluster      = merge(var.cluster, {type = "GKE", meta = {cluster_name = local.cluster_name, kubernetes_version = module.gke.master_version}})
+  cluster      = merge(var.cluster, {type = "GKE", meta = {cluster_name = local.cluster_name, kubernetes_version = tostring(try(module.gke.master_version}})))
   kube_config  = local.kube_config
   helm_metadata = module.helm.metadata
 

@@ -119,7 +119,11 @@ resource "local_file" "clusters" {
   provider "azurerm" {
     alias = "${key}"
 
-    features {}
+    features {
+      resource_group {
+        prevent_deletion_if_contains_resources = false
+      }
+    }
 
     #skip_provider_registration = true
   }

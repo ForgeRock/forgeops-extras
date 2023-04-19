@@ -14,6 +14,11 @@ locals {
     labels:
       kubernetes.io/cluster-service: "true"
       kubernetes.io/name: "Metrics-server"
+
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -40,6 +45,22 @@ locals {
   deploy_external_secrets = contains(keys(var.charts), "external-secrets") ? true : false
   values_external_secrets = <<-EOF
   # Values from terraform helm module
+  certController:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+
+  webhook:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -80,6 +101,11 @@ locals {
   loglevel: info
 
   policy: sync
+
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -120,6 +146,22 @@ locals {
       enabled: true
       service:
         omitClusterIP: true
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+    admissionWebhooks:
+      patch:
+        tolerations:  # Ignore any arch taints
+          - key: kubernetes.io/arch
+            operator: Exists
+            effect: NoSchedule
+
+  defaultBackend:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
   EOF
 }
 
@@ -160,6 +202,16 @@ locals {
     ingressClassResource:
       enabled: true
     #hostNetwork: true
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+
+  defaultBackend:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
   EOF
 }
 
@@ -201,6 +253,29 @@ locals {
 
   prometheus:
     enabled: false
+
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
+
+  cainjector:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+
+  startupapicheck:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
+
+  webhook:
+    tolerations:  # Ignore any arch taints
+      - key: kubernetes.io/arch
+        operator: Exists
+        effect: NoSchedule
   EOF
 }
 
@@ -228,6 +303,11 @@ locals {
   deploy_trust_manager = contains(keys(var.charts), "trust-manager") && contains(keys(var.chart_configs), "trust-manager") ? (var.chart_configs["trust-manager"]["deploy"] ? true : false) : false
   values_trust_manager = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
+
   EOF
 }
 
@@ -361,6 +441,10 @@ locals {
   deploy_elasticsearch = contains(keys(var.charts), "elasticsearch") && contains(keys(var.chart_configs), "elasticsearch") ? (var.chart_configs["elasticsearch"]["deploy"] ? true : false) : false
   values_elasticsearch = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -388,6 +472,10 @@ locals {
   deploy_logstash = contains(keys(var.charts), "logstash") && contains(keys(var.chart_configs), "logstash") ? (var.chart_configs["logstash"]["deploy"] ? true : false) : false
   values_logstash = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -415,6 +503,10 @@ locals {
   deploy_kibana = contains(keys(var.charts), "kibana") && contains(keys(var.chart_configs), "kibana") ? (var.chart_configs["kibana"]["deploy"] ? true : false) : false
   values_kibana = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -470,6 +562,10 @@ locals {
   deploy_secret_agent = contains(keys(var.charts), "secret-agent") && contains(keys(var.chart_configs), "secret-agent") ? (var.chart_configs["secret-agent"]["deploy"] ? true : false) : false
   values_secret_agent = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
@@ -498,6 +594,10 @@ locals {
   deploy_ds_operator = contains(keys(var.charts), "ds-operator") && contains(keys(var.chart_configs), "ds-operator") ? (var.chart_configs["ds-operator"]["deploy"] ? true : false) : false
   values_ds_operator = <<-EOF
   # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
