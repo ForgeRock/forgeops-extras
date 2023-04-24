@@ -55,7 +55,7 @@ resource "helm_release" "aws_ebs_csi_driver" {
   name = "aws-ebs-csi-driver"
   repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
   chart = "aws-ebs-csi-driver"
-  version = "2.6.7"
+  version = "2.17.2"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -78,7 +78,7 @@ resource "helm_release" "snapshot_controller" {
   name = "snapshot-controller"
   repository = "https://piraeus.io/helm-charts"
   chart = "snapshot-controller"
-  version = "1.5.1"
+  version = "1.7.2"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -117,7 +117,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   name = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart = "aws-load-balancer-controller"
-  version = "1.4.5"
+  version = "1.4.8"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -152,7 +152,7 @@ resource "helm_release" "cluster_autoscaler" {
   name = "cluster-autoscaler"
   repository = "https://kubernetes.github.io/autoscaler"
   chart = "cluster-autoscaler"
-  version = "9.25.0"
+  version = "9.28.0"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -178,14 +178,14 @@ resource "aws_eip" "ingress" {
   depends_on = [module.vpc]
 }
 
-resource "null_resource" "helm_module_sleep_after_destroy" {
-  triggers = {
+resource "terraform_data" "helm_module_sleep_after_destroy" {
+  triggers_replace = {
     sleep_after_destroy = "sleep 200"
   }
 
   provisioner "local-exec" {
     when = destroy
-    command = self.triggers.sleep_after_destroy
+    command = self.triggers_replace.sleep_after_destroy
   }
 
   depends_on = [module.eks, module.vpc, helm_release.aws_load_balancer_controller, aws_eip.ingress, local_file.kube_config]
@@ -363,6 +363,6 @@ EOF
     }
   }
 
-  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["external-dns"], aws_eip.ingress, local_file.kube_config, helm_release.aws_ebs_csi_driver, helm_release.snapshot_controller, helm_release.aws_load_balancer_controller, helm_release.cluster_autoscaler, null_resource.helm_module_sleep_after_destroy]
+  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["external-dns"], aws_eip.ingress, local_file.kube_config, helm_release.aws_ebs_csi_driver, helm_release.snapshot_controller, helm_release.aws_load_balancer_controller, helm_release.cluster_autoscaler, terraform_data.helm_module_sleep_after_destroy]
 }
 

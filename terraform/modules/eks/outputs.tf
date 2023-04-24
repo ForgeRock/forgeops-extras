@@ -3,8 +3,8 @@
 locals {
   kube_config = {
     "config_path"            = "~/.kube/config-tf.eks.${var.cluster.location.region}.${local.cluster_name}"
-    "host"                   = module.eks.cluster_endpoint,
-    "cluster_ca_certificate" = module.eks.cluster_certificate_authority_data,
+    "host"                   = tostring(try(module.eks.cluster_endpoint, null)),
+    "cluster_ca_certificate" = tostring(try(module.eks.cluster_certificate_authority_data, null)),
     "client_certificate"     = "",
     "client_key"             = "",
     "token"                  = data.aws_eks_cluster_auth.cluster.token
@@ -12,23 +12,23 @@ locals {
   kube_config_yaml = yamlencode({
         apiVersion = "v1"
         kind = "Config"
-        current-context = module.eks.cluster_id
+        current-context = tostring(try(module.eks.cluster_name, null))
         contexts = [{
-          name = module.eks.cluster_id
+          name = tostring(try(module.eks.cluster_name, null))
           context = {
-            cluster = module.eks.cluster_id
-            user = module.eks.cluster_id
+            cluster = tostring(try(module.eks.cluster_name, null))
+            user = tostring(try(module.eks.cluster_name, null))
           }
         }]
         clusters = [{
-          name = module.eks.cluster_id
+          name = tostring(try(module.eks.cluster_name, null))
           cluster = {
             certificate-authority-data = local.kube_config["cluster_ca_certificate"]
             server = local.kube_config["host"]
           }
         }]
         users = [{
-          name = module.eks.cluster_id
+          name = tostring(try(module.eks.cluster_name, null))
           user = {
             token = local.kube_config["token"]
           }
@@ -49,20 +49,20 @@ resource "local_file" "kube_config" {
   kind: Config
   preferences:
     colors: true
-  current-context: ${module.eks.cluster_id}
+  current-context: ${tostring(try(module.eks.cluster_name, null))}
   contexts:
   - context:
-      cluster: ${module.eks.cluster_id}
+      cluster: ${tostring(try(module.eks.cluster_name, null))}
       namespace: default
-      user: ${module.eks.cluster_id}
-    name: ${module.eks.cluster_id}
+      user: ${tostring(try(module.eks.cluster_name, null))}
+    name: ${tostring(try(module.eks.cluster_name, null))}
   clusters:
   - cluster:
       server: ${local.kube_config["host"]}
       certificate-authority-data: ${local.kube_config["cluster_ca_certificate"]}
-    name: ${module.eks.cluster_id}
+    name: ${tostring(try(module.eks.cluster_name, null))}
   users:
-  - name: ${module.eks.cluster_id}
+  - name: ${tostring(try(module.eks.cluster_name, null))}
     user:
       exec:
         apiVersion: client.authentication.k8s.io/v1beta1
@@ -71,7 +71,7 @@ resource "local_file" "kube_config" {
         - eks
         - get-token
         - --cluster-name
-        - ${module.eks.cluster_id}
+        - ${tostring(try(module.eks.cluster_name, null))}
         env: null
   EOF
 }
@@ -79,7 +79,7 @@ resource "local_file" "kube_config" {
 module "common-output" {
   source = "../common-output"
 
-  cluster       = merge(var.cluster, {type = "EKS", meta = {cluster_name = local.cluster_name, kubernetes_version = module.eks.cluster_platform_version}})
+  cluster       = merge(var.cluster, {type = "EKS", meta = {cluster_name = local.cluster_name, kubernetes_version = tostring(try(module.eks.cluster_platform_version, null))}})
   kube_config   = local.kube_config
   helm_metadata = module.helm.metadata
 

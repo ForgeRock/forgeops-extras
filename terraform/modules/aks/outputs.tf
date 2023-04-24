@@ -2,7 +2,7 @@
 
 locals {
   kube_config = {
-    "config_path"            = "~/.kube/config-tf.aks.${azurerm_kubernetes_cluster.cluster.location}.${var.cluster.meta.cluster_name}"
+    "config_path"            = "~/.kube/config-tf.aks.${var.cluster.location.region}.${local.cluster_name}"
     "host" = azurerm_kubernetes_cluster.cluster.kube_config[0].host,
     "cluster_ca_certificate" = azurerm_kubernetes_cluster.cluster.kube_config[0].cluster_ca_certificate,
     "client_certificate"     = azurerm_kubernetes_cluster.cluster.kube_config[0].client_certificate,

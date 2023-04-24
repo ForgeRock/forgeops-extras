@@ -46,6 +46,12 @@ variable "cluster" {
       min_count     = number
       max_count     = number
       disk_size_gb  = optional(number)
+      labels        = optional(map(string))
+      taints        = optional(list(object({
+        key    = string
+        value  = string
+        effect = string
+      })))
       meta          = object({
         zones        = optional(list(string))
 
@@ -68,17 +74,7 @@ variable "cluster" {
       zones  = null
     }
 
-    node_pools = {
-      default = {
-        type          = null
-        initial_count = null
-        min_count     = null
-        max_count     = null
-        disk_size_gb  = null
-        meta          = {}
-      }
-    }
-
+    node_pools = {}
     helm = {}
   }
 }

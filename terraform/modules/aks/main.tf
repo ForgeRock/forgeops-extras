@@ -86,15 +86,19 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 
   default_node_pool {
     name                = local.default_node_pool_name
-    zones               = lookup(local.default_node_pool.meta, "zones", var.cluster.location.zones)
+    zones               = lookup(local.default_node_pool.meta, "zones", null) == null ? var.cluster.location.zones : lookup(local.default_node_pool.meta, "zones", null)
 
     vm_size             = local.default_node_pool.type
-    os_disk_size_gb     = lookup(local.default_node_pool.meta, "disk_size_gb", 50)
+    os_disk_size_gb     = lookup(local.default_node_pool, "disk_size_gb", null) == null ? 50 : lookup(local.default_node_pool, "disk_size_gb", null)
     enable_auto_scaling = true
     node_count          = local.default_node_pool.initial_count
     min_count           = local.default_node_pool.min_count
     max_count           = local.default_node_pool.max_count
-    node_labels         = module.common.asset_labels
+    node_labels         = lookup(local.default_node_pool, "labels", null) == null ? module.common.asset_labels : merge(module.common.asset_labels, lookup(local.default_node_pool, "labels", null))
+    node_taints         = lookup(local.default_node_pool, "taints", null) == null ? [] : [
+      for taint in (lookup(local.default_node_pool, "taints", null) == null ? []: lookup(local.default_node_pool, "taints", null)):
+        format("%s=%s:%s", taint["key"], taint["value"], taint["effect"])
+    ]
     tags                = module.common.asset_labels
   }
 
@@ -126,19 +130,23 @@ resource "azurerm_kubernetes_cluster_node_pool" "extra" {
   for_each              = local.extra_node_pools
 
   name                  = each.key
-  zones                 = lookup(each.value.meta, "zones", var.cluster.location.zones)
+  zones                 = lookup(each.value.meta, "zones", null) == null ? var.cluster.location.zones : lookup(each.value.meta, "zones", null)
   kubernetes_cluster_id = azurerm_kubernetes_cluster.cluster.id
 
   vm_size               = each.value.type
   os_type               = "Linux"
-  os_disk_size_gb       = lookup(each.value.meta, "disk_size_db", 50)
+  os_disk_size_gb       = lookup(each.value, "disk_size_gb", null) == null ? 50 : lookup(each.value, "disk_size_gb", null)
 
   enable_auto_scaling   = true
   node_count            = each.value.initial_count
   min_count             = each.value.min_count
   max_count             = each.value.max_count
 
-  node_labels           = module.common.asset_labels
+  node_labels           = merge(module.common.asset_labels, lookup(each.value, "labels", null) == null ? {} : lookup(each.value, "labels", null))
+  node_taints         = lookup(each.value, "taints", null) == null ? [] : [
+    for taint in (lookup(each.value, "taints", null) == null ? []: lookup(each.value, "taints", null)):
+      format("%s=%s:%s", taint["key"], taint["value"], taint["effect"])
+  ]
 
   lifecycle {
     ignore_changes = [node_count]

@@ -132,6 +132,11 @@ platform:
   #    - name: AGENT_RCS_SECRET
   #      length: 32
 
+  tolerations:
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
+
 am:
   enabled: true
   replicaCount: 1
