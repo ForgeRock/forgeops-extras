@@ -35,9 +35,9 @@ resource "local_file" "kube_config" {
   - cluster:
       server: ${local.kube_config["host"]}
       certificate-authority-data: ${local.kube_config["cluster_ca_certificate"]}
-    name: ${tostring(try(module.gke.name))}
+    name: ${tostring(try(module.gke.name, null))}
   users:
-  - name: ${tostring(try(module.gke.name))}
+  - name: ${tostring(try(module.gke.name, null))}
     user:
       exec:
         apiVersion: client.authentication.k8s.io/v1beta1
@@ -49,7 +49,7 @@ resource "local_file" "kube_config" {
 module "common-output" {
   source = "../common-output"
 
-  cluster      = merge(var.cluster, {type = "GKE", meta = {cluster_name = local.cluster_name, kubernetes_version = tostring(try(module.gke.master_version}})))
+  cluster      = merge(var.cluster, {type = "GKE", meta = {cluster_name = local.cluster_name, kubernetes_version = tostring(try(module.gke.master_version, null))}})
   kube_config  = local.kube_config
   helm_metadata = module.helm.metadata
 
