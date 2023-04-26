@@ -607,7 +607,7 @@ resource "helm_release" "ds_operator" {
   name                  = "ds-operator"
   repository            = contains(keys(var.chart_configs["ds-operator"]), "repository") ? var.chart_configs["ds-operator"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "ds-operator"
-  version               = contains(keys(var.chart_configs["ds-operator"]), "version") ? var.chart_configs["ds-operator"]["version"] : "v0.2.5"
+  version               = contains(keys(var.chart_configs["ds-operator"]), "version") ? var.chart_configs["ds-operator"]["version"] : "v0.2.6"
   namespace             = "ds-operator"
   create_namespace      = true
   reuse_values          = false
