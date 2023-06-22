@@ -4,9 +4,9 @@
 # to customize settings.
 
 forgerock = {
-  employee        = false
+  employee = false
 
-  billing_entity  = null
+  billing_entity = null
 
   es_useremail    = null
   es_businessunit = null
@@ -29,8 +29,14 @@ clusters = {
       kubernetes_version = "1.25"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
-      enable_monitoring  = true
-      enable_logging     = true
+      enable_monitoring = true
+      enable_logging    = true
+
+      # If you want to specify a specific service account, set
+      # create_service_account to false, and specify the service_account.
+      create_service_account = true
+      service_account_name   = "" # Only set if create_service_account is true
+      service_account        = "" # Only set if create_service_account is false
     }
 
     location = {
@@ -48,12 +54,12 @@ clusters = {
         meta = {
           #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
-          disk_type        = "pd-standard"  # "pd-ssd"
+          disk_type        = "pd-standard" # "pd-ssd"
           min_cpu_platform = ""
           auto_repair      = true
           auto_upgrade     = true
           preemptible      = false
-          oauth_scopes     = [
+          oauth_scopes = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
         }
@@ -139,7 +145,7 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
+        deploy = true
         #values  = <<-EOF
         # Values from tfvars configuration
         #google:
@@ -147,36 +153,36 @@ clusters = {
         #EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -252,8 +258,8 @@ clusters = {
       kubernetes_version = "1.25"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
-      enable_monitoring  = true
-      enable_logging     = true
+      enable_monitoring = true
+      enable_logging    = true
     }
 
     location = {
@@ -271,12 +277,12 @@ clusters = {
         meta = {
           #zones           = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
-          disk_type        = "pd-standard"  # "pd-ssd"
+          disk_type        = "pd-standard" # "pd-ssd"
           min_cpu_platform = ""
           auto_repair      = true
           auto_upgrade     = true
           preemptible      = false
-          oauth_scopes     = [
+          oauth_scopes = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
         }
@@ -362,7 +368,7 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
+        deploy = true
         #values  = <<-EOF
         # Values from tfvars configuration
         #google:
@@ -370,36 +376,36 @@ clusters = {
         #EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -475,8 +481,8 @@ clusters = {
       kubernetes_version = "1.25"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
-      enable_monitoring  = true
-      enable_logging     = true
+      enable_monitoring = true
+      enable_logging    = true
     }
 
     location = {
@@ -494,12 +500,12 @@ clusters = {
         meta = {
           #zones            = ["us-east1-b", "us-east1-c", "us-east1-d"]
 
-          disk_type         = "pd-standard"  # "pd-ssd"
-          min_cpu_platform  = ""
-          auto_repair       = true
-          auto_upgrade      = true
+          disk_type        = "pd-standard" # "pd-ssd"
+          min_cpu_platform = ""
+          auto_repair      = true
+          auto_upgrade     = true
           preemptible      = false
-          oauth_scopes      = [
+          oauth_scopes = [
             "https://www.googleapis.com/auth/cloud-platform",
           ]
         }
@@ -585,7 +591,7 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
+        deploy = true
         #values  = <<-EOF
         # Values from tfvars configuration
         #google:
@@ -593,36 +599,36 @@ clusters = {
         #EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -768,42 +774,42 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -949,42 +955,42 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -1130,42 +1136,42 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -1231,7 +1237,7 @@ clusters = {
   tf_cluster_aks_small = {
     enabled = false
     type    = "aks"
-    auth = {  # Authenticate with 'az login'
+    auth = { # Authenticate with 'az login'
     }
 
     meta = {
@@ -1309,44 +1315,44 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         #azure:
         #  resourceGroup: <azure-resource-group-for-dns>
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -1412,7 +1418,7 @@ clusters = {
   tf_cluster_aks_medium = {
     enabled = false
     type    = "aks"
-    auth = {  # Authenticate with 'az login'
+    auth = { # Authenticate with 'az login'
     }
 
     meta = {
@@ -1490,44 +1496,44 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         #azure:
         #  resourceGroup: <azure-resource-group-for-dns>
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -1593,7 +1599,7 @@ clusters = {
   tf_cluster_aks_large = {
     enabled = false
     type    = "aks"
-    auth = {  # Authenticate with 'az login'
+    auth = { # Authenticate with 'az login'
     }
 
     meta = {
@@ -1671,44 +1677,44 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy  = true
-        values  = <<-EOF
+        deploy = true
+        values = <<-EOF
         # Values from tfvars configuration
         #azure:
         #  resourceGroup: <azure-resource-group-for-dns>
         EOF
       },
       cert-manager = {
-        deploy  = true
+        deploy = true
       },
       ingress-nginx = {
-        deploy  = true
+        deploy = true
       },
       haproxy-ingress = {
-        deploy  = false
+        deploy = false
       },
       kube-prometheus-stack = {
-        deploy  = false
+        deploy = false
       },
       elasticsearch = {
-        deploy  = false
+        deploy = false
       },
       logstash = {
-        deploy  = false
+        deploy = false
       },
       kibana = {
+        deploy = false
+      },
+      secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      ds-operator = { # Technology preview, not supported
+        deploy = false
+      },
+      identity-platform = { # Technology preview, not supported
         deploy  = false
-      },
-      secret-agent = {  # Technology preview, not supported
-        deploy     = false
-      },
-      ds-operator = {  # Technology preview, not supported
-        deploy     = false
-      },
-      identity-platform = {  # Technology preview, not supported
-        deploy     = false
-        version    = "7.3"
-        values     = <<-EOF
+        version = "7.3"
+        values  = <<-EOF
         # Values from tfvars configuration
         #platform:
         #  ingress:
@@ -1772,4 +1778,3 @@ clusters = {
     }
   },
 }
-
