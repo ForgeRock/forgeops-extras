@@ -139,13 +139,20 @@ clusters = {
 
     helm = {
       external-dns = {
-        deploy = true
+        deploy                 = true
+        create_service_account = true
+        # service_account_email = "" # Change create_service_account to false, and set this to email.
         #values  = <<-EOF
         # Values from tfvars configuration
         #google:
         #  project: <alt_google_cloud_dns_project>
         #EOF
       },
+      external-secrets = {
+        deploy                 = true
+        create_service_account = true
+        # service_account_email = "" # Change create_service_account to false, and set this to email.
+      }
       cert-manager = {
         deploy = true
       },
@@ -254,6 +261,12 @@ clusters = {
 
       enable_monitoring = true
       enable_logging    = true
+
+      # If you want to specify a specific service account, set
+      # create_service_account to false, and specify the service_account.
+      create_service_account = true
+      service_account_name   = "" # Only set if create_service_account is true
+      service_account        = "" # Only set if create_service_account is false
     }
 
     location = {
@@ -477,6 +490,12 @@ clusters = {
 
       enable_monitoring = true
       enable_logging    = true
+
+      # If you want to specify a specific service account, set
+      # create_service_account to false, and specify the service_account.
+      create_service_account = true
+      service_account_name   = "" # Only set if create_service_account is true
+      service_account        = "" # Only set if create_service_account is false
     }
 
     location = {
