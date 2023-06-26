@@ -31,12 +31,6 @@ clusters = {
 
       enable_monitoring = true
       enable_logging    = true
-
-      # If you want to specify a specific service account, set
-      # create_service_account to false, and specify the service_account.
-      create_service_account = true
-      service_account_name   = "" # Only set if create_service_account is true
-      service_account        = "" # Only set if create_service_account is false
     }
 
     location = {

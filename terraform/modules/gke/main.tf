@@ -50,11 +50,8 @@ module "gke" {
   filestore_csi_driver                 = true
   monitoring_enable_managed_prometheus = false
 
-  create_service_account = lookup(var.cluster.meta, "create_service_account", true)
-  service_account_name   = lookup(var.cluster.meta, "service_account_name", "")
-  service_account        = lookup(var.cluster.meta, "service_account", "")
-  monitoring_service     = lookup(var.cluster.meta, "enable_monitoring", null) == null ? "monitoring.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_monitoring", true)) ? "monitoring.googleapis.com/kubernetes" : "none")
-  logging_service        = lookup(var.cluster.meta, "enable_logging", null) == null ? "logging.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_logging", true)) ? "logging.googleapis.com/kubernetes" : "none")
+  monitoring_service = lookup(var.cluster.meta, "enable_monitoring", null) == null ? "monitoring.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_monitoring", true)) ? "monitoring.googleapis.com/kubernetes" : "none")
+  logging_service    = lookup(var.cluster.meta, "enable_logging", null) == null ? "logging.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_logging", true)) ? "logging.googleapis.com/kubernetes" : "none")
 
   release_channel         = lookup(var.cluster.meta, "release_channel", null) == null ? "UNSPECIFIED" : lookup(var.cluster.meta, "release_channel", null)
   kubernetes_version      = var.cluster.meta.kubernetes_version
