@@ -205,7 +205,7 @@ module "eks" {
         #use_custom_launch_template = false
 
         instance_types = [pool.type]
-        subnet_ids = lookup(pool.meta, "zones", null) == null ? null : [
+        subnet_ids = lookup(pool.meta, "zones", null) == null ? module.vpc.private_subnets : [
           for zone in lookup(pool.meta, "zones", null):
             module.vpc.private_subnets[index(data.aws_availability_zones.available.names, zone)]
         ]
