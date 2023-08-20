@@ -1,4 +1,4 @@
-{{- if and .Values.ds_cts.enabled (eq .Values.ds_cts.kind "StatefulSet") }}
+{{- if .Values.ds_cts.enabled }}
 apiVersion: v1
 kind: Service
 metadata:

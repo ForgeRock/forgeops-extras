@@ -285,7 +285,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.10.1"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.12.3"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -317,7 +317,7 @@ resource "helm_release" "trust_manager" {
   name                  = "trust-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "trust-manager"
-  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.3.0"
+  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.5.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -591,38 +591,6 @@ resource "helm_release" "secret_agent" {
 }
 
 locals {
-  deploy_ds_operator = contains(keys(var.charts), "ds-operator") && contains(keys(var.chart_configs), "ds-operator") ? (var.chart_configs["ds-operator"]["deploy"] ? true : false) : false
-  values_ds_operator = <<-EOF
-  # Values from terraform helm module
-  tolerations:  # Ignore any arch taints
-    - key: kubernetes.io/arch
-      operator: Exists
-      effect: NoSchedule
-  EOF
-}
-
-resource "helm_release" "ds_operator" {
-  count = local.deploy_ds_operator ? 1 : 0
-
-  name                  = "ds-operator"
-  repository            = contains(keys(var.chart_configs["ds-operator"]), "repository") ? var.chart_configs["ds-operator"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
-  chart                 = "ds-operator"
-  version               = contains(keys(var.chart_configs["ds-operator"]), "version") ? var.chart_configs["ds-operator"]["version"] : "v0.2.6"
-  namespace             = "ds-operator"
-  create_namespace      = true
-  reuse_values          = false
-  reset_values          = true
-  force_update          = true
-  max_history           = 12
-  render_subchart_notes = false
-  timeout               = 600
-
-  values = [local.values_ds_operator, var.charts["ds-operator"]["values"], contains(keys(var.chart_configs), "ds-operator") ? (contains(keys(var.chart_configs["ds-operator"]), "values") ? var.chart_configs["ds-operator"]["values"] : "") : ""]
-
-  depends_on = [helm_release.raw_k8s_resources]
-}
-
-locals {
    ingressClass = contains(keys(var.charts), "haproxy-ingress") && contains(keys(var.chart_configs), "haproxy-ingress") ? (var.chart_configs["haproxy-ingress"]["deploy"] ? "haproxy" : "nginx") : "nginx"
 
   deploy_identity_platform = contains(keys(var.charts), "identity-platform") && contains(keys(var.chart_configs), "identity-platform") ? (var.chart_configs["identity-platform"]["deploy"] ? true : false) : false
@@ -633,32 +601,6 @@ locals {
   platform:
     ingress:
       className: ${local.ingressClass}
-
-  ldif_importer:
-    enabled: ${local.deploy_ds_operator ? "false" : "true"}
-
-  ${local.deploy_ds_operator ? <<-EOF
-  ds_idrepo:
-    kind: DirectoryService
-    volumeClaimSpec:
-      storageClassName: fast
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 10Gi
-  ds_cts:
-    kind: DirectoryService
-    volumeClaimSpec:
-      storageClassName: fast
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 10Gi
-  EOF
-  : ""
-  }
   EOF
 }
 
@@ -680,6 +622,6 @@ resource "helm_release" "identity_platform" {
 
   values = [local.values_identity_platform, var.charts["identity-platform"]["values"], contains(keys(var.chart_configs), "identity-platform") ? (contains(keys(var.chart_configs["identity-platform"]), "values") ? var.chart_configs["identity-platform"]["values"] : "") : ""]
 
-  depends_on = [helm_release.raw_k8s_resources, helm_release.secret_agent, helm_release.ds_operator]
+  depends_on = [helm_release.raw_k8s_resources, helm_release.secret_agent]
 }
 

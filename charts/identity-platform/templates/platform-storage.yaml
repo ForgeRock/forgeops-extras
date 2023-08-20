@@ -1,23 +1,32 @@
-{{- if .Values.platform.storage.storage_class.create -}}
+{{- if (not (lookup "storage.k8s.io/v1" "StorageClass" "" .Values.platform.storage.storage_class.name).metadata) -}}
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: {{ .Values.platform.storage.storage_class.name }}
+  annotations:
+    "helm.sh/hook": pre-install
+    "helm.sh/hook-delete-policy": "hook-failed"
   labels:
     {{- include "identity-platform.labels" . | nindent 4 }}
 reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
+{{- if .Values.platform.storage.storage_class.create }}
 {{ toYaml .Values.platform.storage.storage_class.create }}
----
+{{- else }}
+{{- if (lookup "storage.k8s.io/v1" "CSIDriver" "" "pd.csi.storage.gke.io").metadata }}
+provisioner: pd.csi.storage.gke.io
+parameters:
+  type: pd-ssd
 {{- end }}
-{{- if .Values.platform.storage.volume_snapshot_class.create -}}
-apiVersion: snapshot.storage.k8s.io/v1
-kind: VolumeSnapshotClass
-metadata:
-  name: {{ .Values.platform.storage.volume_snapshot_class.name }}
-  labels:
-    {{- include "identity-platform.labels" . | nindent 4 }}
-deletionPolicy: Delete
-{{ toYaml .Values.platform.storage.volume_snapshot_class.create }}
+{{- if (lookup "storage.k8s.io/v1" "CSIDriver" "" "ebs.csi.aws.com").metadata }}
+provisioner: ebs.csi.aws.com
+{{- end }}
+{{- if (lookup "storage.k8s.io/v1" "CSIDriver" "" "disk.csi.azure.com").metadata }}
+provisioner: disk.csi.azure.com
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
+{{- end }}
+{{- end }}
 ---
 {{- end }}
