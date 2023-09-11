@@ -62,21 +62,18 @@ platform:
       #create:
       #  # GKE
       #  provisioner: pd.csi.storage.gke.io
+      #  allowVolumeExpansion: true
       #  parameters:
       #    type: pd-ssd
       #  # EKS
       #  provisioner: ebs.csi.aws.com
+      #  allowVolumeExpansion: true
       #  # AKS
       #  provisioner: disk.csi.azure.com
+      #  allowVolumeExpansion: true
       #  parameters:
       #    storageaccounttype: Premium_LRS
       #    kind: Managed
-    volume_snapshot_class:
-      name: ds-snapshot-class
-      #create:
-      #  driver: pd.csi.storage.gke.io  # GKE
-      #  driver: ebs.csi.amazon.com     # EKS
-      #  driver: disk.csi.azure.com     # AKS
 
   #secrets:
   #  ds-passwords:
@@ -94,7 +91,7 @@ platform:
   #  am-env-secrets:
   #    - name: AM_AUTHENTICATION_SHARED_SECRET
   #      length: 32
-  #      useBinaryCharacters: true
+  #      #useBinaryCharacters: true
   #    - name: AM_ENCRYPTION_KEY
   #      length: 24
   #    - name: AM_OIDC_CLIENT_SUBJECT_IDENTIFIER_HASH_SALT
@@ -103,13 +100,13 @@ platform:
   #      length: 24
   #    - name: AM_SELFSERVICE_LEGACY_CONFIRMATION_EMAIL_LINK_SIGNING_KEY
   #      length: 32
-  #      useBinaryCharacters: true
+  #      #useBinaryCharacters: true
   #    - name: AM_SESSION_STATELESS_ENCRYPTION_KEY
   #      length: 32
-  #      useBinaryCharacters: true
+  #      #useBinaryCharacters: true
   #    - name: AM_SESSION_STATELESS_SIGNING_KEY
   #      length: 32
-  #      useBinaryCharacters: true
+  #      #useBinaryCharacters: true
   #  amster-env-secrets:
   #    - name: IDM_PROVISIONING_CLIENT_SECRET
   #      length: 24
@@ -640,7 +637,6 @@ ig:
 
 ds_idrepo:
   enabled: true
-  kind: StatefulSet  # "StatefulSet" or "DirectoryService"
   replicaCount: 1
 
   image:
@@ -698,7 +694,6 @@ ds_idrepo:
 
 ds_cts:
   enabled: true
-  kind: StatefulSet  # "StatefulSet" or "DirectoryService"
   replicaCount: 1
 
   image:
