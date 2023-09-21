@@ -139,8 +139,8 @@ am:
   replicaCount: 1
 
   image:
-    repository: us-docker.pkg.dev/forgeops-public/images/am
-    tag: "dev"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/am
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -214,8 +214,8 @@ amster:
   #ttlSecondsAfterFinished: 300
 
   image:
-    repository: gcr.io/forgerock-io/amster/pit1
-    tag: "7.3.0-latest-postcommit"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/amster
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -262,8 +262,8 @@ ldif_importer:
   ttlSecondsAfterFinished: 300
 
   image:
-    repository: gcr.io/forgerock-io/ldif-importer
-    tag: "7-stable"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/ldif-importer
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -306,8 +306,8 @@ idm:
   replicaCount: 1
 
   image:
-    repository: us-docker.pkg.dev/forgeops-public/images/idm
-    tag: "dev"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/idm
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -377,8 +377,8 @@ admin_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-admin-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/admin-ui
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -442,8 +442,8 @@ end_user_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-enduser-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/end-user-ui
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -507,8 +507,8 @@ login_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-login-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/login-ui
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -572,8 +572,8 @@ ig:
   replicaCount: 1
 
   image:
-    repository: us-docker.pkg.dev/forgeops-public/images/ig
-    tag: "dev"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/ig
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -640,8 +640,8 @@ ds_idrepo:
   replicaCount: 1
 
   image:
-    repository: us-docker.pkg.dev/forgeops-public/images/ds
-    tag: "dev"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/ds
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -697,8 +697,8 @@ ds_cts:
   replicaCount: 1
 
   image:
-    repository: us-docker.pkg.dev/forgeops-public/images/ds
-    tag: "dev"
+    repository: us-docker.pkg.dev/forgeops-public/images/multiarch/ds
+    tag: "7.3"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
