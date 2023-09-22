@@ -251,7 +251,7 @@ amster:
     # readOnlyRootFilesystem: true
     # runAsNonRoot: true
     # runAsUser: 1000
-  
+
   env:
     DURATION: "10"
 
@@ -749,3 +749,24 @@ ds_cts:
     type: ClusterIP
     port: 8080
 
+# Setup a cronjob to take regular volume snapshots of ds-idrepo
+ds_snapshot:
+  enabled: false
+  configmapCreate: true
+  rbacCreate: true
+  name: ds-snapshot
+  pvcName: data-ds-idrepo-0
+  serviceAccountName: ds-snapshot
+  class: ds-snapshot-class
+
+  # Daily snaphot at midnight
+  schedule: "0 0 * * *"
+
+  # Purge snaps older than 3 days
+  purgeDelay: "-3 day"
+
+  image:
+    repository: bitnami/kubectl
+    tag: latest
+    pullPolicy: IfNotPresent
+    imagePullSecrets: []
