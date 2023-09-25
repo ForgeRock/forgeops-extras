@@ -1,0 +1,11 @@
+{{- if and .Values.ds_snapshot.enabled .Values.ds_snapshot.configmapCreate }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.ds_snapshot.name }}-script
+  labels:
+    {{- include "identity-platform.labels" . | nindent 4 }}
+data:
+  {{ (.Files.Glob "files/ds/snapshot.sh").AsConfig | nindent 2 }}
+{{- end }}

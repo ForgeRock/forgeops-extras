@@ -1,0 +1,48 @@
+{{- if and .Values.ds_snapshot.enabled .Values.ds_snapshot.rbacCreate }}
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.ds_snapshot.serviceAccountName }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Values.ds_snapshot.serviceAccountName }}-{{ .Release.Namespace }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - pods
+      - pods/log
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+  - apiGroups:
+      - batch
+    resources:
+      - jobs
+      - cronjobs
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+  - apiGroups:
+      - snapshot.storage.k8s.io
+    resources:
+      - volumesnapshots
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+  - apiGroups:
+      - apiextensions.k8s.io
+    resources:
+      - customresourcedefinitions
+    verbs: ["create", "get", "list", "watch", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.ds_snapshot.serviceAccountName }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.ds_snapshot.serviceAccountName }}
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: ClusterRole
+  name: {{ .Values.ds_snapshot.serviceAccountName }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
