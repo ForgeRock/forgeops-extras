@@ -24,7 +24,7 @@ spec:
           {{- end }}
           serviceAccountName: {{ .Values.ds_snapshot.serviceAccountName }}
           securityContext:
-            {{- toYaml .Values.ds_idrepo.podSecurityContext | nindent 14 }}
+            {{- toYaml .Values.ds_snapshot.podSecurityContext | nindent 14 }}
           containers:
           - name: {{ .Values.ds_snapshot.name }}
             image: {{ .Values.ds_snapshot.image.repository }}:{{ .Values.ds_snapshot.image.tag }}
