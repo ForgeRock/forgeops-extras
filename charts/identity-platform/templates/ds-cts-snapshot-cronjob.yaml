@@ -1,19 +1,18 @@
-{{- if .Values.ds_snapshot.enabled }}
----
+{{- if .Values.ds_cts.snapshot.enabled }}
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: {{ .Values.ds_snapshot.name }}
+  name: {{ .Values.ds_cts.snapshot.name }}
 spec:
-  schedule: {{ .Values.ds_snapshot.schedule | quote }}
+  schedule: {{ .Values.ds_cts.snapshot.schedule | quote }}
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
         metadata:
-          name: {{ .Values.ds_snapshot.name }}
+          name: {{ .Values.ds_cts.snapshot.name }}
           labels:
-            app: {{ .Values.ds_snapshot.name }}-job
+            app: {{ .Values.ds_cts.snapshot.name }}-job
         spec:
           {{- if .Values.ds_snapshot.image.imagePullSecrets }}
           imagePullSecrets:
@@ -22,17 +21,17 @@ spec:
           imagePullSecrets:
             {{- toYaml .Values.imagePullSecrets | nindent 14 }}
           {{- end }}
-          serviceAccountName: {{ .Values.ds_snapshot.serviceAccountName }}
+          serviceAccountName: {{ .Values.ds_cts.snapshot.serviceAccountName }}
           securityContext:
-            {{- toYaml .Values.ds_snapshot.podSecurityContext | nindent 14 }}
+            {{- toYaml .Values.ds_cts.snapshot.podSecurityContext | nindent 14 }}
           containers:
-          - name: {{ .Values.ds_snapshot.name }}
+          - name: {{ .Values.ds_cts.snapshot.name }}
             image: {{ .Values.ds_snapshot.image.repository }}:{{ .Values.ds_snapshot.image.tag }}
             imagePullPolicy: {{ .Values.ds_snapshot.image.pullPolicy }}
             command:
             - /bin/bash
             - -c
-            - /scripts/snapshot.sh {{ .Values.ds_snapshot.name }} {{ .Values.ds_snapshot.pvcName }} {{ .Values.ds_snapshot.class }}
+            - /scripts/snapshot.sh {{ .Values.ds_cts.snapshot.name }} {{ .Values.ds_cts.snapshot.pvcName }} {{ .Values.ds_cts.snapshot.class }}
             env:
             - name: NAMESPACE
               valueFrom:
@@ -43,14 +42,14 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: PURGE_DELAY
-              value: {{ .Values.ds_snapshot.purgeDelay | quote }}
+              value: {{ .Values.ds_cts.snapshot.purgeDelay | quote }}
             volumeMounts:
-            - name: {{ .Values.ds_snapshot.name }}-script
+            - name: {{ .Values.ds_cts.snapshot.name }}-script
               mountPath: /scripts
           volumes:
-          - name: {{ .Values.ds_snapshot.name }}-script
+          - name: {{ .Values.ds_cts.snapshot.name }}-script
             configMap:
-              name: {{ .Values.ds_snapshot.name }}-script
+              name: {{ .Values.ds_cts.snapshot.name }}-script
               defaultMode: 0555
           restartPolicy: Never
 {{- end }}
