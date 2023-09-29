@@ -1,4 +1,4 @@
-{{- if and .Values.ds_snapshot.enabled .Values.ds_snapshot.rbacCreate }}
+{{- if and .Values.ds_snapshot.rbacCreate (or .Values.ds_idrepo.snapshot.enabled .Values.ds_cts.snapshot.enabled) }}
 ---
 apiVersion: v1
 kind: ServiceAccount

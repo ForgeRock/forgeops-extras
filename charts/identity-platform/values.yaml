@@ -635,6 +635,18 @@ ig:
     type: ClusterIP
     port: 80
 
+# Common values for doing ds snapshots
+ds_snapshot:
+  configmapCreate: true
+  rbacCreate: true
+  serviceAccountName: ds-snapshot
+
+  image:
+    repository: bitnami/kubectl
+    tag: latest
+    pullPolicy: IfNotPresent
+    imagePullSecrets: []
+
 ds_idrepo:
   enabled: true
   replicaCount: 1
@@ -691,6 +703,19 @@ ds_idrepo:
   service:
     type: ClusterIP
     port: 8080
+
+  snapshot:
+    enabled: false
+    class: ds-snapshot-class
+    name: ds-idrepo-snapshot
+    podSecurityContext: {}
+    pvcName: data-ds-idrepo-0
+
+    # Daily snaphot at midnight
+    schedule: "0 0 * * *"
+
+    # Purge snaps older than 3 days
+    purgeDelay: "-3 day"
 
 ds_cts:
   enabled: true
@@ -749,25 +774,15 @@ ds_cts:
     type: ClusterIP
     port: 8080
 
-# Setup a cronjob to take regular volume snapshots of ds-idrepo
-ds_snapshot:
-  enabled: false
-  class: ds-snapshot-class
-  configmapCreate: true
-  name: ds-snapshot
-  podSecurityContext: {}
-  pvcName: data-ds-idrepo-0
-  rbacCreate: true
-  serviceAccountName: ds-snapshot
+  snapshot:
+    enabled: false
+    class: ds-snapshot-class
+    name: ds-cts-snapshot
+    podSecurityContext: {}
+    pvcName: data-ds-cts-0
 
-  # Daily snaphot at midnight
-  schedule: "0 0 * * *"
+    # Daily snaphot at midnight
+    schedule: "0 0 * * *"
 
-  # Purge snaps older than 3 days
-  purgeDelay: "-3 day"
-
-  image:
-    repository: bitnami/kubectl
-    tag: latest
-    pullPolicy: IfNotPresent
-    imagePullSecrets: []
+    # Purge snaps older than 3 days
+    purgeDelay: "-3 day"
