@@ -646,7 +646,9 @@ ig:
 
 # Common values for doing ds snapshots
 ds_snapshot:
+  class: ds-snapshot-class
   configmapCreate: true
+  podSecurityContext: {}
   rbacCreate: true
   serviceAccountName: ds-snapshot
 
@@ -715,9 +717,7 @@ ds_idrepo:
 
   snapshot:
     enabled: false
-    class: ds-snapshot-class
     name: ds-idrepo-snapshot
-    podSecurityContext: {}
     pvcName: data-ds-idrepo-0
 
     # Daily snaphot at midnight
@@ -785,9 +785,7 @@ ds_cts:
 
   snapshot:
     enabled: false
-    class: ds-snapshot-class
     name: ds-cts-snapshot
-    podSecurityContext: {}
     pvcName: data-ds-cts-0
 
     # Daily snaphot at midnight

@@ -60,3 +60,10 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Create the name of the snapshot script configmap use
+*/}}
+{{- define "ds_snapshot.configMapName"}}
+{{- printf "%s-script" .Values.ds_snapshot.serviceAccountName }}
+{{- end }}
