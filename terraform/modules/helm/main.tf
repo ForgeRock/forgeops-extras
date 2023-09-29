@@ -156,6 +156,7 @@ locals {
           - key: kubernetes.io/arch
             operator: Exists
             effect: NoSchedule
+    allowSnippetAnnotations: true
 
   defaultBackend:
     tolerations:  # Ignore any arch taints
@@ -171,7 +172,7 @@ resource "helm_release" "ingress_nginx" {
   name                  = "ingress-nginx"
   repository            = contains(keys(var.chart_configs["ingress-nginx"]), "repository") ? var.chart_configs["ingress-nginx"]["repository"] : "https://kubernetes.github.io/ingress-nginx"
   chart                 = "ingress-nginx"
-  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.1.1"
+  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.8.0"
   namespace             = "ingress-nginx"
   create_namespace      = true
   reuse_values          = false
@@ -221,7 +222,7 @@ resource "helm_release" "haproxy_ingress" {
   name                  = "haproxy-ingress"
   repository            = contains(keys(var.chart_configs["haproxy-ingress"]), "repository") ? var.chart_configs["haproxy-ingress"]["repository"] : "https://haproxy-ingress.github.io/charts"
   chart                 = "haproxy-ingress"
-  version               = contains(keys(var.chart_configs["haproxy-ingress"]), "version") ? var.chart_configs["haproxy-ingress"]["version"] : "0.14.0-beta.2" #"0.13.9"
+  version               = contains(keys(var.chart_configs["haproxy-ingress"]), "version") ? var.chart_configs["haproxy-ingress"]["version"] : "0.14.5"
   namespace             = "haproxy-ingress"
   create_namespace      = true
   reuse_values          = false
@@ -285,7 +286,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.12.3"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.13.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
