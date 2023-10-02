@@ -1,4 +1,4 @@
-{{- if and .Values.ds_snapshot.rbacCreate (or .Values.ds_idrepo.snapshot.enabled .Values.ds_cts.snapshot.enabled) (not (lookup "rbac.authorization.k8s.io/v1" "ClusterRole" "" .Values.ds_snapshot.serviceAccountName).metadata) -}}
+{{- if and .Values.ds_snapshot.rbacCreate (or .Values.ds_idrepo.snapshot.enabled .Values.ds_cts.snapshot.enabled) -}}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
