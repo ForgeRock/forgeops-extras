@@ -1,4 +1,4 @@
-{{- if (not (lookup "snapshot.storage.k8s.io/v1" "VolumeSnapshotClass" "" .Values.platform.storage.volumeStorageClass.name).metadata) -}}
+{{- if (not (lookup "snapshot.storage.k8s.io/v1" "VolumeSnapshotClass" "" .Values.platform.storage.volumeSnapshotClass.name).metadata) -}}
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
@@ -8,7 +8,7 @@ metadata:
     "helm.sh/hook-delete-policy": "hook-failed"
   labels:
     {{- include "identity-platform.labels" . | nindent 4 }}
-deletionPolicy: {{ .Values.platform.storage.volumeStorageClass. deletionPolicy | default Delete }}
+deletionPolicy: {{ .Values.platform.storage.volumeStorageClass.deletionPolicy | default "Delete" }}
 {{- if .Values.platform.storage.volumeStorageClass.create }}
 {{ toYaml .Values.platform.storage.volumeStorageClass.create }}
 {{- else if (lookup "storage.k8s.io/v1" "CSIDriver" "" "pd.csi.storage.gke.io").metadata }}
