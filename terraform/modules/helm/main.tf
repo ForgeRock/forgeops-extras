@@ -42,7 +42,7 @@ resource "helm_release" "metrics_server" {
 }
 
 locals {
-  deploy_external_secrets = contains(keys(var.charts), "external-secrets") ? true : false
+  deploy_external_secrets = contains(keys(var.charts), "external-secrets") && contains(keys(var.chart_configs), "external-secrets") ? (var.chart_configs["external-secrets"]["deploy"] ? true : false) : false
   values_external_secrets = <<-EOF
   # Values from terraform helm module
   certController:
@@ -592,7 +592,7 @@ resource "helm_release" "secret_agent" {
 }
 
 locals {
-   ingressClass = contains(keys(var.charts), "haproxy-ingress") && contains(keys(var.chart_configs), "haproxy-ingress") ? (var.chart_configs["haproxy-ingress"]["deploy"] ? "haproxy" : "nginx") : "nginx"
+  ingressClass = contains(keys(var.charts), "haproxy-ingress") && contains(keys(var.chart_configs), "haproxy-ingress") ? (var.chart_configs["haproxy-ingress"]["deploy"] ? "haproxy" : "nginx") : "nginx"
 
   deploy_identity_platform = contains(keys(var.charts), "identity-platform") && contains(keys(var.chart_configs), "identity-platform") ? (var.chart_configs["identity-platform"]["deploy"] ? true : false) : false
   values_identity_platform = <<-EOF
@@ -625,4 +625,3 @@ resource "helm_release" "identity_platform" {
 
   depends_on = [helm_release.raw_k8s_resources, helm_release.secret_agent]
 }
-

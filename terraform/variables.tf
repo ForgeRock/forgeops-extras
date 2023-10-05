@@ -3,8 +3,8 @@
 variable "forgerock" {
   description = "ForgeRock employee settings"
   type = object({
-    employee        = bool
-    billing_entity  = string
+    employee       = bool
+    billing_entity = string
 
     es_useremail    = string
     es_businessunit = string
@@ -14,8 +14,8 @@ variable "forgerock" {
   })
 
   default = {
-    employee        = null
-    billing_entity  = null
+    employee       = null
+    billing_entity = null
 
     es_useremail    = null
     es_businessunit = null
@@ -41,17 +41,21 @@ variable "clusters" {
     enabled = bool
     type    = string
     auth    = map(string)
-    meta    = object({
+    meta = object({
       cluster_name       = string
       kubernetes_version = string
 
       # GKE specific options
-      release_channel    = optional(string)
-      auto_repair        = optional(bool)
-      auto_upgrade       = optional(bool)
+      release_channel = optional(string)
+      auto_repair     = optional(bool)
+      auto_upgrade    = optional(bool)
 
-      enable_monitoring  = optional(bool)
-      enable_logging     = optional(bool)
+      enable_monitoring = optional(bool)
+      enable_logging    = optional(bool)
+
+      create_service_account = optional(bool)
+      service_account_name   = optional(string)
+      service_account        = optional(string)
     })
 
     location = object({
@@ -66,13 +70,13 @@ variable "clusters" {
       max_count     = number
       disk_size_gb  = optional(number)
       labels        = optional(map(string))
-      taints        = optional(list(object({
+      taints = optional(list(object({
         key    = string
         value  = string
         effect = string
       })))
-      meta          = object({
-        zones            = optional(list(string))
+      meta = object({
+        zones = optional(list(string))
 
         # GKE specific options
         disk_type        = optional(string)
@@ -83,7 +87,7 @@ variable "clusters" {
         oauth_scopes     = optional(list(string))
 
         # AKS specific options
-        default_pool     = optional(bool)
+        default_pool = optional(bool)
       })
     }))
 
@@ -116,4 +120,3 @@ variable "clusters" {
   #  helm = null
   #}
 }
-

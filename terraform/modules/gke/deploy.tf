@@ -1,55 +1,94 @@
 # deploy.tf - deploy components into cluster
 
+locals {
+  # external-secrets
+  deploy_external_secrets          = contains(keys(var.cluster.helm), "external-secrets") ? tobool(lookup(var.cluster.helm["external-secrets"], "deploy", true)) : true
+  create_external_secrets_acct     = local.deploy_external_secrets && contains(keys(var.cluster.helm), "external-secrets") ? tobool(lookup(var.cluster.helm["external-secrets"], "create_service_account", false)) : false
+  external_secrets_service_account = local.deploy_external_secrets && local.create_external_secrets_acct ? google_service_account.external_secrets[0].email : local.deploy_external_secrets && local.create_external_secrets_acct == false ? lookup(var.cluster.helm["external-secrets"], "service_account_email", "") : ""
+  external_secrets_values = local.deploy_external_secrets ? yamlencode({
+    serviceAccount = {
+      annotations = {
+        "iam.gke.io/gcp-service-account" = local.external_secrets_service_account
+      }
+    }
+  }) : ""
+
+  # external-dns
+  deploy_external_dns          = contains(keys(var.cluster.helm), "external-dns") ? tobool(lookup(var.cluster.helm["external-dns"], "deploy", true)) : true
+  create_external_dns_acct     = local.deploy_external_dns && contains(keys(var.cluster.helm), "external-dns") ? tobool(lookup(var.cluster.helm["external-dns"], "create_service_account", false)) : false
+  external_dns_service_account = local.deploy_external_dns && local.create_external_dns_acct ? google_service_account.external_dns[0].email : local.deploy_external_dns && local.create_external_dns_acct == false ? lookup(var.cluster.helm["external-dns"], "service_account", "") : ""
+  external_dns_values = local.deploy_external_dns ? yamlencode({
+    provider = "google"
+    google = {
+      project = local.project
+    }
+    txtOwnerId = "${local.cluster_name}.${var.cluster.location.region}"
+    serviceAccount = {
+      annotations = {
+        "iam.gke.io/gcp-service-account" = local.external_dns_service_account
+      }
+    }
+  }) : ""
+}
+
 resource "google_service_account" "external_secrets" {
-  account_id = replace(substr("${local.cluster_name}-external-secrets", 0, 30), "/[^a-z0-9]$/", "")
+  count        = local.deploy_external_secrets && local.create_external_secrets_acct ? 1 : 0
+  account_id   = replace(substr("${local.cluster_name}-external-secrets", 0, 30), "/[^a-z0-9]$/", "")
   display_name = substr("External Secrets service account for k8s cluster: ${local.cluster_name}", 0, 100)
 }
 
 resource "google_project_iam_member" "external_secrets_admin" {
-  role = "roles/secretmanager.admin"
-  member = "serviceAccount:${google_service_account.external_secrets.email}"
+  count   = local.deploy_external_secrets && local.create_external_secrets_acct ? 1 : 0
+  role    = "roles/secretmanager.admin"
+  member  = "serviceAccount:${google_service_account.external_secrets[0].email}"
   project = local.project
 }
 
 resource "google_project_iam_member" "external_secrets_service_account_token_creator" {
-  role = "roles/iam.serviceAccountTokenCreator"
-  member = "serviceAccount:${google_service_account.external_secrets.email}"
+  count   = local.deploy_external_secrets && local.create_external_secrets_acct ? 1 : 0
+  role    = "roles/iam.serviceAccountTokenCreator"
+  member  = "serviceAccount:${google_service_account.external_secrets[0].email}"
   project = local.project
 }
 
 resource "google_service_account_iam_member" "external_secrets_workload_identity_user" {
-  service_account_id = google_service_account.external_secrets.name
-  role = "roles/iam.workloadIdentityUser"
-  member = "serviceAccount:${module.gke.identity_namespace}[external-secrets/external-secrets]"
+  count              = local.deploy_external_secrets && local.create_external_secrets_acct ? 1 : 0
+  service_account_id = google_service_account.external_secrets[0].name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${module.gke.identity_namespace}[external-secrets/external-secrets]"
 }
 
 resource "google_service_account" "external_dns" {
-  account_id = replace(substr("${local.cluster_name}-external-dns", 0, 30), "/[^a-z0-9]$/", "")
+  count        = local.deploy_external_dns && local.create_external_dns_acct ? 1 : 0
+  account_id   = replace(substr("${local.cluster_name}-external-dns", 0, 30), "/[^a-z0-9]$/", "")
   display_name = substr("ExternalDNS service account for k8s cluster: ${local.cluster_name}", 0, 100)
   #project = lookup(var.cluster.meta, "dns_zone_project", null)
 }
 
 resource "google_project_iam_member" "external_dns_admin" {
-  role = "roles/dns.admin"
-  member = "serviceAccount:${google_service_account.external_dns.email}"
+  count   = local.deploy_external_dns && local.create_external_dns_acct ? 1 : 0
+  role    = "roles/dns.admin"
+  member  = "serviceAccount:${google_service_account.external_dns[0].email}"
   project = local.project
   #project = lookup(var.cluster.meta, "dns_zone_project", local.project)
 }
 
 #resource "google_service_account_key" "external_dns" {
-#  service_account_id = google_service_account.external_dns.name
+#  count              = local.deploy_external_dns && local.create_external_dns_acct ? 1 : 0
+#  service_account_id = google_service_account.external_dns[0].name
 #}
 
 resource "google_service_account_iam_member" "external_dns_workload_identity_user" {
-  service_account_id = google_service_account.external_dns.name
-  role = "roles/iam.workloadIdentityUser"
-#  member = "serviceAccount:${local.project}.svc.id.goog[${module.helm.metadata["external-dns"]["namespace"]}/external-dns]"
+  count              = local.deploy_external_dns && local.create_external_dns_acct ? 1 : 0
+  service_account_id = google_service_account.external_dns[0].name
+  role               = "roles/iam.workloadIdentityUser"
+  #  member = "serviceAccount:${local.project}.svc.id.goog[${module.helm.metadata["external-dns"]["namespace"]}/external-dns]"
   #member = "serviceAccount:${local.project}.svc.id.goog[external-dns/external-dns]"
   member = "serviceAccount:${module.gke.identity_namespace}[external-dns/external-dns]"
 }
 
 resource "google_compute_address" "ingress" {
-  name = "${local.cluster_name}-${var.cluster.location.region}"
+  name         = "${local.cluster_name}-${var.cluster.location.region}"
   address_type = "EXTERNAL"
 
   depends_on = [module.gke]
@@ -66,27 +105,10 @@ module "helm" {
 
   charts = {
     "external-secrets" = {
-      "values" = <<-EOF
-      # Values from terraform GKE module
-      serviceAccount:
-        annotations:
-          iam.gke.io/gcp-service-account: "${google_service_account.external_secrets.email}"
-      EOF
+      "values" = local.external_secrets_values
     },
     "external-dns" = {
-      "values" = <<-EOF
-      # Values from terraform GKE module
-      provider: google
-
-      google:
-        project: "${local.project}"
-
-      txtOwnerId: "${local.cluster_name}.${var.cluster.location.region}"
-
-      serviceAccount:
-        annotations:
-          iam.gke.io/gcp-service-account: "${google_service_account.external_dns.email}"
-      EOF
+      "values" = local.external_dns_values
     },
     "ingress-nginx" = {
       "values" = <<-EOF
@@ -173,22 +195,22 @@ ${local.deploy_identity_platform == false ? <<EOF
           driver: pd.csi.storage.gke.io
           deletionPolicy: Delete
 EOF
-: ""
-}
+      : ""
+    }
       EOF
-    },
-    "secret-agent" = {
-      "values" = <<-EOF
+  },
+  "secret-agent" = {
+    "values" = <<-EOF
       # Values from terraform GKE module
       EOF
-    },
-    "ds-operator" = {
-      "values" = <<-EOF
+  },
+  "ds-operator" = {
+    "values" = <<-EOF
       # Values from terraform GKE module
       EOF
-    },
-    "identity-platform" = {
-      "values" = <<-EOF
+  },
+  "identity-platform" = {
+    "values" = <<-EOF
       # Values from terraform GKE module
       platform:
         ingress:
@@ -206,9 +228,8 @@ EOF
             create:
               driver: pd.csi.storage.gke.io
       EOF
-    }
   }
-
-  depends_on = [module.gke, google_compute_address.ingress]
 }
 
+depends_on = [module.gke, google_compute_address.ingress]
+}

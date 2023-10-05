@@ -30,7 +30,7 @@ locals {
 
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "~> 25.0"
+  version = "~> 26.0"
 
   project_id = var.cluster.auth.project_id
   name       = local.cluster_name
