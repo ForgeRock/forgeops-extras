@@ -1,4 +1,4 @@
-{{- if (not (lookup "storage.k8s.io/v1" "StorageClass" "" .Values.platform.storage.storage_class.name).metadata) -}}
+{{- if and .Values.platform.storage.storage_class.create (not (lookup "storage.k8s.io/v1" "StorageClass" "" .Values.platform.storage.storage_class.name).metadata) -}}
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:

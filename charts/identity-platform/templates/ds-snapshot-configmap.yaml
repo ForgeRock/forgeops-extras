@@ -1,4 +1,4 @@
-{{- if and .Values.ds_snapshot.configmapCreate (or .Values.ds_idrepo.snapshot.enabled .Values.ds_cts.snapshot.enabled) }}
+{{- if and .Values.ds_snapshot.configmapCreate (or .Values.ds_idrepo.snapshot.enabled .Values.ds_cts.snapshot.enabled .Values.ds_snapshot.configmapOnly) }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
