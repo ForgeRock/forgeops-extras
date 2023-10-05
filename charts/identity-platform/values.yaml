@@ -648,8 +648,10 @@ ig:
 ds_snapshot:
   class: ds-snapshot-class
   configmapCreate: true
+  configmapOnly: false
   podSecurityContext: {}
   rbacCreate: true
+  rbacOnly: false
   serviceAccountName: ds-snapshot
 
   image:

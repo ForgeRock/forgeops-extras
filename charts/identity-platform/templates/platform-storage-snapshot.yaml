@@ -1,4 +1,4 @@
-{{- if (not (lookup "snapshot.storage.k8s.io/v1" "VolumeSnapshotClass" "" .Values.platform.storage.volumeSnapshotClass.name).metadata) -}}
+{{- if and .Values.platform.storage.volumeSnapshotClass.create (not (lookup "snapshot.storage.k8s.io/v1" "VolumeSnapshotClass" "" .Values.platform.storage.volumeSnapshotClass.name).metadata) -}}
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotClass
 metadata:
@@ -8,9 +8,9 @@ metadata:
     "helm.sh/hook-delete-policy": "hook-failed"
   labels:
     {{- include "identity-platform.labels" . | nindent 4 }}
-deletionPolicy: {{ .Values.platform.storage.volumeStorageClass.deletionPolicy | default "Delete" }}
-{{- if .Values.platform.storage.volumeStorageClass.create }}
-{{ toYaml .Values.platform.storage.volumeStorageClass.create }}
+deletionPolicy: {{ .Values.platform.storage.volumeSnapshotClass.deletionPolicy | default "Delete" }}
+{{- if .Values.platform.storage.volumeSnapshotClass.create }}
+{{ toYaml .Values.platform.storage.volumeSnapshotClass.create }}
 {{- else if (lookup "storage.k8s.io/v1" "CSIDriver" "" "pd.csi.storage.gke.io").metadata }}
 driver: pd.csi.storage.gke.io
 {{- else if (lookup "storage.k8s.io/v1" "CSIDriver" "" "ebs.csi.aws.com").metadata }}
@@ -18,7 +18,7 @@ driver: ebs.csi.aws.com
 {{- else if (lookup "storage.k8s.io/v1" "CSIDriver" "" "disk.csi.azure.com").metadata }}
 driver: disk.csi.azure.com
 {{- else }}
-{{- required "***** !!!!!  Could not auto-detect a StorageClass.  Please provide a StorageClass name.  !!!!! *****" .Values.platform.storage.volumeStorageClass.name }}
+{{- required "***** !!!!!  Could not auto-detect a VolumeSnapshotClass.  Please provide a VolumeSnapshotClass name.  !!!!! *****" .Values.platform.storage.volumeSnapshotClass.name }}
 {{- end }}
 ---
 {{- end }}
