@@ -13,7 +13,7 @@ DS_VOLUME="${2:-data-ds-idrepo-0}"
 DS_SNAPSHOT_CLASS="${3:-ds-snapshot-class}"
 
 # To use the pod name for the snap - instead of a fixed name
-SNAP_NAME=$DS_SNAPSHOT_NAME-$(date +%Y%m%d-%H%M)
+SNAP_NAME=$DS_SNAPSHOT_NAME-$(date +%Y%m%d-%H%M --utc)
 
 JOB_NAME="${DS_SNAPSHOT_NAME}-job"
 

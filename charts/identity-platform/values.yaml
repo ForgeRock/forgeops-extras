@@ -149,7 +149,7 @@ am:
 
   image:
     repository: us-docker.pkg.dev/forgeops-public/images/am
-    tag: "dev"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -224,7 +224,7 @@ amster:
 
   image:
     repository: gcr.io/forgerock-io/amster/pit1
-    tag: "7.3.0-latest-postcommit"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -316,7 +316,7 @@ idm:
 
   image:
     repository: us-docker.pkg.dev/forgeops-public/images/idm
-    tag: "dev"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -386,8 +386,8 @@ admin_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-admin-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: gcr.io/forgerock-io/platform-admin-ui
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -451,8 +451,8 @@ end_user_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-enduser-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: gcr.io/forgerock-io/platform-enduser-ui
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -516,8 +516,8 @@ login_ui:
   replicaCount: 1
 
   image:
-    repository: gcr.io/forgerock-io/platform-login-ui/docker-build
-    tag: "7.2.0-postcommit-latest"
+    repository: gcr.io/forgerock-io/platform-login-ui
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -582,7 +582,7 @@ ig:
 
   image:
     repository: us-docker.pkg.dev/forgeops-public/images/ig
-    tag: "dev"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -666,7 +666,7 @@ ds_idrepo:
 
   image:
     repository: us-docker.pkg.dev/forgeops-public/images/ds
-    tag: "dev"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
@@ -734,7 +734,7 @@ ds_cts:
 
   image:
     repository: us-docker.pkg.dev/forgeops-public/images/ds
-    tag: "dev"
+    tag: "7.4.0"
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
