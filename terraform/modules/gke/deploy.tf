@@ -182,11 +182,6 @@ EOF
       # Values from terraform GKE module
       EOF
     },
-    "ds-operator" = {
-      "values" = <<-EOF
-      # Values from terraform GKE module
-      EOF
-    },
     "identity-platform" = {
       "values" = <<-EOF
       # Values from terraform GKE module
