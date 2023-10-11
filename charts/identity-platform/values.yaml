@@ -32,9 +32,6 @@ platform:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
       nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-      # RCS Agent websockets
-      nginx.org/websocket-services: "rcs-agent"
-      nginx.ingress.kubernetes.io/websocket-services: "rcs-agent"
       nginx.ingress.kubernetes.io/configuration-snippet: |
         add_header X-ForgeRock-TransactionId $req_id;
         proxy_set_header X-ForgeRock-TransactionId $req_id;
@@ -271,9 +268,9 @@ ldif_importer:
   ttlSecondsAfterFinished: 300
 
   image:
-    repository: gcr.io/forgerock-io/ldif-importer
-    tag: "7-stable"
-    pullPolicy: IfNotPresent
+    repository: us-docker.pkg.dev/forgeops-public/images/ldif-importer
+    tag: "7.4.0"
+    pullPolicy: Always
     imagePullSecrets: []
 
   resources: {}
@@ -660,6 +657,16 @@ ds_snapshot:
     pullPolicy: IfNotPresent
     imagePullSecrets: []
 
+ds_restore:
+    # Restore a backup taken by the dsbackup tool
+  autoRestore: false
+  # backupLocation is either: 
+  #   Pod:         /local/path
+  #   Cloud Storage: s3://bucket/path | az://container/path | gs://bucket/path
+  backupLocation: ""
+  # Name of hosts running the backups (e.g. ds-idrepo-2,ds-cts-2)
+  backupHosts: ""
+
 ds_idrepo:
   enabled: true
   replicaCount: 1
@@ -682,13 +689,13 @@ ds_idrepo:
     failureThreshold: 720
     initialDelaySeconds: 30
 
-  volumeClaimSpec: {}
-    # storageClassName: fast
-    # accessModes:
-    #   - ReadWriteOnce
-    # resources:
-    #   requests:
-    #     storage: 10Gi
+  volumeClaimSpec:
+    storageClassName: fast
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
 
   nodeSelector: {}
 
@@ -750,13 +757,13 @@ ds_cts:
     failureThreshold: 720
     initialDelaySeconds: 30
 
-  volumeClaimSpec: {}
-    # storageClassName: fast
-    # accessModes:
-    #   - ReadWriteOnce
-    # resources:
-    #   requests:
-    #     storage: 10Gi
+  volumeClaimSpec:
+    storageClassName: fast
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
 
   nodeSelector: {}
 
