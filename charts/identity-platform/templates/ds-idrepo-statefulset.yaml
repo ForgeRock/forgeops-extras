@@ -59,6 +59,8 @@ spec:
             secretName: ds-passwords
         - name: keys
           emptyDir: {}
+        - name: cloud-credentials-cache
+          emptyDir: {}
       initContainers:
         - name: init
           securityContext:
@@ -82,8 +84,11 @@ spec:
             name: truststore
           - mountPath: /var/run/secrets/keys
             name: keys
-          args:
-          - init
+          - name: cloud-credentials-cache
+            mountPath: /var/run/secrets/cloud-credentials-cache/
+          # args:
+          # - init
+          command: ["/opt/opendj/default-scripts/init-and-restore.sh"]
           env:
           - name: POD_NAME
             valueFrom:
@@ -95,6 +100,25 @@ spec:
             value: /var/run/secrets/monitor/monitor.pw
           - name: DS_UID_ADMIN_PASSWORD_FILE
             value: /var/run/secrets/admin/dirmanager.pw
+          - name: DSBACKUP_HOSTS
+            valueFrom:
+              configMapKeyRef:
+                name: platform-config
+                key: DSBACKUP_HOSTS
+          - name: DSBACKUP_DIRECTORY
+            valueFrom:
+              configMapKeyRef:
+                name: platform-config
+                key: DSBACKUP_DIRECTORY
+          - name: AUTORESTORE_FROM_DSBACKUP
+            valueFrom:
+              configMapKeyRef:
+                name: platform-config
+                key: AUTORESTORE_FROM_DSBACKUP
+          envFrom:
+          - secretRef:
+              name: cloud-storage-credentials
+              optional: true
       containers:
         - name: ds
           securityContext:
@@ -114,6 +138,10 @@ spec:
             value: /var/run/secrets/monitor/monitor.pw
           - name: DS_UID_ADMIN_PASSWORD_FILE
             value: /var/run/secrets/admin/dirmanager.pw
+          envFrom:
+          - secretRef:
+              name: cloud-storage-credentials
+              optional: true
           ports:
             - name: http
               containerPort: 8080
@@ -159,6 +187,8 @@ spec:
             name: truststore
           - mountPath: /var/run/secrets/keys
             name: keys
+          - name: cloud-credentials-cache
+            mountPath: /var/run/secrets/cloud-credentials-cache/
       {{- with .Values.ds_idrepo.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
