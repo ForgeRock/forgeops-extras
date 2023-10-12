@@ -70,7 +70,7 @@ resource "helm_release" "external_secrets" {
   name                  = "external-secrets"
   repository            = "https://charts.external-secrets.io"
   chart                 = "external-secrets"
-  version               = "0.6.0-rc1"
+  version               = "0.9.5"
   namespace             = "external-secrets"
   create_namespace      = true
   reuse_values          = false

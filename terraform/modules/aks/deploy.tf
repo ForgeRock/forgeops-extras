@@ -235,20 +235,20 @@ module "helm" {
       "values" = <<-EOF
       # Values from terraform AKS module
       resources:
-        - apiVersion: external-secrets.io/v1beta1
-          kind: ClusterSecretStore
-          metadata:
-            name: default-secrets-store
-          spec:
-            provider:
-              azurekv:
-                environmentType: PublicCloud
-                #authType: WorkloadIdentity
-                authType: ManagedIdentity
-                vaultUrl: ${azurerm_key_vault.current.vault_uri}
-                serviceAccountRef:
-                  name: external-secrets
-                  namespace: external-secrets
+       #- apiVersion: external-secrets.io/v1beta1
+       #   kind: ClusterSecretStore
+       #   metadata:
+       #     name: default-secrets-store
+       #   spec:
+       #     provider:
+       #       azurekv:
+       #         environmentType: PublicCloud
+       #         #authType: WorkloadIdentity
+       #         authType: ManagedIdentity
+       #         vaultUrl: ${azurerm_key_vault.current.vault_uri}
+       #         serviceAccountRef:
+       #           name: external-secrets
+       #           namespace: external-secrets
 ${local.deploy_identity_platform == false ? <<EOF
         - apiVersion: storage.k8s.io/v1
           kind: StorageClass
@@ -284,11 +284,6 @@ EOF
       EOF
     },
     "secret-agent" = {
-      "values" = <<-EOF
-      # Values from terraform AKS module
-      EOF
-    },
-    "ds-operator" = {
       "values" = <<-EOF
       # Values from terraform AKS module
       EOF
