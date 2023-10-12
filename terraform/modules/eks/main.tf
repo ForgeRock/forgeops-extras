@@ -22,9 +22,9 @@ locals {
   )
 }
 
-data "aws_eks_cluster" "cluster" {
-  name = try(module.eks.cluster_name, local.cluster_name)
-}
+#data "aws_eks_cluster" "cluster" {
+#  name = try(module.eks.cluster_name, local.cluster_name)
+#}
 
 data "aws_eks_cluster_auth" "cluster" {
   name = try(module.eks.cluster_name, local.cluster_name)
@@ -47,7 +47,7 @@ resource "terraform_data" "aws_availability_zones_available" {
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "~> 4.0"
+  version = "~> 5.1"
 
   name = "${local.cluster_name}-vpc"
   cidr = "10.0.0.0/16"
@@ -109,7 +109,7 @@ locals {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.12"
+  version = "~> 19.17"
 
   cluster_name                   = local.cluster_name
   cluster_version                = var.cluster.meta.kubernetes_version

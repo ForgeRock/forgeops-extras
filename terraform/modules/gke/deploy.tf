@@ -160,22 +160,22 @@ module "helm" {
       "values" = <<-EOF
       # Values from terraform GKE module
       resources:
-        - apiVersion: external-secrets.io/v1beta1
-          kind: ClusterSecretStore
-          metadata:
-            name: default-secrets-store
-          spec:
-            provider:
-              gcpsm:
-                projectID: ${local.project}
-                auth:
-                  workloadIdentity:
-                    clusterLocation: ${var.cluster.location.region}
-                    clusterName: ${local.cluster_name}
-                    clusterProjectID: ${local.project}
-                    serviceAccountRef:
-                      name: external-secrets
-                      namespace: external-secrets
+       #- apiVersion: external-secrets.io/v1beta1
+       #   kind: ClusterSecretStore
+       #   metadata:
+       #     name: default-secrets-store
+       #   spec:
+       #     provider:
+       #       gcpsm:
+       #         projectID: ${local.project}
+       #         auth:
+       #           workloadIdentity:
+       #             clusterLocation: ${var.cluster.location.region}
+       #             clusterName: ${local.cluster_name}
+       #             clusterProjectID: ${local.project}
+       #             serviceAccountRef:
+       #               name: external-secrets
+       #               namespace: external-secrets
 ${local.deploy_identity_platform == false ? <<EOF
         - apiVersion: storage.k8s.io/v1
           kind: StorageClass
@@ -200,11 +200,6 @@ EOF
       EOF
   },
   "secret-agent" = {
-    "values" = <<-EOF
-      # Values from terraform GKE module
-      EOF
-  },
-  "ds-operator" = {
     "values" = <<-EOF
       # Values from terraform GKE module
       EOF

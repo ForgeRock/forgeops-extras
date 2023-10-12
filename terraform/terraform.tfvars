@@ -177,9 +177,6 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
-      ds-operator = { # Technology preview, not supported
-        deploy = false
-      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "7.3"
@@ -404,9 +401,6 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
-        deploy = false
-      },
-      ds-operator = { # Technology preview, not supported
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -635,9 +629,6 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
-      ds-operator = { # Technology preview, not supported
-        deploy = false
-      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "7.3"
@@ -814,9 +805,6 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
-        deploy = false
-      },
-      ds-operator = { # Technology preview, not supported
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -997,9 +985,6 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
-      ds-operator = { # Technology preview, not supported
-        deploy = false
-      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "7.3"
@@ -1176,9 +1161,6 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
-        deploy = false
-      },
-      ds-operator = { # Technology preview, not supported
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -1359,9 +1341,6 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
-      ds-operator = { # Technology preview, not supported
-        deploy = false
-      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "7.3"
@@ -1540,9 +1519,6 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
-      ds-operator = { # Technology preview, not supported
-        deploy = false
-      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "7.3"
@@ -1719,9 +1695,6 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
-        deploy = false
-      },
-      ds-operator = { # Technology preview, not supported
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
