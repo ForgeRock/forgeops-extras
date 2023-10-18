@@ -42,7 +42,7 @@ resource "helm_release" "metrics_server" {
 }
 
 locals {
-  deploy_external_secrets = contains(keys(var.charts), "external-secrets") && contains(keys(var.chart_configs), "external-secrets") ? (var.chart_configs["external-secrets"]["deploy"] ? true : false) : false
+  deploy_external_secrets = contains(keys(var.charts), "external-secrets") ? true : false
   values_external_secrets = <<-EOF
   # Values from terraform helm module
   certController:

@@ -52,10 +52,6 @@ variable "clusters" {
 
       enable_monitoring = optional(bool)
       enable_logging    = optional(bool)
-
-      create_service_account = optional(bool)
-      service_account_name   = optional(string)
-      service_account        = optional(string)
     })
 
     location = object({
