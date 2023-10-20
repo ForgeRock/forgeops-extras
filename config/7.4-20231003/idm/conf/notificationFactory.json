@@ -1,0 +1,11 @@
+{
+    "enabled" : {
+        "$bool" : "&{openidm.notifications|false}"
+    },
+    "threadPool" : {
+        "steadyPoolThreads" : 1,
+        "maxPoolThreads" : 2,
+        "threadKeepAlive" : 60,
+        "maxQueueSize" : 20000
+    }
+}
