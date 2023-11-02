@@ -58,7 +58,7 @@ if [ "$ingress" = "nginx" ]; then
     if [ -n "$nx_installed" ]; then
         echo "NGINX Ingress has already been installed."
     else
-        echo "NGINX Ingerss not found.  Installing..."
+        echo "NGINX Ingress not found.  Installing..."
         kubectl create namespace $nx_namespace 2>/dev/null || true
         helm upgrade ingress-nginx ingress-nginx --repo $nx_repo \
             --namespace $nx_namespace --install --reset-values \
@@ -90,7 +90,7 @@ else
     if [ -n "$hp_installed" ]; then
         echo "HAProxy Ingress has already been installed."
     else
-        echo "HAProxy Ingerss not found.  Installing..."
+        echo "HAProxy Ingress not found.  Installing..."
         kubectl create namespace $hp_namespace 2>/dev/null || true
         helm upgrade haproxy-ingress haproxy-ingress --repo $hp_repo \
             --namespace $hp_namespace --install --reset-values \
