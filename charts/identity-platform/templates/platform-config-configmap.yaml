@@ -42,7 +42,7 @@ data:
   AM_STORES_USER_SERVERS: {{ $idrepoServers }}
   AM_SERVER_FQDN: {{ first .Values.platform.ingress.hosts }}
   AUTORESTORE_FROM_DSBACKUP: {{ .Values.ds_restore.autoRestore | quote }}
-  DSBACKUP_DIRECTORY: {{ .Values.ds_restore.backupLocation }}
-  DSBACKUP_HOSTS: {{ .Values.ds_restore.backupHosts }}
+  DSBACKUP_DIRECTORY: {{ .Values.ds_restore.backupLocation | quote }}
+  DSBACKUP_HOSTS: {{ .Values.ds_restore.backupHosts | quote }}
   CERT_ISSUER: default-issuer
   {{- end }}

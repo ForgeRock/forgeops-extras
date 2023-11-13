@@ -61,6 +61,12 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          startupProbe:
+            exec:
+              command: ['true']
+            {{- with .Values.login_ui.startupProbe }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /
