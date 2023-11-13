@@ -402,6 +402,9 @@ admin_ui:
     #   cpu: 10m
     #   memory: 100Mi
 
+  startupProbe:
+    initialDelaySeconds: 10
+
   livenessProbe:
     periodSeconds: 10
     timeoutSeconds: 1
@@ -467,6 +470,9 @@ end_user_ui:
     #   cpu: 10m
     #   memory: 100Mi
 
+  startupProbe:
+    initialDelaySeconds: 10
+
   livenessProbe:
     periodSeconds: 10
     timeoutSeconds: 1
@@ -531,6 +537,9 @@ login_ui:
     # requests:
     #   cpu: 10m
     #   memory: 100Mi
+
+  startupProbe:
+    initialDelaySeconds: 10
 
   livenessProbe:
     periodSeconds: 10
