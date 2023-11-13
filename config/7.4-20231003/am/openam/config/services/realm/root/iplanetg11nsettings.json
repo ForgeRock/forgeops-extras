@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetG11NSettings",
+    "entityId" : "iPlanetG11NSettings",
+    "uid" : "ou=iPlanetG11NSettings,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetG11NSettings" ]
+  },
+  "data" : {
+    "_id" : "iPlanetG11NSettings",
+    "_type" : {
+      "_id" : "iPlanetG11NSettings",
+      "name" : "iPlanetG11NSettings",
+      "collection" : false
+    }
+  }
+}

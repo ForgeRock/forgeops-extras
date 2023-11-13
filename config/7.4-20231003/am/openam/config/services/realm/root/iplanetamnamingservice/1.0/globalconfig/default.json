@@ -1,0 +1,45 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMNamingService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMNamingService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMNamingService",
+      "name" : "iPlanetAMNamingService",
+      "collection" : false
+    },
+    "federationConfig" : {
+      "samlPostServletUrl" : "%protocol://%host:%port%uri/SAMLPOSTProfileServlet",
+      "samlSoapReceiverUrl" : "%protocol://%host:%port%uri/SAMLSOAPReceiver",
+      "samlAwareServletUrl" : "%protocol://%host:%port%uri/SAMLAwareServlet",
+      "samlAssertionManagerUrl" : "%protocol://%host:%port%uri/AssertionManagerServlet/AssertionManagerIF",
+      "jaxrpcUrl" : "%protocol://%host:%port%uri/jaxrpc/"
+    },
+    "iplanet-am-naming-auth-class" : "com.sun.identity.authentication.server.AuthXMLHandler",
+    "generalConfig" : {
+      "authUrl" : "%protocol://%host:%port%uri/authservice",
+      "profileUrl" : "%protocol://%host:%port%uri/profileservice",
+      "sessionUrl" : "%protocol://%host:%port%uri/sessionservice",
+      "loggingUrl" : "%protocol://%host:%port%uri/loggingservice",
+      "policyUrl" : "%protocol://%host:%port%uri/policyservice"
+    },
+    "endpointConfig" : {
+      "stsUrl" : "%protocol://%host:%port%uri/sts",
+      "jaxwsUrl" : "%protocol://%host:%port%uri/identityservices/",
+      "stsMexUrl" : "%protocol://%host:%port%uri/sts/mex"
+    },
+    "serviceObjectClasses" : [ "iplanet-am-naming-service" ],
+    "iplanet-am-naming-profile-class" : "com.iplanet.dpro.profile.agent.ProfileService",
+    "iplanet-am-naming-session-class" : "com.iplanet.dpro.session.service.SessionRequestHandler",
+    "iplanet-am-naming-logging-class" : "com.sun.identity.log.service.LogService",
+    "iplanet-am-naming-policy-class" : "com.sun.identity.policy.remote.PolicyRequestHandler"
+  }
+}

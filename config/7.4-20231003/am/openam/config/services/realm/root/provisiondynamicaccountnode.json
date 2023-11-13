@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "ProvisionDynamicAccountNode",
+    "entityId" : "ProvisionDynamicAccountNode",
+    "uid" : "ou=ProvisionDynamicAccountNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "ProvisionDynamicAccountNode" ]
+  },
+  "data" : {
+    "_id" : "ProvisionDynamicAccountNode",
+    "_type" : {
+      "_id" : "ProvisionDynamicAccountNode",
+      "name" : "ProvisionDynamicAccountNode",
+      "collection" : false
+    }
+  }
+}

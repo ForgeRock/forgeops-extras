@@ -1,0 +1,21 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMUserService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMUserService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMUserService",
+      "name" : "iPlanetAMUserService",
+      "collection" : false
+    },
+    "serviceObjectClasses" : [ "iplanet-am-user-service" ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/OAUTH2_VALIDATE_SCOPE/engineConfiguration",
+    "uid" : "ou=engineConfiguration,ou=OAUTH2_VALIDATE_SCOPE,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "engineConfiguration",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "engineConfiguration" ]
+  },
+  "data" : {
+    "_id" : "default/OAUTH2_VALIDATE_SCOPE/engineConfiguration",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "i18nKey" : "engine-configuration",
+    "propertyNamePrefix" : "script",
+    "serverTimeout" : 0,
+    "useSecurityManager" : true,
+    "maxThreads" : 50,
+    "coreThreads" : 10,
+    "whiteList" : [ "com.google.common.collect.Sets$1", "com.iplanet.sso.providers.dpro.SessionSsoToken", "com.sun.identity.common.CaseInsensitiveHashMap", "com.sun.identity.shared.debug.Debug", "groovy.json.JsonSlurper", "groovy.json.internal.LazyMap", "java.lang.Boolean", "java.lang.Byte", "java.lang.Character", "java.lang.Character$Subset", "java.lang.Character$UnicodeBlock", "java.lang.Double", "java.lang.Float", "java.lang.Integer", "java.lang.Long", "java.lang.Math", "java.lang.Number", "java.lang.Object", "java.lang.Short", "java.lang.StrictMath", "java.lang.String", "java.lang.Void", "java.net.URI", "java.util.AbstractMap$SimpleImmutableEntry", "java.util.ArrayList", "java.util.ArrayList$Itr", "java.util.Collections$1", "java.util.Collections$EmptyList", "java.util.Collections$SingletonList", "java.util.Collections$UnmodifiableCollection$1", "java.util.Collections$UnmodifiableMap", "java.util.Collections$UnmodifiableRandomAccessList", "java.util.Collections$UnmodifiableSet", "java.util.HashMap", "java.util.HashMap$Entry", "java.util.HashMap$KeyIterator", "java.util.HashMap$KeySet", "java.util.HashMap$Node", "java.util.HashSet", "java.util.LinkedHashMap", "java.util.LinkedHashMap$Entry", "java.util.LinkedHashMap$LinkedEntryIterator", "java.util.LinkedHashMap$LinkedEntrySet", "java.util.LinkedHashSet", "java.util.LinkedList", "java.util.List", "java.util.Locale", "java.util.Map", "java.util.TreeMap", "java.util.TreeSet", "org.codehaus.groovy.runtime.GStringImpl", "org.codehaus.groovy.runtime.ScriptBytecodeAdapter", "org.forgerock.http.Client", "org.forgerock.http.client.*", "org.forgerock.http.protocol.*", "org.forgerock.json.JsonValue", "org.forgerock.oauth.clients.oidc.Claim", "org.forgerock.oauth2.core.exceptions.InvalidScopeException", "org.forgerock.openam.scripting.api.PrefixedScriptPropertyResolver", "org.forgerock.openam.scripting.api.http.GroovyHttpClient", "org.forgerock.openam.scripting.api.http.JavaScriptHttpClient", "org.forgerock.openam.scripting.api.identity.ScriptedIdentity", "org.forgerock.openam.scripting.api.identity.ScriptedIdentityRepository", "org.forgerock.openam.scripting.api.secrets.ScriptedSecrets", "org.forgerock.openam.shared.security.crypto.CertificateService", "org.forgerock.util.promise.PromiseImpl", "org.mozilla.javascript.JavaScriptException", "sun.security.ec.ECPrivateKeyImpl" ],
+    "idleTimeout" : 60,
+    "queueSize" : 10,
+    "blackList" : [ "java.security.AccessController", "java.lang.Class", "java.lang.reflect.*" ]
+  }
+}

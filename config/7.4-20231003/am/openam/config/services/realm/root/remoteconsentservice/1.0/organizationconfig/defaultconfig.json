@@ -1,0 +1,25 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RemoteConsentService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=RemoteConsentService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "RemoteConsentService",
+      "name" : "RemoteConsentService",
+      "collection" : false
+    },
+    "clientId" : null,
+    "consentResponseTimeLimit" : 2,
+    "jwkStoreCacheMissCacheTime" : 1,
+    "jwksUriAS" : null,
+    "jwkStoreCacheTimeout" : 5
+  }
+}

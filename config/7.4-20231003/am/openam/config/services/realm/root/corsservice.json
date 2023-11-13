@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "CorsService",
+    "entityId" : "CorsService",
+    "uid" : "ou=CorsService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "CorsService" ]
+  },
+  "data" : {
+    "_id" : "CorsService",
+    "_type" : {
+      "_id" : "CorsService",
+      "name" : "CorsService",
+      "collection" : false
+    }
+  }
+}

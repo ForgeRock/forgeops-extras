@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "dashboardService",
+    "entityId" : "default/dashboardApp",
+    "uid" : "ou=dashboardApp,ou=default,ou=GlobalConfig,ou=1.0,ou=dashboardService,ou=services,ou=am-config",
+    "sunServiceID" : "dashboardApp",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "dashboardApp" ]
+  },
+  "data" : {
+    "_id" : "default/dashboardApp",
+    "_type" : {
+      "_id" : "dashboardService",
+      "name" : "dashboardService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "RestApisService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=RestApisService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "RestApisService",
+      "name" : "RestApisService",
+      "collection" : false
+    },
+    "defaultProtocolVersion" : "Latest",
+    "descriptionsState" : "STATIC",
+    "defaultVersion" : "Latest",
+    "warningHeader" : true,
+    "RequiredValueValidator" : "com.sun.identity.sm.RequiredValueValidator",
+    "csrfFilterEnabled" : true
+  }
+}

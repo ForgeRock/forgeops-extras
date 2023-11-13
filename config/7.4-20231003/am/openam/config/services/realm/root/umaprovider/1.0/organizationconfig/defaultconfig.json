@@ -1,0 +1,40 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "UmaProvider",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=UmaProvider,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "UmaProvider",
+      "name" : "UmaProvider",
+      "collection" : false
+    },
+    "generalSettings" : {
+      "pendingRequestsEnabled" : true,
+      "permissionTicketLifetime" : 120,
+      "grantRptConditions" : [ "REQUEST_NONE", "REQUEST_PARTIAL", "TICKET_PARTIAL" ],
+      "deleteResourceSetsOnDeleteRS" : true,
+      "grantResourceOwnerImplicitConsent" : true,
+      "usernameAttribute" : null,
+      "emailRequestingPartyOnPendingRequestApproval" : true,
+      "userProfileLocaleAttribute" : "inetOrgPerson",
+      "resharingMode" : "IMPLICIT",
+      "deletePoliciesOnDeleteRS" : true,
+      "emailResourceOwnerOnPendingRequestCreation" : true,
+      "supportedUmaProfiles" : [ ]
+    },
+    "claimsGathering" : {
+      "pctLifetime" : 604800,
+      "claimsGatheringService" : "[Empty]",
+      "interactiveClaimsGatheringEnabled" : false
+    },
+    "RequiredValueValidator" : "com.sun.identity.sm.RequiredValueValidator"
+  }
+}

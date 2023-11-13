@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunIdentityRepositoryService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=sunIdentityRepositoryService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunIdentityRepositoryService",
+      "name" : "sunIdentityRepositoryService",
+      "collection" : false
+    },
+    "sunIdRepoAttributeCombiner" : "com.iplanet.am.sdk.AttributeCombiner",
+    "sunIdRepoAttributeValidator" : [ "class=com.sun.identity.idm.server.IdRepoAttributeValidatorImpl", "minimumPasswordLength=8", "usernameInvalidChars=*|(|)|&|!" ]
+  }
+}

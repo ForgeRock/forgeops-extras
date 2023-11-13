@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "TermsAndConditionsDecisionNode",
+    "entityId" : "TermsAndConditionsDecisionNode",
+    "uid" : "ou=TermsAndConditionsDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "TermsAndConditionsDecisionNode" ]
+  },
+  "data" : {
+    "_id" : "TermsAndConditionsDecisionNode",
+    "_type" : {
+      "_id" : "TermsAndConditionsDecisionNode",
+      "name" : "TermsAndConditionsDecisionNode",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMAuthService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMAuthService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMAuthService",
+      "name" : "iPlanetAMAuthService",
+      "collection" : false
+    },
+    "keepPostProcessInstances" : false,
+    "ldapConnectionPoolSize" : [ ],
+    "iplanet-am-auth-sleep-interval" : 300,
+    "ldapConnectionPoolDefaultSize" : "1:10",
+    "remoteAuthSecurityEnabled" : false,
+    "authenticators" : [ "com.sun.identity.authentication.modules.anonymous.Anonymous", "com.sun.identity.authentication.modules.ldap.LDAP", "com.sun.identity.authentication.modules.msisdn.MSISDN", "org.forgerock.openam.authentication.modules.social.SocialAuthInstagram", "com.sun.identity.authentication.modules.datastore.DataStore", "com.sun.identity.authentication.modules.windowsdesktopsso.WindowsDesktopSSO", "com.sun.identity.authentication.modules.application.Application", "org.forgerock.openam.authentication.modules.amster.Amster", "org.forgerock.openam.authentication.modules.fr.oath.AuthenticatorOATH", "org.forgerock.openam.authentication.modules.push.registration.AuthenticatorPushRegistration", "org.forgerock.openam.authentication.modules.persistentcookie.PersistentCookie", "com.sun.identity.authentication.modules.cert.Cert", "org.forgerock.openam.authentication.modules.push.AuthenticatorPush", "org.forgerock.openam.authentication.modules.social.SocialAuthOpenID", "com.sun.identity.authentication.modules.ad.AD", "com.sun.identity.authentication.modules.membership.Membership", "org.forgerock.openam.authentication.modules.social.SocialAuthWeChatMobile", "com.sun.identity.authentication.modules.federation.Federation", "com.sun.identity.authentication.modules.httpbasic.HTTPBasic", "org.forgerock.openam.authentication.modules.adaptive.Adaptive", "org.forgerock.openam.authentication.modules.social.SocialAuthTwitter", "org.forgerock.openam.authentication.modules.oath.OATH", "org.forgerock.openam.authentication.modules.social.SocialAuthVK", "org.forgerock.openam.authentication.modules.deviceprint.DeviceIdSave", "com.sun.identity.authentication.modules.sae.SAE", "org.forgerock.openam.authentication.modules.oauth2.OAuth", "org.forgerock.openam.authentication.modules.jwtpop.JwtProofOfPossession", "org.forgerock.openam.authentication.modules.oidc.OpenIdConnect", "org.forgerock.openam.authentication.modules.scripted.Scripted", "org.forgerock.openam.authentication.modules.social.SocialAuthOAuth2", "org.forgerock.openam.authentication.modules.accountactivecheck.AccountActiveCheck", "com.sun.identity.authentication.modules.hotp.HOTP", "com.sun.identity.authentication.modules.radius.RADIUS", "com.sun.identity.authentication.modules.nt.NT", "org.forgerock.openam.authentication.modules.deviceprint.DeviceIdMatch", "org.forgerock.openam.authentication.modules.social.SocialAuthWeChat", "com.sun.identity.authentication.modules.jdbc.JDBC", "org.forgerock.openam.authentication.modules.saml2.SAML2" ]
+  }
+}

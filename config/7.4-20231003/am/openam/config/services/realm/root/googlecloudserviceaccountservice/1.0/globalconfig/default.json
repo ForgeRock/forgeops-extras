@@ -1,0 +1,21 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "GoogleCloudServiceAccountService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=GoogleCloudServiceAccountService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "GoogleCloudServiceAccountService",
+      "name" : "GoogleCloudServiceAccountService",
+      "collection" : false
+    },
+    "enabled" : true
+  }
+}

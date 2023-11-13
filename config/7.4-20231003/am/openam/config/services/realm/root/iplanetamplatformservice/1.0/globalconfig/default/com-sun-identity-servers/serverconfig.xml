@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<!--
+  Copyright 2020 ForgeRock AS. All Rights Reserved
+
+  Use of this code requires a commercial software license with ForgeRock AS.
+  or with one of its affiliates. All use shall be exclusively subject
+  to such license between the licensee and ForgeRock AS.
+-->
+<iPlanetDataAccessLayer>
+    <ServerGroup name="default" minConnPool="1" maxConnPool="10">
+        <Server name="Server1" host="localhost" port="50389" type="SIMPLE"/>
+        <User name="User2" type="admin">
+            <DirDN>cn=dsameuser,ou=DSAME Users,ou=am-config</DirDN>
+            <DirPassword>&{am.passwords.dsameuser.encrypted}</DirPassword>
+        </User>
+        <BaseDN>ou=am-config</BaseDN>
+    </ServerGroup>
+    <ServerGroup name="sms" minConnPool="1" maxConnPool="10">
+        <Server name="Server1" host="UNUSED.IN.FBC" port="9999" type="SIMPLE"/>
+        <User name="User2" type="admin">
+            <DirDN>cn=Unused in FBC</DirDN>
+            <DirPassword>&{am.passwords.dsameuser.encrypted}</DirPassword>
+        </User>
+        <BaseDN>ou=am-config</BaseDN>
+    </ServerGroup>
+</iPlanetDataAccessLayer>

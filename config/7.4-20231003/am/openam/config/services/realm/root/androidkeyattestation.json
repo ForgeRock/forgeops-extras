@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AndroidKeyAttestation",
+    "entityId" : "AndroidKeyAttestation",
+    "uid" : "ou=AndroidKeyAttestation,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AndroidKeyAttestation" ]
+  },
+  "data" : {
+    "_id" : "AndroidKeyAttestation",
+    "_type" : {
+      "_id" : "AndroidKeyAttestation",
+      "name" : "AndroidKeyAttestation",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMPlatformService",
+    "entityId" : "iPlanetAMPlatformService",
+    "uid" : "ou=iPlanetAMPlatformService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMPlatformService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMPlatformService",
+    "_type" : {
+      "_id" : "iPlanetAMPlatformService",
+      "name" : "iPlanetAMPlatformService",
+      "collection" : false
+    }
+  }
+}

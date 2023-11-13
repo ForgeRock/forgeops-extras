@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SelectIdPNode",
+    "entityId" : "SelectIdPNode",
+    "uid" : "ou=SelectIdPNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "SelectIdPNode" ]
+  },
+  "data" : {
+    "_id" : "SelectIdPNode",
+    "_type" : {
+      "_id" : "SelectIdPNode",
+      "name" : "SelectIdPNode",
+      "collection" : false
+    }
+  }
+}

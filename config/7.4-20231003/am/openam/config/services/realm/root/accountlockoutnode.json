@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AccountLockoutNode",
+    "entityId" : "AccountLockoutNode",
+    "uid" : "ou=AccountLockoutNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AccountLockoutNode" ]
+  },
+  "data" : {
+    "_id" : "AccountLockoutNode",
+    "_type" : {
+      "_id" : "AccountLockoutNode",
+      "name" : "AccountLockoutNode",
+      "collection" : false
+    }
+  }
+}

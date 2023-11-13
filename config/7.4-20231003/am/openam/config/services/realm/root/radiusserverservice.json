@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RadiusServerService",
+    "entityId" : "RadiusServerService",
+    "uid" : "ou=RadiusServerService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "RadiusServerService" ]
+  },
+  "data" : {
+    "_id" : "RadiusServerService",
+    "_type" : {
+      "_id" : "RadiusServerService",
+      "name" : "RadiusServerService",
+      "collection" : false
+    }
+  }
+}

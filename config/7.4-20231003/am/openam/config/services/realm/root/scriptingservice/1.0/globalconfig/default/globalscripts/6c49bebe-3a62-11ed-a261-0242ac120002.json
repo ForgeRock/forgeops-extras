@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/6c49bebe-3a62-11ed-a261-0242ac120002",
+    "uid" : "ou=6c49bebe-3a62-11ed-a261-0242ac120002,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "6c49bebe-3a62-11ed-a261-0242ac120002" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/6c49bebe-3a62-11ed-a261-0242ac120002",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V2_0",
+    "creationDate" : "1433147666269",
+    "language" : "JAVASCRIPT",
+    "script" : "/*\n * Copyright 2022-2023 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\n/*\n * This is an example library script with methods that can be used in other scripts.\n * To reference it, use the following:\n *\n * var library = require(\"Library Script\");\n *\n * library.logError(logger, \"Error message\");\n * library.logDebug(logger, \"Debug message\");\n */\n\nfunction logError(log, errorMessage) {\n  log.error(errorMessage);\n}\n\nfunction logWarning(log, warningMessage) {\n  log.warn(warningMessage);\n}\n\nexports.logError = logError;\nexports.logWarning = logWarning;\n\n// Alternatively, exports can be declared using an inline arrow function\n\nexports.logInfo = (log, infoMessage) => log.info(infoMessage);\nexports.logDebug = (log, debugMessage) => log.debug(debugMessage);",
+    "description" : "Default global library script to be referenced from other scripts",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "LIBRARY",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "Library Script"
+  }
+}

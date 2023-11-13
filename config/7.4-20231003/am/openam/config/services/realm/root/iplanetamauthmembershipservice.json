@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthMembershipService",
+    "entityId" : "iPlanetAMAuthMembershipService",
+    "uid" : "ou=iPlanetAMAuthMembershipService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthMembershipService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthMembershipService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthMembershipService",
+      "name" : "iPlanetAMAuthMembershipService",
+      "collection" : false
+    }
+  }
+}

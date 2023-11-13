@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthHTTPBasicService",
+    "entityId" : "iPlanetAMAuthHTTPBasicService",
+    "uid" : "ou=iPlanetAMAuthHTTPBasicService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthHTTPBasicService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthHTTPBasicService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthHTTPBasicService",
+      "name" : "iPlanetAMAuthHTTPBasicService",
+      "collection" : false
+    }
+  }
+}

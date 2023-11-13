@@ -1,0 +1,34 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthAuthenticatorOATHService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthAuthenticatorOATHService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthAuthenticatorOATHService",
+      "name" : "iPlanetAMAuthAuthenticatorOATHService",
+      "collection" : false
+    },
+    "totpTimeStepInterval" : 30,
+    "CodeLengthValidator" : "org.forgerock.openam.authentication.modules.fr.oath.validators.CodeLengthValidator",
+    "minimumSecretKeyLength" : 32,
+    "frOathOtpMaxRetry" : 3,
+    "oathIssuerName" : null,
+    "totpTimeStepsInWindow" : 2,
+    "hotpWindowSize" : 100,
+    "totpMaximumClockDrift" : 5,
+    "passwordLength" : "6",
+    "truncationOffset" : -1,
+    "addChecksumToOtpEnabled" : "False",
+    "RequiredValueValidator" : "com.sun.identity.sm.RequiredValueValidator",
+    "authenticationLevel" : 0,
+    "oathAlgorithm" : "HOTP"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthSocialAuthOpenIDService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthSocialAuthOpenIDService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthSocialAuthOpenIDService",
+      "name" : "iPlanetAMAuthSocialAuthOpenIDService",
+      "collection" : false
+    },
+    "accountProvisioning" : {
+      "accountMapperConfiguration" : [ ],
+      "saveAttributesInSession" : true,
+      "anonymousUserName" : "anonymous",
+      "enableRegistrationService" : false,
+      "attributeMapperConfiguration" : [ ],
+      "attributeMappingClasses" : [ ],
+      "promptPasswordFlag" : false,
+      "accountProviderClass" : "org.forgerock.openam.authentication.modules.common.mapping.DefaultAccountProvider",
+      "mapToAnonymousUser" : false,
+      "createAccount" : true,
+      "accountMapperClass" : null
+    },
+    "core" : {
+      "scope" : [ "openid" ],
+      "subjectProperty" : null,
+      "clientId" : null,
+      "clientSecret" : null,
+      "issuerName" : null,
+      "authenticationLevel" : 0,
+      "scopeDelimiter" : null,
+      "mixUpMitigation" : false,
+      "logoutServiceUrl" : null,
+      "ssoProxyUrl" : "http://am:80/am/oauth2c/OAuthProxy.jsp",
+      "authorizeEndpoint" : null,
+      "logoutBehaviour" : "prompt",
+      "userInfoEndpoint" : null,
+      "provider" : null,
+      "tokenEndpoint" : null,
+      "usesBasicAuth" : true
+    },
+    "emailSettings" : {
+      "smtpSslEnabled" : null,
+      "smtpUsername" : null,
+      "smtpPassword" : null,
+      "smtpPort" : "25",
+      "smtpFromAddress" : null,
+      "smtpHost" : "localhost",
+      "emailGateway" : "org.forgerock.openam.authentication.modules.oauth2.DefaultEmailGatewayImpl",
+      "emailAttribute" : null
+    },
+    "openId" : {
+      "cryptoContextType" : null,
+      "cryptoContextValue" : null
+    }
+  }
+}

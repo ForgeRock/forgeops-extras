@@ -1,0 +1,83 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthService",
+      "name" : "iPlanetAMAuthService",
+      "collection" : false
+    },
+    "postauthprocess" : {
+      "usernameGeneratorClass" : "com.sun.identity.authentication.spi.DefaultUserIDGenerator",
+      "usernameGeneratorEnabled" : true,
+      "loginPostProcessClass" : [ ],
+      "loginSuccessUrl" : [ "/am/console" ],
+      "userAttributeSessionMapping" : [ ],
+      "loginFailureUrl" : [ ]
+    },
+    "security" : {
+      "zeroPageLoginEnabled" : false,
+      "zeroPageLoginReferrerWhiteList" : [ ],
+      "zeroPageLoginAllowedWithoutReferrer" : true,
+      "moduleBasedAuthEnabled" : true,
+      "sharedSecret" : {
+        "$string" : "&{am.authentication.shared.secret|AQIChr9uR6s5WN9kBetWSBX/pfMllTTU9wvq0r8eCyUxBhouWnn4aXyROZLmHyNBa/7rvMY7QyCNhvE=}"
+      },
+      "addClearSiteDataHeader" : true,
+      "keyAlias" : "test",
+      "iplanet-am-auth-valid-goto-domains" : [ ]
+    },
+    "trees" : {
+      "suspendedAuthenticationTimeout" : 5,
+      "authenticationSessionsStateManagement" : "JWT",
+      "authenticationSessionsMaxDuration" : 5,
+      "authenticationTreeCookieHttpOnly" : true,
+      "authenticationSessionsWhitelist" : false
+    },
+    "accountlockout" : {
+      "loginFailureLockoutMode" : false,
+      "storeInvalidAttemptsInDataStore" : true,
+      "lockoutDuration" : 0,
+      "invalidAttemptsDataAttributeName" : null,
+      "lockoutDurationMultiplier" : 1,
+      "lockoutAttributeValue" : null,
+      "lockoutWarnUserCount" : 0,
+      "lockoutAttributeName" : null,
+      "loginFailureCount" : 5,
+      "loginFailureDuration" : 300,
+      "lockoutEmailAddress" : null
+    },
+    "general" : {
+      "userStatusCallbackPlugins" : [ ],
+      "statelessSessionsEnabled" : false,
+      "locale" : "en_US",
+      "externalLoginPageUrl" : null,
+      "twoFactorRequired" : false,
+      "identityType" : [ "user", "agent" ],
+      "defaultAuthLevel" : 0
+    },
+    "core" : {
+      "adminAuthModule" : "[Empty]",
+      "orgConfig" : "[Empty]"
+    },
+    "PositiveIntegerValidator" : "org.forgerock.openam.audit.validation.PositiveIntegerValidator",
+    "userprofile" : {
+      "dynamicProfileCreation" : "false",
+      "defaultRole" : [ ],
+      "aliasAttributeName" : [ ]
+    },
+    "iplanet-am-auth-user-container" : [ "ou=People" ],
+    "Base64Validator" : "org.forgerock.openam.sm.validation.Base64EncodedBinaryValidator",
+    "iplanet-am-auth-user-naming-attr" : "uid",
+    "iplanet-am-auth-allowed-modules" : [ ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMMonitoringService",
+    "entityId" : "default/prometheusContainer",
+    "uid" : "ou=prometheusContainer,ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMMonitoringService,ou=services,ou=am-config",
+    "sunServiceID" : "prometheusContainer",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "prometheusContainer" ]
+  },
+  "data" : {
+    "_id" : "default/prometheusContainer",
+    "_type" : {
+      "_id" : "iPlanetAMMonitoringService",
+      "name" : "iPlanetAMMonitoringService",
+      "collection" : false
+    }
+  }
+}

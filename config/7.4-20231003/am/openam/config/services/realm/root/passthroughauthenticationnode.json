@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "PassthroughAuthenticationNode",
+    "entityId" : "PassthroughAuthenticationNode",
+    "uid" : "ou=PassthroughAuthenticationNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "PassthroughAuthenticationNode" ]
+  },
+  "data" : {
+    "_id" : "PassthroughAuthenticationNode",
+    "_type" : {
+      "_id" : "PassthroughAuthenticationNode",
+      "name" : "PassthroughAuthenticationNode",
+      "collection" : false
+    }
+  }
+}

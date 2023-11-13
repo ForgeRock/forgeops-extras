@@ -1,0 +1,31 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMMonitoringService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMMonitoringService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMMonitoringService",
+      "name" : "iPlanetAMMonitoringService",
+      "collection" : false
+    },
+    "rmiPort" : 9999,
+    "enabled" : false,
+    "rmiEnabled" : false,
+    "httpPort" : 8082,
+    "sessionHistoryWindowSize" : 10000,
+    "serviceObjectClasses" : [ "iplanet-am-monitoring-service" ],
+    "policyHistoryWindowSize" : 10000,
+    "snmpPort" : 8085,
+    "httpEnabled" : false,
+    "snmpEnabled" : false,
+    "authfilePath" : "%BASE_DIR%/security/openam_mon_auth"
+  }
+}

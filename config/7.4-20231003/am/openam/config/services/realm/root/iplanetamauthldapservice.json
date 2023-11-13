@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthLDAPService",
+    "entityId" : "iPlanetAMAuthLDAPService",
+    "uid" : "ou=iPlanetAMAuthLDAPService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthLDAPService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthLDAPService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthLDAPService",
+      "name" : "iPlanetAMAuthLDAPService",
+      "collection" : false
+    }
+  }
+}

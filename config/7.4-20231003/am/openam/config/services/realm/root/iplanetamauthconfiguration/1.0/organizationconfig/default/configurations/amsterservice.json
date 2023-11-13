@@ -1,0 +1,21 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthConfiguration",
+    "entityId" : "default/Configurations/amsterService",
+    "uid" : "ou=amsterService,ou=Configurations,ou=default,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthConfiguration,ou=services,ou=am-config",
+    "sunServiceID" : "NamedConfiguration",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "amsterService" ]
+  },
+  "data" : {
+    "_id" : "default/Configurations/amsterService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthConfiguration",
+      "name" : "iPlanetAMAuthConfiguration",
+      "collection" : false
+    },
+    "authChainConfiguration" : "<AttributeValuePair><Value>Amster REQUIRED </Value></AttributeValuePair>"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+    "entityId" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+    "uid" : "ou=iPlanetAMAuthSocialAuthWeChatMobileService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthSocialAuthWeChatMobileService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+      "name" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+      "collection" : false
+    }
+  }
+}

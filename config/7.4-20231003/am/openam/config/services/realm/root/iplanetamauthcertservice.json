@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthCertService",
+    "entityId" : "iPlanetAMAuthCertService",
+    "uid" : "ou=iPlanetAMAuthCertService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthCertService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthCertService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthCertService",
+      "name" : "iPlanetAMAuthCertService",
+      "collection" : false
+    }
+  }
+}

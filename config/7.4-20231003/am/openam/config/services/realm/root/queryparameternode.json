@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "QueryParameterNode",
+    "entityId" : "QueryParameterNode",
+    "uid" : "ou=QueryParameterNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "QueryParameterNode" ]
+  },
+  "data" : {
+    "_id" : "QueryParameterNode",
+    "_type" : {
+      "_id" : "QueryParameterNode",
+      "name" : "QueryParameterNode",
+      "collection" : false
+    }
+  }
+}

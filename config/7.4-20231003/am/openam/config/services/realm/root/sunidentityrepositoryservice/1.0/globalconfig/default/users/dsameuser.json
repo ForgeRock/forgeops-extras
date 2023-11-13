@@ -1,0 +1,25 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunIdentityRepositoryService",
+    "entityId" : "default/users/dsameuser",
+    "uid" : "ou=dsameuser,ou=users,ou=default,ou=GlobalConfig,ou=1.0,ou=sunIdentityRepositoryService,ou=services,ou=am-config",
+    "sunServiceID" : "user",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "dsameuser" ]
+  },
+  "data" : {
+    "_id" : "default/users/dsameuser",
+    "_type" : {
+      "_id" : "sunIdentityRepositoryService",
+      "name" : "sunIdentityRepositoryService",
+      "collection" : false
+    },
+    "inetUserStatus" : "Active",
+    "dn" : "cn=dsameuser,ou=DSAME Users,",
+    "userPassword" : {
+      "$string" : "&{am.passwords.dsameuser.hashed.encrypted|{SSHA-512\\}FML36ixW2TtAnZ0gj5Q4JpNj5uk4bRRtAPpyhdj+qYbDsoB0WqY6b6N5s8DKKA53AU3Cn66FlZQlWWwAmbeoled9FROvitvICfr7cp/AbXHVv42IjQ==}"
+    }
+  }
+}

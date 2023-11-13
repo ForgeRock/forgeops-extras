@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "validationService",
+    "entityId" : "validationService",
+    "uid" : "ou=validationService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "validationService" ]
+  },
+  "data" : {
+    "_id" : "validationService",
+    "_type" : {
+      "_id" : "validationService",
+      "name" : "validationService",
+      "collection" : false
+    }
+  }
+}

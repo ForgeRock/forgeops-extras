@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceBindingStorageNode",
+    "entityId" : "DeviceBindingStorageNode",
+    "uid" : "ou=DeviceBindingStorageNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "DeviceBindingStorageNode" ]
+  },
+  "data" : {
+    "_id" : "DeviceBindingStorageNode",
+    "_type" : {
+      "_id" : "DeviceBindingStorageNode",
+      "name" : "DeviceBindingStorageNode",
+      "collection" : false
+    }
+  }
+}

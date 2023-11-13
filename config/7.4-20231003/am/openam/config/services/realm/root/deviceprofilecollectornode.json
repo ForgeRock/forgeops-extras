@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceProfileCollectorNode",
+    "entityId" : "DeviceProfileCollectorNode",
+    "uid" : "ou=DeviceProfileCollectorNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "DeviceProfileCollectorNode" ]
+  },
+  "data" : {
+    "_id" : "DeviceProfileCollectorNode",
+    "_type" : {
+      "_id" : "DeviceProfileCollectorNode",
+      "name" : "DeviceProfileCollectorNode",
+      "collection" : false
+    }
+  }
+}

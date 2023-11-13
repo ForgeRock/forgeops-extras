@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthConfiguration",
+    "entityId" : "default/Configurations",
+    "uid" : "ou=Configurations,ou=default,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthConfiguration,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "Configurations" ]
+  },
+  "data" : {
+    "_id" : "default/Configurations",
+    "_type" : {
+      "_id" : "iPlanetAMAuthConfiguration",
+      "name" : "iPlanetAMAuthConfiguration",
+      "collection" : false
+    }
+  }
+}

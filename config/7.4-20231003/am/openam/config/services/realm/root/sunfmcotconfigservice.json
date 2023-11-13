@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunFMCOTConfigService",
+    "entityId" : "sunFMCOTConfigService",
+    "uid" : "ou=sunFMCOTConfigService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunFMCOTConfigService" ]
+  },
+  "data" : {
+    "_id" : "sunFMCOTConfigService",
+    "_type" : {
+      "_id" : "sunFMCOTConfigService",
+      "name" : "sunFMCOTConfigService",
+      "collection" : false
+    }
+  }
+}

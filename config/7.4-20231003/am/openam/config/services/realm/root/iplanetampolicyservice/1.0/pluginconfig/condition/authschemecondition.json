@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMPolicyService",
+    "entityId" : "Condition/AuthSchemeCondition",
+    "uid" : "ou=AuthSchemeCondition,ou=Condition,ou=PluginConfig,ou=1.0,ou=iPlanetAMPolicyService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AuthSchemeCondition" ]
+  },
+  "data" : {
+    "_id" : "Condition/AuthSchemeCondition",
+    "_type" : {
+      "_id" : "iPlanetAMPolicyService",
+      "name" : "iPlanetAMPolicyService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "ValidatedUsernameNode",
+    "entityId" : "ValidatedUsernameNode",
+    "uid" : "ou=ValidatedUsernameNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "ValidatedUsernameNode" ]
+  },
+  "data" : {
+    "_id" : "ValidatedUsernameNode",
+    "_type" : {
+      "_id" : "ValidatedUsernameNode",
+      "name" : "ValidatedUsernameNode",
+      "collection" : false
+    }
+  }
+}

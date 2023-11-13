@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "default/Permissions",
+    "uid" : "ou=Permissions,ou=default,ou=GlobalConfig,ou=1.0,ou=sunAMDelegationService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "Permissions" ]
+  },
+  "data" : {
+    "_id" : "default/Permissions",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    }
+  }
+}

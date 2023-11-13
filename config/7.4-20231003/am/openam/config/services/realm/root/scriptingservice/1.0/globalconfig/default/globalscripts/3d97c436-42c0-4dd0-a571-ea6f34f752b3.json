@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/3d97c436-42c0-4dd0-a571-ea6f34f752b3",
+    "uid" : "ou=3d97c436-42c0-4dd0-a571-ea6f34f752b3,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "3d97c436-42c0-4dd0-a571-ea6f34f752b3" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/3d97c436-42c0-4dd0-a571-ea6f34f752b3",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "GROOVY",
+    "script" : "/*\n * Copyright 2020-2021 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\nimport static org.forgerock.json.JsonValue.field\nimport static org.forgerock.json.JsonValue.json\nimport static org.forgerock.json.JsonValue.object\n\nimport org.forgerock.json.JsonValue\n\nJsonValue managedUser = json(object(\n        field(\"id\", rawProfile.sub),\n        field(\"displayName\", rawProfile.name),\n        field(\"givenName\", rawProfile.given_name),\n        field(\"familyName\", rawProfile.family_name),\n        field(\"username\", rawProfile.email),\n        field(\"email\", rawProfile.email)))\nreturn managedUser",
+    "description" : "Normalizes raw profile data from Itsme",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "Itsme Profile Normalization"
+  }
+}

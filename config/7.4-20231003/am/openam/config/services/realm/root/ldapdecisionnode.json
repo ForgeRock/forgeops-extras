@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "LdapDecisionNode",
+    "entityId" : "LdapDecisionNode",
+    "uid" : "ou=LdapDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "LdapDecisionNode" ]
+  },
+  "data" : {
+    "_id" : "LdapDecisionNode",
+    "_type" : {
+      "_id" : "LdapDecisionNode",
+      "name" : "LdapDecisionNode",
+      "collection" : false
+    }
+  }
+}

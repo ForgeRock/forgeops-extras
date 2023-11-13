@@ -1,0 +1,33 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "amDataStoreService",
+    "entityId" : "default/dataStoreContainer/application-store",
+    "uid" : "ou=application-store,ou=dataStoreContainer,ou=default,ou=GlobalConfig,ou=1.0,ou=amDataStoreService,ou=services,ou=am-config",
+    "sunServiceID" : "config",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "application-store" ]
+  },
+  "data" : {
+    "_id" : "default/dataStoreContainer/application-store",
+    "_type" : {
+      "_id" : "amDataStoreService",
+      "name" : "amDataStoreService",
+      "collection" : false
+    },
+    "bindPassword" : "&{am.stores.application.password}",
+    "useStartTLS" : false,
+    "dataStoreEnabled" : {
+      "$bool" : "&{am.stores.application.enabled}"
+    },
+    "serverUrls" : {
+      "$list" : "&{am.stores.application.servers}"
+    },
+    "useSsl" : {
+      "$bool" : "&{am.stores.application.ssl.enabled}"
+    },
+    "bindDN" : "&{am.stores.application.username}",
+    "affinityEnabled" : false
+  }
+}

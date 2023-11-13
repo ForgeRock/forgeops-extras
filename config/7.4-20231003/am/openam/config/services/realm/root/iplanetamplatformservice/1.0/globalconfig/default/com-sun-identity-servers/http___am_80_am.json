@@ -1,0 +1,26 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMPlatformService",
+    "entityId" : "default/com-sun-identity-servers/http://am:80/am",
+    "uid" : "ou=http://am:80/am,ou=com-sun-identity-servers,ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMPlatformService,ou=services,ou=am-config",
+    "sunServiceID" : "server",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "http://am:80/am" ]
+  },
+  "data" : {
+    "_id" : "default/com-sun-identity-servers/http://am:80/am",
+    "_type" : {
+      "_id" : "iPlanetAMPlatformService",
+      "name" : "iPlanetAMPlatformService",
+      "collection" : false
+    },
+    "siteId" : "site1",
+    "serverconfigxml" : {
+      "$inline" : "serverconfig.xml"
+    },
+    "id" : "01",
+    "serverconfig" : [ "com.iplanet.services.debug.level=error", "com.sun.identity.urlconnection.useCache=false", "com.iplanet.am.server.port=80", "com.iplanet.services.configpath=/home/forgerock/openam", "am.encryption.pwd=&{am.encryption.key}", "com.iplanet.am.serverMode=true", "com.sun.identity.sm.sms_object_class_name=com.sun.identity.sm.SmsWrapperObject", "com.iplanet.am.server.host=am", "com.iplanet.am.ldap.connection.ldap.error.codes.retries=80,81,91", "com.iplanet.security.SSLSocketFactoryImpl=com.sun.identity.shared.ldap.factory.JSSESocketFactory", "com.iplanet.am.locale=en_US", "com.sun.identity.common.systemtimerpool.size=3", "com.sun.identity.sm.enableDataStoreNotification=true", "com.iplanet.am.services.deploymentDescriptor=/am", "com.sun.am.event.connection.disable.list=aci,um", "com.iplanet.am.server.protocol=http", "com.sun.services.debug.mergeall=off", "com.iplanet.am.lbcookie.value=01", "opensso.protocol.handler.pkgs=", "bootstrap.file=null" ]
+  }
+}

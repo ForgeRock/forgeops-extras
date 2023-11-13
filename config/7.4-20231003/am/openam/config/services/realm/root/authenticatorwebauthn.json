@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AuthenticatorWebAuthn",
+    "entityId" : "AuthenticatorWebAuthn",
+    "uid" : "ou=AuthenticatorWebAuthn,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AuthenticatorWebAuthn" ]
+  },
+  "data" : {
+    "_id" : "AuthenticatorWebAuthn",
+    "_type" : {
+      "_id" : "AuthenticatorWebAuthn",
+      "name" : "AuthenticatorWebAuthn",
+      "collection" : false
+    }
+  }
+}

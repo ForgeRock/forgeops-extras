@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthNTService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthNTService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthNTService",
+      "name" : "iPlanetAMAuthNTService",
+      "collection" : false
+    },
+    "sambaConfigurationFileName" : null,
+    "authenticationLevel" : 0,
+    "authenticationHost" : null,
+    "authenticationDomain" : null
+  }
+}

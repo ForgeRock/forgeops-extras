@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "AuditService",
+    "entityId" : "default/Global JSON Handler",
+    "uid" : "ou=Global JSON Handler,ou=default,ou=GlobalConfig,ou=1.0,ou=AuditService,ou=services,ou=am-config",
+    "sunServiceID" : "JSON",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "Global JSON Handler" ]
+  },
+  "data" : {
+    "_id" : "default/Global JSON Handler",
+    "_type" : {
+      "_id" : "AuditService",
+      "name" : "AuditService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AuthenticatorOATH",
+    "entityId" : "AuthenticatorOATH",
+    "uid" : "ou=AuthenticatorOATH,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AuthenticatorOATH" ]
+  },
+  "data" : {
+    "_id" : "AuthenticatorOATH",
+    "_type" : {
+      "_id" : "AuthenticatorOATH",
+      "name" : "AuthenticatorOATH",
+      "collection" : false
+    }
+  }
+}

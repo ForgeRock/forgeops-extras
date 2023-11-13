@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "IotService",
+    "entityId" : "IotService",
+    "uid" : "ou=IotService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "IotService" ]
+  },
+  "data" : {
+    "_id" : "IotService",
+    "_type" : {
+      "_id" : "IotService",
+      "name" : "IotService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "OathTokenVerifierNode",
+    "entityId" : "OathTokenVerifierNode",
+    "uid" : "ou=OathTokenVerifierNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "OathTokenVerifierNode" ]
+  },
+  "data" : {
+    "_id" : "OathTokenVerifierNode",
+    "_type" : {
+      "_id" : "OathTokenVerifierNode",
+      "name" : "OathTokenVerifierNode",
+      "collection" : false
+    }
+  }
+}

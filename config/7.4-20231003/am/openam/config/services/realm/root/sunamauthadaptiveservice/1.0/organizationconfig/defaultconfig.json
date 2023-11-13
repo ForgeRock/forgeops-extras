@@ -1,0 +1,87 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthAdaptiveService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=sunAMAuthAdaptiveService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunAMAuthAdaptiveService",
+      "name" : "sunAMAuthAdaptiveService",
+      "collection" : false
+    },
+    "geolocation" : {
+      "geolocationDatabaseLocation" : null,
+      "geolocationScore" : 1,
+      "geolocationCheckEnabled" : false,
+      "geolocationValidCountryCodes" : null,
+      "invertGeolocationScore" : false
+    },
+    "iprange" : {
+      "ipRangeScore" : 1,
+      "ipRangeCheckEnabled" : false,
+      "ipRange" : [ "10.0.0.0/24" ],
+      "invertIPRangeScoreEnabled" : false
+    },
+    "knowncookie" : {
+      "invertKnownCookieScore" : false,
+      "knownCookieScore" : 1,
+      "knownCookieName" : null,
+      "knownCookieValue" : null,
+      "createKnownCookieOnSuccessfulLogin" : false,
+      "knownCookieCheckEnabled" : false
+    },
+    "iphistory" : {
+      "ipHistoryCheckEnabled" : false,
+      "ipHistoryCount" : 5,
+      "ipHistoryScore" : 1,
+      "ipHistoryProfileAttribute" : "iphistory",
+      "saveSuccessfulIP" : false,
+      "invertIPHistoryScore" : false
+    },
+    "authfailed" : {
+      "failureScore" : 1,
+      "failedAuthenticationCheckEnabled" : false,
+      "invertFailureScore" : false
+    },
+    "attributecheck" : {
+      "profileRiskAttributeScore" : 1,
+      "invertProfileRiskAttributeScore" : false,
+      "profileRiskAttributeName" : null,
+      "profileRiskAttributeValue" : null,
+      "profileRiskAttributeCheckEnabled" : false
+    },
+    "lastlogin" : {
+      "timeSinceLastLoginCookieName" : null,
+      "maxTimeSinceLastLogin" : null,
+      "saveLastLoginTimeOnSuccessfulLogin" : false,
+      "invertTimeSinceLastLoginScore" : false,
+      "timeSinceLastLoginScore" : 1,
+      "timeSinceLastLoginCheckEnabled" : false
+    },
+    "requestheader" : {
+      "requestHeaderValue" : null,
+      "requestHeaderName" : null,
+      "requestHeaderCheckEnabled" : false,
+      "invertRequestHeaderScore" : false,
+      "requestHeaderScore" : 1
+    },
+    "general" : {
+      "authenticationLevel" : 0,
+      "riskThreshold" : 1
+    },
+    "devicecookie" : {
+      "deviceCookieName" : "Device",
+      "deviceCookieScore" : 1,
+      "invertDeviceCookieScore" : false,
+      "deviceCookieCheckEnabled" : false,
+      "saveDeviceCookieValueOnSuccessfulLogin" : false
+    }
+  }
+}

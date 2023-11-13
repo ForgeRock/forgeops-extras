@@ -1,0 +1,32 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunFAMSAML2Configuration",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=sunFAMSAML2Configuration,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "sunFAMSAML2Configuration",
+      "name" : "sunFAMSAML2Configuration",
+      "collection" : false
+    },
+    "bufferLength" : 2048,
+    "xmlEncryptionClass" : "com.sun.identity.saml2.xmlenc.FMEncProvider",
+    "caCertValidation" : false,
+    "signingCertValidation" : false,
+    "cacheCleanupInterval" : 600,
+    "idpDiscoveryCookieType" : "PERSISTENT",
+    "nameIDInfoAttribute" : "sun-fm-saml2-nameid-info",
+    "idpDiscoveryCookieDomain" : null,
+    "encryptedKeyInKeyInfo" : true,
+    "idpDiscoveryUrlSchema" : "HTTPS",
+    "xmlSigningClass" : "com.sun.identity.saml2.xmlsig.FMSigProvider",
+    "nameIDInfoKeyAttribute" : "sun-fm-saml2-nameid-infokey"
+  }
+}

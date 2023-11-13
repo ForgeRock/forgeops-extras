@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "product-ReCaptchaNode",
+    "entityId" : "product-ReCaptchaNode",
+    "uid" : "ou=product-ReCaptchaNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "product-ReCaptchaNode" ]
+  },
+  "data" : {
+    "_id" : "product-ReCaptchaNode",
+    "_type" : {
+      "_id" : "product-ReCaptchaNode",
+      "name" : "product-ReCaptchaNode",
+      "collection" : false
+    }
+  }
+}

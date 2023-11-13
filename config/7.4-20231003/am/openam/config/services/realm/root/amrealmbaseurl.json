@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "amRealmBaseURL",
+    "entityId" : "amRealmBaseURL",
+    "uid" : "ou=amRealmBaseURL,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "amRealmBaseURL" ]
+  },
+  "data" : {
+    "_id" : "amRealmBaseURL",
+    "_type" : {
+      "_id" : "amRealmBaseURL",
+      "name" : "amRealmBaseURL",
+      "collection" : false
+    }
+  }
+}

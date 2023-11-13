@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SocialProviderHandlerNode",
+    "entityId" : "SocialProviderHandlerNode",
+    "uid" : "ou=SocialProviderHandlerNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "SocialProviderHandlerNode" ]
+  },
+  "data" : {
+    "_id" : "SocialProviderHandlerNode",
+    "_type" : {
+      "_id" : "SocialProviderHandlerNode",
+      "name" : "SocialProviderHandlerNode",
+      "collection" : false
+    }
+  }
+}

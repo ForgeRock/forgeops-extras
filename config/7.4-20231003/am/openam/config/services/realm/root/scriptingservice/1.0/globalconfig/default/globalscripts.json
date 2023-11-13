@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts",
+    "uid" : "ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScripts",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "globalScripts" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    }
+  }
+}

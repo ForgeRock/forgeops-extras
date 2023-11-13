@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "GoogleCloudServiceAccountService",
+    "entityId" : "default/serviceAccounts/default",
+    "uid" : "ou=default,ou=serviceAccounts,ou=default,ou=GlobalConfig,ou=1.0,ou=GoogleCloudServiceAccountService,ou=services,ou=am-config",
+    "sunServiceID" : "instance",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default/serviceAccounts/default",
+    "_type" : {
+      "_id" : "GoogleCloudServiceAccountService",
+      "name" : "GoogleCloudServiceAccountService",
+      "collection" : false
+    },
+    "disallowedSecretNamePatterns" : [ ],
+    "allowedRealms" : [ "*" ],
+    "allowedSecretNamePatterns" : [ "*" ],
+    "credentialsSecretId" : null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthAccountActiveCheckService",
+    "entityId" : "iPlanetAMAuthAccountActiveCheckService",
+    "uid" : "ou=iPlanetAMAuthAccountActiveCheckService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthAccountActiveCheckService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthAccountActiveCheckService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthAccountActiveCheckService",
+      "name" : "iPlanetAMAuthAccountActiveCheckService",
+      "collection" : false
+    }
+  }
+}

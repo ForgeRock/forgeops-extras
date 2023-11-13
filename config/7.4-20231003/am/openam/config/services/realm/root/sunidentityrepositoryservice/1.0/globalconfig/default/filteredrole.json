@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunIdentityRepositoryService",
+    "entityId" : "default/filteredrole",
+    "uid" : "ou=filteredrole,ou=default,ou=GlobalConfig,ou=1.0,ou=sunIdentityRepositoryService,ou=services,ou=am-config",
+    "sunServiceID" : "SupportedIdentities",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "filteredrole" ]
+  },
+  "data" : {
+    "_id" : "default/filteredrole",
+    "_type" : {
+      "_id" : "sunIdentityRepositoryService",
+      "name" : "sunIdentityRepositoryService",
+      "collection" : false
+    },
+    "canHaveMembers" : [ "user" ],
+    "servicename" : [ "sunIdentityFilteredRoleService" ]
+  }
+}

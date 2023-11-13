@@ -1,0 +1,27 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceBinding",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=DeviceBinding,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "DeviceBinding",
+      "name" : "DeviceBinding",
+      "collection" : false
+    },
+    "deviceBindingSettingsEncryptionKeystorePassword" : "AQIChr9uR6s5WN8Bksse+p6VUsbnxTInMmRR",
+    "deviceBindingAttrName" : "boundDevices",
+    "deviceBindingSettingsEncryptionKeystoreKeyPairAlias" : null,
+    "deviceBindingSettingsEncryptionScheme" : "NONE",
+    "deviceBindingSettingsEncryptionKeystoreType" : "JKS",
+    "deviceBindingSettingsEncryptionKeystorePrivateKeyPassword" : null,
+    "deviceBindingSettingsEncryptionKeystore" : "/home/forgerock/openam/security/keystores/keystore.jks"
+  }
+}

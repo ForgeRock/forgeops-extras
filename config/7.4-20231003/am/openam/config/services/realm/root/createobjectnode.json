@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "CreateObjectNode",
+    "entityId" : "CreateObjectNode",
+    "uid" : "ou=CreateObjectNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "CreateObjectNode" ]
+  },
+  "data" : {
+    "_id" : "CreateObjectNode",
+    "_type" : {
+      "_id" : "CreateObjectNode",
+      "name" : "CreateObjectNode",
+      "collection" : false
+    }
+  }
+}

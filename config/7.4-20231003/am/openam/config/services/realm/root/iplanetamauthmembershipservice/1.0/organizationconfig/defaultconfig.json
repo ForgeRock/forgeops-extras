@@ -1,0 +1,25 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthMembershipService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthMembershipService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthMembershipService",
+      "name" : "iPlanetAMAuthMembershipService",
+      "collection" : false
+    },
+    "defaultUserStatus" : "Active",
+    "minimumPasswordLength" : 8,
+    "defaultUserRoles" : [ ],
+    "authenticationLevel" : 0,
+    "iplanet-am-auth-membership-invalid-chars" : "*|(|)|&|!"
+  }
+}

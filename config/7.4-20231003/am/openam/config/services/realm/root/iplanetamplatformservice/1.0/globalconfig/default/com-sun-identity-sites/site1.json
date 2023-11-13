@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMPlatformService",
+    "entityId" : "default/com-sun-identity-sites/site1",
+    "uid" : "ou=site1,ou=com-sun-identity-sites,ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMPlatformService,ou=services,ou=am-config",
+    "sunServiceID" : "site",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "site1" ]
+  },
+  "data" : {
+    "_id" : "default/com-sun-identity-sites/site1",
+    "_type" : {
+      "_id" : "iPlanetAMPlatformService",
+      "name" : "iPlanetAMPlatformService",
+      "collection" : false
+    }
+  }
+}

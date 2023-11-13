@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "product-CertificateValidationNode",
+    "entityId" : "product-CertificateValidationNode",
+    "uid" : "ou=product-CertificateValidationNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "product-CertificateValidationNode" ]
+  },
+  "data" : {
+    "_id" : "product-CertificateValidationNode",
+    "_type" : {
+      "_id" : "product-CertificateValidationNode",
+      "name" : "product-CertificateValidationNode",
+      "collection" : false
+    }
+  }
+}

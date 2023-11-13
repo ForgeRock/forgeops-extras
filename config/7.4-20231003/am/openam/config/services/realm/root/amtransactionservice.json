@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "amTransactionService",
+    "entityId" : "amTransactionService",
+    "uid" : "ou=amTransactionService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "amTransactionService" ]
+  },
+  "data" : {
+    "_id" : "amTransactionService",
+    "_type" : {
+      "_id" : "amTransactionService",
+      "name" : "amTransactionService",
+      "collection" : false
+    }
+  }
+}

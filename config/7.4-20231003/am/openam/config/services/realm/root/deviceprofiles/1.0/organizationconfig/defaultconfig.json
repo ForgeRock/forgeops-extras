@@ -1,0 +1,27 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceProfiles",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=DeviceProfiles,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "DeviceProfiles",
+      "name" : "DeviceProfiles",
+      "collection" : false
+    },
+    "deviceProfilesSettingsEncryptionScheme" : "NONE",
+    "deviceProfilesSettingsEncryptionKeystoreType" : "JKS",
+    "deviceProfilesAttrName" : "deviceProfiles",
+    "deviceProfilesSettingsEncryptionKeystorePrivateKeyPassword" : null,
+    "deviceProfilesSettingsEncryptionKeystorePassword" : "AQIChr9uR6s5WN8Bksse+p6VUsbnxTInMmRR",
+    "deviceProfilesSettingsEncryptionKeystore" : "/home/forgerock/openam/security/keystores/keystore.jks",
+    "deviceProfilesSettingsEncryptionKeystoreKeyPairAlias" : null
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/sunamhiddenrealmdelegationservicepermissions",
+    "entityType" : "iPlanetAMAuthAmsterService",
+    "entityId" : "iPlanetAMAuthAmsterService",
+    "uid" : "ou=iPlanetAMAuthAmsterService,ou=services,o=sunamhiddenrealmdelegationservicepermissions,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthAmsterService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthAmsterService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthAmsterService",
+      "name" : "iPlanetAMAuthAmsterService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AuditService",
+    "entityId" : "AuditService",
+    "uid" : "ou=AuditService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AuditService" ]
+  },
+  "data" : {
+    "_id" : "AuditService",
+    "_type" : {
+      "_id" : "AuditService",
+      "name" : "AuditService",
+      "collection" : false
+    }
+  }
+}

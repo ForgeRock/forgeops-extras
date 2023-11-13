@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceTamperingVerificationNode",
+    "entityId" : "DeviceTamperingVerificationNode",
+    "uid" : "ou=DeviceTamperingVerificationNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "DeviceTamperingVerificationNode" ]
+  },
+  "data" : {
+    "_id" : "DeviceTamperingVerificationNode",
+    "_type" : {
+      "_id" : "DeviceTamperingVerificationNode",
+      "name" : "DeviceTamperingVerificationNode",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/d22f9a0c-426a-4466-b95e-d0f125b0d5fa",
+    "uid" : "ou=d22f9a0c-426a-4466-b95e-d0f125b0d5fa,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "d22f9a0c-426a-4466-b95e-d0f125b0d5fa" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/d22f9a0c-426a-4466-b95e-d0f125b0d5fa",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "GROOVY",
+    "script" : "/*\n * Copyright 2019-2020 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\nimport org.forgerock.http.protocol.Request\nimport org.forgerock.http.protocol.Response\n\nimport com.iplanet.sso.SSOException\n\nimport groovy.json.JsonSlurper\n\n/**\n * Defined variables:\n * accessToken - The access token to be updated. Mutable object, all changes to the access token will be reflected.\n * httpClient - always present, the HTTP client that can be used to make external HTTP requests\n * identity - always present, the identity of the resource owner\n * logger - always present, corresponding log files will be prefixed with: scripts.OAUTH2_ACCESS_TOKEN_MODIFICATION.\n * scopes - always present, the requested scopes\n * session - present if the request contains the session cookie, the user's session object\n * scriptName - always present, the display name of the script\n * requestProperties - always present, contains a map of request properties:\n *                     requestUri - the request URI\n *                     realm - the realm that the request relates to\n *                     requestParams - a map of the request params and/or posted data. Each value is a list of one or\n *                     more properties. Please note that these should be handled in accordance with OWASP best\n *                     practices.\n * clientProperties - present if the client specified in the request was identified, contains a map of client\n *                    properties:\n *                    clientId - the client's Uri for the request locale\n *                    allowedGrantTypes - list of the allowed grant types (org.forgerock.oauth2.core.GrantType)\n *                                        for the client\n *                    allowedResponseTypes - list of the allowed response types for the client\n *                    allowedScopes - list of the allowed scopes for the client\n *                    customProperties - A map of the custom properties of the client.\n *                                       Lists or maps will be included as sub-maps, e.g:\n *                                       testMap[Key1]=Value1 will be returned as testmap -> Key1 -> Value1\n *\n * No return value - changes shall be made to the accessToken parameter directly.\n *\n * The changes made to OAuth2 access tokens will directly impact the size of the CTS tokens, and similarly the size of\n * the JWTs if client based OAuth2 tokens are utilised.\n * When adding/updating fields make sure that the token size remains within client/user-agent limits.\n */\n\n/*\n//Field to always include in token\naccessToken.setField(\"hello\", \"world\")\n\n//Obtain additional values by performing a REST call to an external service\ntry {\n    Response response = httpClient.send(new Request()\n            .setUri(\"https://third.party.app/hello.jsp\")\n            .setMethod(\"POST\")\n            .modifyHeaders({ headers -> headers.put(\"Content-Type\", \"application/json;charset=UTF-8\") })\n//          .setEntity('foo=bar&hello=world'))\n            .setEntity([foo: 'bar']))\n            .getOrThrow()\n    if (response.status.successful) {\n        def result = new JsonSlurper().parseText(response.entity.string)\n        accessToken.setFields(result.get(\"updatedFields\"))\n    } else {\n        logger.error(\"Unable to obtain access token modifications: {}, {}\", response.status, response.entity.toString())\n    }\n} catch (InterruptedException ex) {\n    logger.error(\"The request processing was interrupted\", ex)\n    Thread.currentThread().interrupt()\n    //The access token request will fail with HTTP 500 error in this case.\n    throw new RuntimeException(\"Unable to obtain response from \")\n}\n\n//Add new fields containing identity attribute values\ndef attributes = identity.getAttributes([\"mail\", \"telephoneNumber\"].toSet())\naccessToken.setField(\"mail\", attributes[\"mail\"])\naccessToken.setField(\"phone\", attributes[\"telephoneNumber\"])\n\n//Add new fields containing session property values\nif (session != null) { // session is not available for resource owner password credentials grant\n    try {\n        accessToken.setField(\"ipAddress\", session.getProperty(\"Host\"))\n    } catch (SSOException ex) {\n        logger.error(\"Unable to retrieve session property value\", ex)\n    }\n}\n\n// Remove a native field from the token entry, that was set by AM. For complete list of remove* methods see the JavaDoc\n// for org.forgerock.oauth2.core.AccessToken class.\naccessToken.removeTokenName()\n*/",
+    "description" : "Default global script for OAuth2 Access Token Modification",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "OAUTH2_ACCESS_TOKEN_MODIFICATION",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "OAuth2 Access Token Modification Script"
+  }
+}

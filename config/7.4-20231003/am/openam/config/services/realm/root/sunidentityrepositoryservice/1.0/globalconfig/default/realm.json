@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunIdentityRepositoryService",
+    "entityId" : "default/realm",
+    "uid" : "ou=realm,ou=default,ou=GlobalConfig,ou=1.0,ou=sunIdentityRepositoryService,ou=services,ou=am-config",
+    "sunServiceID" : "SupportedIdentities",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "realm" ]
+  },
+  "data" : {
+    "_id" : "default/realm",
+    "_type" : {
+      "_id" : "sunIdentityRepositoryService",
+      "name" : "sunIdentityRepositoryService",
+      "collection" : false
+    }
+  }
+}

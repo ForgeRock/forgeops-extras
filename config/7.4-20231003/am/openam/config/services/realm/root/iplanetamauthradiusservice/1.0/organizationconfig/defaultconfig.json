@@ -1,0 +1,28 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthRadiusService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthRadiusService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthRadiusService",
+      "name" : "iPlanetAMAuthRadiusService",
+      "collection" : false
+    },
+    "serverPortNumber" : 1645,
+    "secondaryRadiusServers" : [ "127.0.0.1" ],
+    "stopRadiusbindAfterInmemoryLockedEnabled" : false,
+    "sharedSecret" : null,
+    "authenticationLevel" : 0,
+    "serverTimeout" : 3,
+    "primaryRadiusServers" : [ "127.0.0.1" ],
+    "healthCheckInterval" : 5
+  }
+}

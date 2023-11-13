@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "default/Permissions/COTAdmin",
+    "uid" : "ou=COTAdmin,ou=Permissions,ou=default,ou=GlobalConfig,ou=1.0,ou=sunAMDelegationService,ou=services,ou=am-config",
+    "sunServiceID" : "Permission",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "COTAdmin" ]
+  },
+  "data" : {
+    "_id" : "default/Permissions/COTAdmin",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    },
+    "actions" : [ "READ", "MODIFY" ],
+    "resource" : [ "*REALM/sunFMCOTConfigService/*" ]
+  }
+}

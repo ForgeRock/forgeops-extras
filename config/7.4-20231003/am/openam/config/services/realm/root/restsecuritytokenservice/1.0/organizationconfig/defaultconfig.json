@@ -1,0 +1,79 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RestSecurityTokenService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=RestSecurityTokenService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "RestSecurityTokenService",
+      "name" : "RestSecurityTokenService",
+      "collection" : false
+    },
+    "restStsSaml2" : {
+      "saml2-custom-authn-context-mapper-class-name" : null,
+      "saml2-custom-attribute-mapper-class-name" : null,
+      "saml2-sp-acs-url" : null,
+      "saml2-encrypt-assertion" : null,
+      "saml2-sign-assertion" : null,
+      "saml2-custom-conditions-provider-class-name" : null,
+      "saml2-custom-subject-provider-class-name" : null,
+      "saml2-attribute-map" : { },
+      "saml2-key-transport-algorithm" : "http://www.w3.org/2009/xmlenc11#rsa-oaep",
+      "saml2-custom-authz-decision-statements-provider-class-name" : null,
+      "saml2-custom-attribute-statements-provider-class-name" : null,
+      "saml2-keystore-filename" : null,
+      "saml2-encrypt-nameid" : null,
+      "saml2-encryption-algorithm" : "http://www.w3.org/2001/04/xmlenc#aes128-cbc",
+      "saml2-name-id-format" : null,
+      "saml2-custom-authentication-statements-provider-class-name" : null,
+      "saml2-encryption-key-alias" : null,
+      "issuer-name" : null,
+      "saml2-signature-key-alias" : null,
+      "saml2-signature-key-password" : null,
+      "saml2-encrypt-attributes" : null,
+      "saml2-token-lifetime-seconds" : 600,
+      "saml2-sp-entity-id" : null,
+      "saml2-encryption-algorithm-strength" : 0,
+      "saml2-keystore-password" : null
+    },
+    "restStsOidc" : {
+      "oidc-issuer" : null,
+      "oidc-claim-map" : { },
+      "oidc-custom-authn-context-mapper-class" : null,
+      "oidc-signature-algorithm" : "RS256",
+      "oidc-keystore-password" : null,
+      "oidc-audience" : [ ],
+      "oidc-token-lifetime-seconds" : 600,
+      "oidc-custom-claim-mapper-class" : null,
+      "oidc-client-secret" : null,
+      "oidc-authorized-party" : null,
+      "oidc-custom-authn-method-references-mapper-class" : null,
+      "oidc-public-key-reference-type" : "NONE",
+      "oidc-signature-key-password" : null,
+      "oidc-keystore-location" : null,
+      "oidc-signature-key-alias" : null
+    },
+    "restStsDeployment" : {
+      "deployment-offloaded-two-way-tls-header-key" : null,
+      "deployment-tls-offload-engine-hosts" : [ ],
+      "deployment-realm" : null,
+      "deployment-url-element" : null,
+      "deployment-auth-target-mappings" : [ "OPENIDCONNECT|module|oidc|oidc_id_token_auth_target_header_key=oidc_id_token", "X509|module|cert_module|x509_token_auth_target_header_key=client_cert", "USERNAME|service|ldapService" ]
+    },
+    "restStsGeneral" : {
+      "supported-token-transforms" : [ "OPENIDCONNECT|OPENIDCONNECT|true", "X509|OPENIDCONNECT|true", "OPENIDCONNECT|SAML2|true", "USERNAME|SAML2|true", "OPENAM|OPENIDCONNECT|false", "X509|SAML2|true", "OPENAM|SAML2|false", "USERNAME|OPENIDCONNECT|true" ],
+      "persist-issued-tokens-in-cts" : null,
+      "custom-token-validators" : [ ],
+      "custom-token-providers" : [ ],
+      "is-remote-sts-instance" : true,
+      "custom-token-transforms" : [ ]
+    }
+  }
+}

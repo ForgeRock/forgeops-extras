@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SetPersistentCookieNode",
+    "entityId" : "SetPersistentCookieNode",
+    "uid" : "ou=SetPersistentCookieNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "SetPersistentCookieNode" ]
+  },
+  "data" : {
+    "_id" : "SetPersistentCookieNode",
+    "_type" : {
+      "_id" : "SetPersistentCookieNode",
+      "name" : "SetPersistentCookieNode",
+      "collection" : false
+    }
+  }
+}

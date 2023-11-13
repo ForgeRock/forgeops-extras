@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunfmSAML2SOAPBindingService",
+    "entityId" : "sunfmSAML2SOAPBindingService",
+    "uid" : "ou=sunfmSAML2SOAPBindingService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunfmSAML2SOAPBindingService" ]
+  },
+  "data" : {
+    "_id" : "sunfmSAML2SOAPBindingService",
+    "_type" : {
+      "_id" : "sunfmSAML2SOAPBindingService",
+      "name" : "sunfmSAML2SOAPBindingService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/a7a78773-445b-4eca-bb93-409e86bced81",
+    "uid" : "ou=a7a78773-445b-4eca-bb93-409e86bced81,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "a7a78773-445b-4eca-bb93-409e86bced81" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/a7a78773-445b-4eca-bb93-409e86bced81",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "GROOVY",
+    "script" : "/*\n * Copyright 2022 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\nimport static org.forgerock.json.JsonValue.field\nimport static org.forgerock.json.JsonValue.json\nimport static org.forgerock.json.JsonValue.object\n\nreturn json(object(\n        field(\"id\", rawProfile.id),\n        field(\"displayName\", rawProfile.name),\n        field(\"username\", rawProfile.login)))",
+    "description" : "Normalizes raw profile data from GitHub",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "GitHub Profile Normalization"
+  }
+}

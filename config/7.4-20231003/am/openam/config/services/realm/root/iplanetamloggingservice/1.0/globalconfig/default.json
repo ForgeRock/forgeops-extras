@@ -1,0 +1,86 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMLoggingService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMLoggingService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMLoggingService",
+      "name" : "iPlanetAMLoggingService",
+      "collection" : false
+    },
+    "general" : {
+      "filesPerKeystore" : 5,
+      "fields" : [ "ModuleName", "LoginID", "IPAddr", "NameID", "Domain", "LogLevel", "ContextID", "HostName", "LoggedBy", "MessageID" ],
+      "bufferSize" : 25,
+      "buffering" : "ON",
+      "bufferTime" : 60,
+      "jdkLoggingLevel" : "INFO",
+      "signaturePeriod" : 900,
+      "verifyPeriod" : 3600,
+      "status" : "INACTIVE",
+      "security" : "OFF",
+      "type" : "File",
+      "certificateStore" : "%BASE_DIR%/var/audit/Logger.jks",
+      "signingAlgorithm" : "SHA1withRSA"
+    },
+    "file" : {
+      "rotationEnabled" : true,
+      "maxFileSize" : 100000000,
+      "rotationInterval" : -1,
+      "numberHistoryFiles" : 1,
+      "suffix" : "-MM.dd.yy-kk.mm",
+      "location" : "%BASE_DIR%/var/audit/",
+      "prefix" : null
+    },
+    "sun-am-logging-ora-dbdate-format" : "YYYY-MM-DD HH24:MI:SS",
+    "iplanet-am-logging-secure-file-handler" : "com.sun.identity.log.handlers.SecureFileHandler",
+    "iplanet-am-logging-archiver-class" : "com.sun.identity.log.spi.Archiver",
+    "iplanet-am-logging-verifier-action-class" : "com.sun.identity.log.spi.ISVerifierOutput",
+    "iplanet-am-logging-file-handler" : "com.sun.identity.log.handlers.FileHandler",
+    "iplanet-am-logging-token-class" : "com.sun.identity.log.spi.SSOTokenProvider",
+    "database" : {
+      "maxRecords" : 500,
+      "password" : null,
+      "databaseFailureMemoryBufferSize" : 2,
+      "driver" : "oracle.jdbc.driver.OracleDriver",
+      "user" : "dbuser"
+    },
+    "iplanet-am-logging-authz-class" : "com.sun.identity.log.spi.ISAuthorizer",
+    "iplanet-am-logging-secure-log-helper-class-name" : "com.sun.identity.log.secure.SecureLogHelperJCEImpl",
+    "iplanet-am-logging-elf-formatter" : "com.sun.identity.log.handlers.ELFFormatter",
+    "sun-am-logging-oradbdata-fieldtype" : "CLOB",
+    "iplanet-am-logging-jdbc-handler" : "com.sun.identity.log.handlers.DBHandler",
+    "syslog" : {
+      "protocol" : "UDP",
+      "port" : 514,
+      "timeout" : 30,
+      "host" : "localhost",
+      "facility" : "local5"
+    },
+    "iplanet-am-logging-remote-formatter" : "com.sun.identity.log.handlers.RemoteFormatter",
+    "iplanet-am-logging-log-list" : [ ],
+    "iplanet-am-logging-secure-timestamp-generator" : "com.sun.identity.log.spi.SecureTimestampGenerator",
+    "iplanet-am-logging-syslog-handler" : "org.forgerock.openam.log.handlers.syslog.SyslogHandler",
+    "iplanet-am-logging-db-formatter" : "com.sun.identity.log.handlers.DBFormatter",
+    "iplanet-am-logging-file-read-handler" : "com.sun.identity.log.handlers.LogReadFileHandler",
+    "iplanet-am-logging-secure-elf-formatter" : "com.sun.identity.log.handlers.SecureELFFormatter",
+    "sun-am-logging-mysql-dbdate-format" : "%Y-%m-%d %H:%i:%s",
+    "iplanet-am-logging-syslog-formatter" : "org.forgerock.openam.log.handlers.syslog.SyslogFormatter",
+    "sun-am-logging-db-read-handler" : "com.sun.identity.log.handlers.LogReadDBHandler",
+    "iplanet-am-logging-debug-class" : "com.sun.identity.log.spi.ISDebug",
+    "serviceObjectClasses" : [ "iplanet-am-logging-service" ],
+    "iplanet-am-logging-remote-handler" : "com.sun.identity.log.handlers.RemoteHandler",
+    "iplanet-am-logging-allfields" : [ "LoggedBy", "MessageID", "HostName", "LoginID", "LogLevel", "ModuleName", "IPAddr", "NameID", "Domain", "ContextID" ],
+    "iplanet-am-logging-security-module-name" : "secmod.db",
+    "sun-am-logging-mysqldbdata-fieldtype" : "LONGTEXT",
+    "resolveHostName" : false
+  }
+}

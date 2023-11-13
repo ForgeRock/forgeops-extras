@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "amDataStoreService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=amDataStoreService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "amDataStoreService",
+      "name" : "amDataStoreService",
+      "collection" : false
+    },
+    "applicationDataStoreId" : "application-store",
+    "policyDataStoreId" : "policy-store"
+  }
+}

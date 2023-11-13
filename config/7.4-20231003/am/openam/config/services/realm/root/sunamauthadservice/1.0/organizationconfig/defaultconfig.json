@@ -1,0 +1,39 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthADService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=sunAMAuthADService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunAMAuthADService",
+      "name" : "sunAMAuthADService",
+      "collection" : false
+    },
+    "trustAllServerCertificates" : false,
+    "connectionHeartbeatInterval" : 1,
+    "userSearchAttributes" : [ "uid" ],
+    "operationTimeout" : 0,
+    "primaryLdapServer" : [ "localhost:50636" ],
+    "userBindDN" : "cn=Directory Manager",
+    "userSearchStartDN" : [ "ou=identities" ],
+    "profileAttributeMappings" : [ ],
+    "stopLdapbindAfterInmemoryLockedEnabled" : false,
+    "returnUserDN" : true,
+    "secondaryLdapServer" : [ ],
+    "userBindPassword" : null,
+    "connectionHeartbeatTimeUnit" : "MINUTES",
+    "openam-auth-ldap-connection-mode" : "LDAPS",
+    "iplanet-am-auth-ldap-invalid-chars" : [ "*|(|)|&|!" ],
+    "userSearchFilter" : null,
+    "authenticationLevel" : 0,
+    "searchScope" : "SUBTREE",
+    "userProfileRetrievalAttribute" : "uid"
+  }
+}

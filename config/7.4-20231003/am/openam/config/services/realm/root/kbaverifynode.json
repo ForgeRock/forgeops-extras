@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "KbaVerifyNode",
+    "entityId" : "KbaVerifyNode",
+    "uid" : "ou=KbaVerifyNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "KbaVerifyNode" ]
+  },
+  "data" : {
+    "_id" : "KbaVerifyNode",
+    "_type" : {
+      "_id" : "KbaVerifyNode",
+      "name" : "KbaVerifyNode",
+      "collection" : false
+    }
+  }
+}

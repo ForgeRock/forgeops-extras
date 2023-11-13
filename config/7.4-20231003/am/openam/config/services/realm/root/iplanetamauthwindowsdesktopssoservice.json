@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthWindowsDesktopSSOService",
+    "entityId" : "iPlanetAMAuthWindowsDesktopSSOService",
+    "uid" : "ou=iPlanetAMAuthWindowsDesktopSSOService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthWindowsDesktopSSOService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthWindowsDesktopSSOService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthWindowsDesktopSSOService",
+      "name" : "iPlanetAMAuthWindowsDesktopSSOService",
+      "collection" : false
+    }
+  }
+}

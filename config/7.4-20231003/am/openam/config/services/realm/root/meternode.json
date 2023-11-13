@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "MeterNode",
+    "entityId" : "MeterNode",
+    "uid" : "ou=MeterNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "MeterNode" ]
+  },
+  "data" : {
+    "_id" : "MeterNode",
+    "_type" : {
+      "_id" : "MeterNode",
+      "name" : "MeterNode",
+      "collection" : false
+    }
+  }
+}

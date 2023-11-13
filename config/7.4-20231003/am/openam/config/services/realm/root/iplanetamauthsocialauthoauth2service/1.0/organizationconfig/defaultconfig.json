@@ -1,0 +1,61 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthSocialAuthOAuth2Service",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthSocialAuthOAuth2Service,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthSocialAuthOAuth2Service",
+      "name" : "iPlanetAMAuthSocialAuthOAuth2Service",
+      "collection" : false
+    },
+    "accountProvisioning" : {
+      "accountMapperConfiguration" : [ ],
+      "saveAttributesInSession" : true,
+      "anonymousUserName" : "anonymous",
+      "enableRegistrationService" : false,
+      "attributeMapperConfiguration" : [ ],
+      "attributeMappingClasses" : [ ],
+      "promptPasswordFlag" : false,
+      "accountProviderClass" : "org.forgerock.openam.authentication.modules.common.mapping.DefaultAccountProvider",
+      "mapToAnonymousUser" : false,
+      "createAccount" : true,
+      "accountMapperClass" : null
+    },
+    "core" : {
+      "scope" : [ ],
+      "subjectProperty" : null,
+      "clientId" : null,
+      "authenticationLevel" : 0,
+      "clientSecret" : null,
+      "issuerName" : null,
+      "scopeDelimiter" : null,
+      "mixUpMitigation" : false,
+      "logoutServiceUrl" : null,
+      "ssoProxyUrl" : "http://am:80/am/oauth2c/OAuthProxy.jsp",
+      "authorizeEndpoint" : null,
+      "logoutBehaviour" : "prompt",
+      "userInfoEndpoint" : null,
+      "provider" : null,
+      "tokenEndpoint" : null,
+      "usesBasicAuth" : true
+    },
+    "emailSettings" : {
+      "smtpSslEnabled" : null,
+      "smtpUsername" : null,
+      "smtpPassword" : null,
+      "smtpPort" : "25",
+      "smtpFromAddress" : null,
+      "smtpHost" : "localhost",
+      "emailGateway" : "org.forgerock.openam.authentication.modules.oauth2.DefaultEmailGatewayImpl",
+      "emailAttribute" : null
+    }
+  }
+}

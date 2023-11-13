@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RemoveSessionPropertiesNode",
+    "entityId" : "RemoveSessionPropertiesNode",
+    "uid" : "ou=RemoveSessionPropertiesNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "RemoveSessionPropertiesNode" ]
+  },
+  "data" : {
+    "_id" : "RemoveSessionPropertiesNode",
+    "_type" : {
+      "_id" : "RemoveSessionPropertiesNode",
+      "name" : "RemoveSessionPropertiesNode",
+      "collection" : false
+    }
+  }
+}

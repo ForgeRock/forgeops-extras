@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RetryLimitDecisionNode",
+    "entityId" : "RetryLimitDecisionNode",
+    "uid" : "ou=RetryLimitDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "RetryLimitDecisionNode" ]
+  },
+  "data" : {
+    "_id" : "RetryLimitDecisionNode",
+    "_type" : {
+      "_id" : "RetryLimitDecisionNode",
+      "name" : "RetryLimitDecisionNode",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "WebAuthnAuthenticationNode",
+    "entityId" : "WebAuthnAuthenticationNode",
+    "uid" : "ou=WebAuthnAuthenticationNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "WebAuthnAuthenticationNode" ]
+  },
+  "data" : {
+    "_id" : "WebAuthnAuthenticationNode",
+    "_type" : {
+      "_id" : "WebAuthnAuthenticationNode",
+      "name" : "WebAuthnAuthenticationNode",
+      "collection" : false
+    }
+  }
+}

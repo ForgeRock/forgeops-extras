@@ -1,0 +1,42 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthCertService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthCertService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthCertService",
+      "name" : "iPlanetAMAuthCertService",
+      "collection" : false
+    },
+    "ldapCertificateAttribute" : "CN",
+    "iplanet-am-auth-cert-security-type" : "none",
+    "updateCRLsFromDistributionPoint" : true,
+    "crlMatchingCertificateAttribute" : "CN",
+    "certificateAttributeToProfileMapping" : "subject CN",
+    "userBindDN" : "cn=Directory Manager",
+    "trustedRemoteHosts" : [ "none" ],
+    "sslEnabled" : false,
+    "clientCertificateHttpHeaderName" : null,
+    "ocspValidationEnabled" : false,
+    "authenticationLevel" : 0,
+    "cacheCRLsInMemory" : true,
+    "matchCACertificateToCRL" : false,
+    "crlHttpParameters" : null,
+    "userBindPassword" : null,
+    "ldapSearchStartDN" : [ ],
+    "matchCertificateToCRL" : false,
+    "matchCertificateInLdap" : false,
+    "otherCertificateAttributeToProfileMapping" : null,
+    "certificateLdapServers" : [ "localhost:50636" ],
+    "certificateAttributeProfileMappingExtension" : "none",
+    "iplanet-am-auth-cert-gw-cert-preferred" : false
+  }
+}

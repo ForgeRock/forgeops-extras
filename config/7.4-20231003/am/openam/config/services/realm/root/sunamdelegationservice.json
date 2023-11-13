@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "sunAMDelegationService",
+    "uid" : "ou=sunAMDelegationService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunAMDelegationService" ]
+  },
+  "data" : {
+    "_id" : "sunAMDelegationService",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    }
+  }
+}

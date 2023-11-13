@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "GoogleSecretManagerSecretStoreProvider",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=GoogleSecretManagerSecretStoreProvider,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "GoogleSecretManagerSecretStoreProvider",
+      "name" : "GoogleSecretManagerSecretStoreProvider",
+      "collection" : false
+    }
+  }
+}

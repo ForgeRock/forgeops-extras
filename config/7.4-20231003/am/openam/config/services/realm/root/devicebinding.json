@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DeviceBinding",
+    "entityId" : "DeviceBinding",
+    "uid" : "ou=DeviceBinding,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "DeviceBinding" ]
+  },
+  "data" : {
+    "_id" : "DeviceBinding",
+    "_type" : {
+      "_id" : "DeviceBinding",
+      "name" : "DeviceBinding",
+      "collection" : false
+    }
+  }
+}

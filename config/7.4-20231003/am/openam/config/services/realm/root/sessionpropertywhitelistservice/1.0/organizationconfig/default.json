@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SessionPropertyWhitelistService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=SessionPropertyWhitelistService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "SessionPropertyWhitelistService",
+      "name" : "SessionPropertyWhitelistService",
+      "collection" : false
+    },
+    "sessionPropertyWhitelist" : [ "AMCtxId" ],
+    "whitelistedQueryProperties" : [ ]
+  }
+}

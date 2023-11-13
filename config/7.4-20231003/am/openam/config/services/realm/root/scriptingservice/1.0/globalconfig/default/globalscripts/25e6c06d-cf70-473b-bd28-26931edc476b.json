@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/25e6c06d-cf70-473b-bd28-26931edc476b",
+    "uid" : "ou=25e6c06d-cf70-473b-bd28-26931edc476b,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "25e6c06d-cf70-473b-bd28-26931edc476b" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/25e6c06d-cf70-473b-bd28-26931edc476b",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "JAVASCRIPT",
+    "script" : "/*\n * Copyright 2021 ForgeRock AS. All Rights Reserved\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\n/*\n * This script validates the requested scopes against the allowed scopes.\n * If no scopes are requested, default scopes are assumed.\n * The script has four top level functions that could be executed during the different OAuth2 flows:\n *      - validateAuthorizationScope\n *      - validateAccessTokenScope\n *      - validateRefreshTokenScope\n *      - validateBackChannelAuthorizationScope\n *\n * Defined variables:\n * requestedScopes - Set<String> (1).\n *          The set of requested scopes.\n * defaultScopes - Set<String> (1).\n *                 The set of default scopes.\n * allowedScopes - Set<String> (1).\n *                 The set of allowed scopes.\n * scriptName - String (primitive).\n *              Always present, the display name of the script.\n * logger - Always present, the debug logger instance:\n *          https://backstage.forgerock.com/docs/am/7/scripting-guide/scripting-api-global-logger.html#scripting-api-global-logger.\n *          Corresponding log files will be prefixed with: scripts.OAUTH2_VALIDATE_SCOPE\n * httpClient - HTTP Client (2).\n *              Always present, the HTTP Client instance:\n *              https://backstage.forgerock.com/docs/am/7/scripting-guide/scripting-api-global-http-client.html#scripting-api-global-http-client.\n *\n * Throws InvalidScopeException:\n *      - if there are no scopes requested and default scopes are empty\n *      - if a requested scope is not allowed\n *\n * Return - a Set<String> of validated scopes (1).\n *\n * Class reference:\n * (1) Set - https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/HashSet.html.\n * (2) Client - https://backstage.forgerock.com/docs/am/7/apidocs/org/forgerock/http/Client.html.\n */\n\n/**\n * Default validate scope script.\n */\nfunction validateScopes () {\n    var frJava = JavaImporter(\n        org.forgerock.oauth2.core.exceptions.InvalidScopeException\n    );\n\n    var scopes;\n    if (requestedScopes == null || requestedScopes.isEmpty()) {\n        scopes = defaultScopes;\n    } else {\n        scopes = new java.util.HashSet(allowedScopes);\n        scopes.retainAll(requestedScopes);\n        if (requestedScopes.size() > scopes.size()) {\n            var invalidScopes = new java.util.HashSet(requestedScopes);\n            invalidScopes.removeAll(allowedScopes);\n            throw new frJava.InvalidScopeException('Unknown/invalid scope(s)');\n        }\n    }\n\n    if (scopes == null || scopes.isEmpty()) {\n        throw new frJava.InvalidScopeException('No scope requested and no default scope configured');\n    }\n    return scopes;\n}\n\nfunction validateAuthorizationScope () {\n    return validateScopes();\n}\n\nfunction validateAccessTokenScope () {\n    return validateScopes();\n}\n\nfunction validateRefreshTokenScope () {\n    return validateScopes();\n}\n\nfunction validateBackChannelAuthorizationScope () {\n    return validateScopes();\n}",
+    "description" : "Default global script for OAuth2 Scope Validation",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "OAUTH2_VALIDATE_SCOPE",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "OAuth2 Validate Scope Script"
+  }
+}

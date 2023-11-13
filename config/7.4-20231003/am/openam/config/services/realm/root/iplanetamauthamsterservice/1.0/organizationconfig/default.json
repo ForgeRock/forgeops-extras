@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthAmsterService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthAmsterService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMAuthAmsterService",
+      "name" : "iPlanetAMAuthAmsterService",
+      "collection" : false
+    },
+    "authorizedKeys" : {
+      "$string" : "&{amster.secrets.keys.path|/home/forgerock/openam/security/keys/amster/authorized_keys}"
+    }
+  }
+}

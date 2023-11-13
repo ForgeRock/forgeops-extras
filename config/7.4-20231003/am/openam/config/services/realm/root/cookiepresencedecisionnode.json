@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "CookiePresenceDecisionNode",
+    "entityId" : "CookiePresenceDecisionNode",
+    "uid" : "ou=CookiePresenceDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "CookiePresenceDecisionNode" ]
+  },
+  "data" : {
+    "_id" : "CookiePresenceDecisionNode",
+    "_type" : {
+      "_id" : "CookiePresenceDecisionNode",
+      "name" : "CookiePresenceDecisionNode",
+      "collection" : false
+    }
+  }
+}

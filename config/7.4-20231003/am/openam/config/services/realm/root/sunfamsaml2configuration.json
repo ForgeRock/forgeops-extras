@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunFAMSAML2Configuration",
+    "entityId" : "sunFAMSAML2Configuration",
+    "uid" : "ou=sunFAMSAML2Configuration,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunFAMSAML2Configuration" ]
+  },
+  "data" : {
+    "_id" : "sunFAMSAML2Configuration",
+    "_type" : {
+      "_id" : "sunFAMSAML2Configuration",
+      "name" : "sunFAMSAML2Configuration",
+      "collection" : false
+    }
+  }
+}

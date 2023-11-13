@@ -1,0 +1,31 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthJDBCService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=sunAMAuthJDBCService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunAMAuthJDBCService",
+      "name" : "sunAMAuthJDBCService",
+      "collection" : false
+    },
+    "authenticationLevel" : 0,
+    "passwordColumn" : "PASSWORD_COLUMN",
+    "password" : "AQIChr9uR6s5WN+EdUv5FJw0B5I32WdTbgEG",
+    "jdbcDriver" : "com.mysql.jdbc.Driver",
+    "jdbcUrl" : "jdbc:mysql://127.0.0.1:3306/test",
+    "username" : "root",
+    "passwordTransformClass" : "com.sun.identity.authentication.modules.jdbc.ClearTextTransform",
+    "forgerock-am-auth-jdbc-invalid-chars" : [ "%|*|(|)|&|!" ],
+    "connectionType" : "JNDI",
+    "passwordStatement" : "select PASSWORD_COLUMN from TABLE where USERNAME_COLUMN = ?",
+    "connectionPoolJndiName" : "java:comp/env/jdbc/samplePool"
+  }
+}

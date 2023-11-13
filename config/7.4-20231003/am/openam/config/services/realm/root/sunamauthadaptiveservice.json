@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthAdaptiveService",
+    "entityId" : "sunAMAuthAdaptiveService",
+    "uid" : "ou=sunAMAuthAdaptiveService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunAMAuthAdaptiveService" ]
+  },
+  "data" : {
+    "_id" : "sunAMAuthAdaptiveService",
+    "_type" : {
+      "_id" : "sunAMAuthAdaptiveService",
+      "name" : "sunAMAuthAdaptiveService",
+      "collection" : false
+    }
+  }
+}

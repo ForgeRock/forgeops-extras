@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "MultiFactorRegistrationOptionsNode",
+    "entityId" : "MultiFactorRegistrationOptionsNode",
+    "uid" : "ou=MultiFactorRegistrationOptionsNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "MultiFactorRegistrationOptionsNode" ]
+  },
+  "data" : {
+    "_id" : "MultiFactorRegistrationOptionsNode",
+    "_type" : {
+      "_id" : "MultiFactorRegistrationOptionsNode",
+      "name" : "MultiFactorRegistrationOptionsNode",
+      "collection" : false
+    }
+  }
+}

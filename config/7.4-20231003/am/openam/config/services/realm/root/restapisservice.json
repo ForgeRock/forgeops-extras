@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RestApisService",
+    "entityId" : "RestApisService",
+    "uid" : "ou=RestApisService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "RestApisService" ]
+  },
+  "data" : {
+    "_id" : "RestApisService",
+    "_type" : {
+      "_id" : "RestApisService",
+      "name" : "RestApisService",
+      "collection" : false
+    }
+  }
+}

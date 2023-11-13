@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunIdentityRepositoryService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=sunIdentityRepositoryService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "sunIdentityRepositoryService",
+      "name" : "sunIdentityRepositoryService",
+      "collection" : false
+    },
+    "coexistenceMode" : "false",
+    "realmMode" : "true",
+    "serviceNamesForAutoAssignment" : [ "HsmSecretStore", "iPlanetAMAuthService", "FileSystemSecretStore", "sunAMDelegationService", "authenticationTreesService", "iPlanetAMAuthLDAPService", "webhooks", "sunIdentityRepositoryService", "iPlanetAMAuthConfiguration", "KeyStoreSecretStore", "iPlanetAMPolicyConfigService" ]
+  }
+}

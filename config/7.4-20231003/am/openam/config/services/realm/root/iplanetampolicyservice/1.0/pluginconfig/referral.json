@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMPolicyService",
+    "entityId" : "Referral",
+    "uid" : "ou=Referral,ou=PluginConfig,ou=1.0,ou=iPlanetAMPolicyService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "top" ],
+    "pathParams" : { },
+    "ou" : [ "Referral" ]
+  },
+  "data" : {
+    "_id" : "Referral",
+    "_type" : {
+      "_id" : "iPlanetAMPolicyService",
+      "name" : "iPlanetAMPolicyService",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "MailServer",
+    "entityId" : "MailServer",
+    "uid" : "ou=MailServer,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "MailServer" ]
+  },
+  "data" : {
+    "_id" : "MailServer",
+    "_type" : {
+      "_id" : "MailServer",
+      "name" : "MailServer",
+      "collection" : false
+    }
+  }
+}

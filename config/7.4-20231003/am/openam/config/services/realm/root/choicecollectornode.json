@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "ChoiceCollectorNode",
+    "entityId" : "ChoiceCollectorNode",
+    "uid" : "ou=ChoiceCollectorNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "ChoiceCollectorNode" ]
+  },
+  "data" : {
+    "_id" : "ChoiceCollectorNode",
+    "_type" : {
+      "_id" : "ChoiceCollectorNode",
+      "name" : "ChoiceCollectorNode",
+      "collection" : false
+    }
+  }
+}

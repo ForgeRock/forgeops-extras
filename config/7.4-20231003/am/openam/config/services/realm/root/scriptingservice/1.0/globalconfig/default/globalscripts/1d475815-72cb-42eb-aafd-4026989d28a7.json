@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/1d475815-72cb-42eb-aafd-4026989d28a7",
+    "uid" : "ou=1d475815-72cb-42eb-aafd-4026989d28a7,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "1d475815-72cb-42eb-aafd-4026989d28a7" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/1d475815-72cb-42eb-aafd-4026989d28a7",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "GROOVY",
+    "script" : "/*\n * Copyright 2020 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\n/* Default Social Identity Provider Profile Transformation script to use as a template for new scripts */",
+    "description" : "Default global script for Social Identity Provider Profile Transformation",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "Social Identity Provider Profile Transformation Script"
+  }
+}

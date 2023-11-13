@@ -1,0 +1,36 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthHOTPService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=sunAMAuthHOTPService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunAMAuthHOTPService",
+      "name" : "sunAMAuthHOTPService",
+      "collection" : false
+    },
+    "userProfileEmailAttribute" : "mail",
+    "otpDeliveryMethod" : "SMS and E-mail",
+    "userProfileTelephoneAttribute" : "telephoneNumber",
+    "smtpSslEnabled" : "SSL",
+    "authenticationLevel" : 0,
+    "smtpHostname" : "smtp.gmail.com",
+    "mobileCarrierAttribute" : null,
+    "smtpUserPassword" : "AQIChr9uR6s5WN8KAcEki7i1I63mr2iXF2dr",
+    "smtpHostPort" : 465,
+    "smtpFromAddress" : "no-reply@openam.org",
+    "smtpUsername" : "opensso.sun",
+    "otpValidityDuration" : 5,
+    "otpMaxRetry" : 3,
+    "otpLength" : "8",
+    "autoSendOTP" : false,
+    "smsGatewayClass" : "com.sun.identity.authentication.modules.hotp.DefaultSMSGatewayImpl"
+  }
+}

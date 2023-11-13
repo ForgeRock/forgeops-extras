@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "OathRegistrationNode",
+    "entityId" : "OathRegistrationNode",
+    "uid" : "ou=OathRegistrationNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "OathRegistrationNode" ]
+  },
+  "data" : {
+    "_id" : "OathRegistrationNode",
+    "_type" : {
+      "_id" : "OathRegistrationNode",
+      "name" : "OathRegistrationNode",
+      "collection" : false
+    }
+  }
+}

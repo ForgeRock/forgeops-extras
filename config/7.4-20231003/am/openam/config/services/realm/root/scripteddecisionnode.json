@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "ScriptedDecisionNode",
+    "entityId" : "ScriptedDecisionNode",
+    "uid" : "ou=ScriptedDecisionNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "ScriptedDecisionNode" ]
+  },
+  "data" : {
+    "_id" : "ScriptedDecisionNode",
+    "_type" : {
+      "_id" : "ScriptedDecisionNode",
+      "name" : "ScriptedDecisionNode",
+      "collection" : false
+    }
+  }
+}

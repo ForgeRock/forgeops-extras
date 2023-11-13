@@ -1,0 +1,24 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthAnonymousService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthAnonymousService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthAnonymousService",
+      "name" : "iPlanetAMAuthAnonymousService",
+      "collection" : false
+    },
+    "validAnonymousUsers" : [ ],
+    "defaultAnonymousUsername" : "anonymous",
+    "authenticationLevel" : 0,
+    "caseSensitiveUsernameMatchingEnabled" : false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "iPlanetAMWebAgentService",
+    "entityId" : "default",
+    "uid" : "ou=default,ou=GlobalConfig,ou=1.0,ou=iPlanetAMWebAgentService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "default" ]
+  },
+  "data" : {
+    "_id" : "default",
+    "_type" : {
+      "_id" : "iPlanetAMWebAgentService",
+      "name" : "iPlanetAMWebAgentService",
+      "collection" : false
+    },
+    "serviceObjectClasses" : [ "iplanet-am-web-agent-service" ]
+  }
+}

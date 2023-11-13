@@ -1,0 +1,30 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "ScriptingService",
+    "entityId" : "default/globalScripts/472534ec-a25f-468d-a606-3fb1935190df",
+    "uid" : "ou=472534ec-a25f-468d-a606-3fb1935190df,ou=globalScripts,ou=default,ou=GlobalConfig,ou=1.0,ou=ScriptingService,ou=services,ou=am-config",
+    "sunServiceID" : "globalScript",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "472534ec-a25f-468d-a606-3fb1935190df" ]
+  },
+  "data" : {
+    "_id" : "default/globalScripts/472534ec-a25f-468d-a606-3fb1935190df",
+    "_type" : {
+      "_id" : "ScriptingService",
+      "name" : "ScriptingService",
+      "collection" : false
+    },
+    "createdBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "evaluatorVersion" : "V1_0",
+    "creationDate" : "1433147666269",
+    "language" : "GROOVY",
+    "script" : "/*\n * Copyright 2020 ForgeRock AS. All Rights Reserved\n *\n * Use of this code requires a commercial software license with ForgeRock AS.\n * or with one of its affiliates. All use shall be exclusively subject\n * to such license between the licensee and ForgeRock AS.\n */\n\nimport static org.forgerock.json.JsonValue.field\nimport static org.forgerock.json.JsonValue.json\nimport static org.forgerock.json.JsonValue.object\n\nreturn json(object(\n        field(\"id\", rawProfile.openid),\n        field(\"displayName\", rawProfile.nickname),\n        field(\"photoUrl\", rawProfile.headimgurl),\n        field(\"username\", rawProfile.nickname)))",
+    "description" : "Normalizes raw profile data from WeChat",
+    "lastModifiedBy" : "id=dsameuser,ou=user,dc=openam,dc=forgerock,dc=org",
+    "context" : "SOCIAL_IDP_PROFILE_TRANSFORMATION",
+    "lastModifiedDate" : "1433147666269",
+    "name" : "WeChat Profile Normalization"
+  }
+}

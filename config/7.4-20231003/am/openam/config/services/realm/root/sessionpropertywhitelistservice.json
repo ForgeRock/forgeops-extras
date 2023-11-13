@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "SessionPropertyWhitelistService",
+    "entityId" : "SessionPropertyWhitelistService",
+    "uid" : "ou=SessionPropertyWhitelistService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "SessionPropertyWhitelistService" ]
+  },
+  "data" : {
+    "_id" : "SessionPropertyWhitelistService",
+    "_type" : {
+      "_id" : "SessionPropertyWhitelistService",
+      "name" : "SessionPropertyWhitelistService",
+      "collection" : false
+    }
+  }
+}

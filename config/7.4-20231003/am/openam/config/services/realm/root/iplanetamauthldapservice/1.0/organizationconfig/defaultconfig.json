@@ -1,0 +1,49 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthLDAPService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthLDAPService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthLDAPService",
+      "name" : "iPlanetAMAuthLDAPService",
+      "collection" : false
+    },
+    "minimumPasswordLength" : "8",
+    "trustAllServerCertificates" : false,
+    "connectionHeartbeatInterval" : 10,
+    "userSearchAttributes" : [ "uid" ],
+    "operationTimeout" : 0,
+    "beheraPasswordPolicySupportEnabled" : true,
+    "primaryLdapServer" : {
+      "$list" : "&{am.authentication.modules.ldap.servers|localhost:50636}"
+    },
+    "userBindDN" : {
+      "$string" : "&{am.authentication.modules.ldap.username|cn=Directory Manager}"
+    },
+    "userSearchStartDN" : [ "ou=identities" ],
+    "profileAttributeMappings" : [ ],
+    "stopLdapbindAfterInmemoryLockedEnabled" : false,
+    "returnUserDN" : true,
+    "secondaryLdapServer" : [ ],
+    "userBindPassword" : {
+      "$string" : "&{am.authentication.modules.ldap.password|}"
+    },
+    "connectionHeartbeatTimeUnit" : "SECONDS",
+    "openam-auth-ldap-connection-mode" : {
+      "$string" : "&{am.authentication.modules.ldap.connection.mode|LDAPS}"
+    },
+    "iplanet-am-auth-ldap-invalid-chars" : [ "*|(|)|&|!" ],
+    "userSearchFilter" : null,
+    "authenticationLevel" : 0,
+    "searchScope" : "SUBTREE",
+    "userProfileRetrievalAttribute" : "uid"
+  }
+}

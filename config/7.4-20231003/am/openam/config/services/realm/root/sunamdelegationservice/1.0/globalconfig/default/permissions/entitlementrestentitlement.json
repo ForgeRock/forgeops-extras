@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : null,
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "default/Permissions/EntitlementRESTEntitlement",
+    "uid" : "ou=EntitlementRESTEntitlement,ou=Permissions,ou=default,ou=GlobalConfig,ou=1.0,ou=sunAMDelegationService,ou=services,ou=am-config",
+    "sunServiceID" : "Permission",
+    "objectClass" : [ "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "EntitlementRESTEntitlement" ]
+  },
+  "data" : {
+    "_id" : "default/Permissions/EntitlementRESTEntitlement",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    },
+    "actions" : [ "READ" ],
+    "resource" : [ "ou=am-config/sunEntitlementService/1.0/application/ws/1/entitlement/entitlement" ]
+  }
+}

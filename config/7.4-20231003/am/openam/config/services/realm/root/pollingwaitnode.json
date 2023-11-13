@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "PollingWaitNode",
+    "entityId" : "PollingWaitNode",
+    "uid" : "ou=PollingWaitNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "PollingWaitNode" ]
+  },
+  "data" : {
+    "_id" : "PollingWaitNode",
+    "_type" : {
+      "_id" : "PollingWaitNode",
+      "name" : "PollingWaitNode",
+      "collection" : false
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMDelegationService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=PolicyConfig,ou=1.0,ou=sunAMDelegationService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunAMDelegationService",
+      "name" : "sunAMDelegationService",
+      "collection" : false
+    },
+    "MODIFY" : null,
+    "DELEGATE" : null,
+    "READ" : null
+  }
+}

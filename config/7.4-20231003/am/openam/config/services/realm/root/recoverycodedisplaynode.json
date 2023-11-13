@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "RecoveryCodeDisplayNode",
+    "entityId" : "RecoveryCodeDisplayNode",
+    "uid" : "ou=RecoveryCodeDisplayNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "RecoveryCodeDisplayNode" ]
+  },
+  "data" : {
+    "_id" : "RecoveryCodeDisplayNode",
+    "_type" : {
+      "_id" : "RecoveryCodeDisplayNode",
+      "name" : "RecoveryCodeDisplayNode",
+      "collection" : false
+    }
+  }
+}

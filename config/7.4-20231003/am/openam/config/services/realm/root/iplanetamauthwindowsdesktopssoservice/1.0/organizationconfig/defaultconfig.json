@@ -1,0 +1,29 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthWindowsDesktopSSOService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthWindowsDesktopSSOService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthWindowsDesktopSSOService",
+      "name" : "iPlanetAMAuthWindowsDesktopSSOService",
+      "collection" : false
+    },
+    "keytabFileName" : null,
+    "principalName" : null,
+    "kerberosServiceIsinitiator" : true,
+    "kerberosServerName" : null,
+    "kerberosRealm" : null,
+    "trustedKerberosRealms" : [ ],
+    "lookupUserInRealm" : false,
+    "authenticationLevel" : 0,
+    "returnPrincipalWithDomainName" : false
+  }
+}

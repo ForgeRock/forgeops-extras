@@ -1,0 +1,27 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMSessionService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=DynamicConfig,ou=1.0,ou=iPlanetAMSessionService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMSessionService",
+      "name" : "iPlanetAMSessionService",
+      "collection" : false
+    },
+    "maxIdleTime" : 30,
+    "maxSessionTime" : 120,
+    "iplanet-am-session-destroy-sessions" : [ ],
+    "quotaLimit" : 5,
+    "maxCachingTime" : 3,
+    "iplanet-am-session-get-valid-sessions" : [ ],
+    "iplanet-am-session-service-status" : "Active"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunIdentityFilteredRoleService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=UserConfig,ou=1.0,ou=sunIdentityFilteredRoleService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "sunIdentityFilteredRoleService",
+      "name" : "sunIdentityFilteredRoleService",
+      "collection" : false
+    },
+    "nsRoleFilter" : "(objectclass=inetorgperson)",
+    "RequiredValueValidator" : "com.sun.identity.sm.RequiredValueValidator"
+  }
+}

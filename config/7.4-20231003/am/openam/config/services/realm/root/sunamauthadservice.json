@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunAMAuthADService",
+    "entityId" : "sunAMAuthADService",
+    "uid" : "ou=sunAMAuthADService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunAMAuthADService" ]
+  },
+  "data" : {
+    "_id" : "sunAMAuthADService",
+    "_type" : {
+      "_id" : "sunAMAuthADService",
+      "name" : "sunAMAuthADService",
+      "collection" : false
+    }
+  }
+}

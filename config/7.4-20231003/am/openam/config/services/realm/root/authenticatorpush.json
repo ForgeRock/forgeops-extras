@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "AuthenticatorPush",
+    "entityId" : "AuthenticatorPush",
+    "uid" : "ou=AuthenticatorPush,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "AuthenticatorPush" ]
+  },
+  "data" : {
+    "_id" : "AuthenticatorPush",
+    "_type" : {
+      "_id" : "AuthenticatorPush",
+      "name" : "AuthenticatorPush",
+      "collection" : false
+    }
+  }
+}

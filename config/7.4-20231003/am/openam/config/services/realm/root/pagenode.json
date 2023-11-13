@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "PageNode",
+    "entityId" : "PageNode",
+    "uid" : "ou=PageNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "PageNode" ]
+  },
+  "data" : {
+    "_id" : "PageNode",
+    "_type" : {
+      "_id" : "PageNode",
+      "name" : "PageNode",
+      "collection" : false
+    }
+  }
+}

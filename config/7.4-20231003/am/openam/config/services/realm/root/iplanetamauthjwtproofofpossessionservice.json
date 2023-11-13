@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthJwtProofOfPossessionService",
+    "entityId" : "iPlanetAMAuthJwtProofOfPossessionService",
+    "uid" : "ou=iPlanetAMAuthJwtProofOfPossessionService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "iPlanetAMAuthJwtProofOfPossessionService" ]
+  },
+  "data" : {
+    "_id" : "iPlanetAMAuthJwtProofOfPossessionService",
+    "_type" : {
+      "_id" : "iPlanetAMAuthJwtProofOfPossessionService",
+      "name" : "iPlanetAMAuthJwtProofOfPossessionService",
+      "collection" : false
+    }
+  }
+}

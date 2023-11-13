@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMPolicyService",
+    "entityId" : "Subject/IdentityServerRoles",
+    "uid" : "ou=IdentityServerRoles,ou=Subject,ou=PluginConfig,ou=1.0,ou=iPlanetAMPolicyService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "IdentityServerRoles" ]
+  },
+  "data" : {
+    "_id" : "Subject/IdentityServerRoles",
+    "_type" : {
+      "_id" : "iPlanetAMPolicyService",
+      "name" : "iPlanetAMPolicyService",
+      "collection" : false
+    }
+  }
+}

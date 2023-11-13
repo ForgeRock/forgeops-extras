@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "DisplayUserNameNode",
+    "entityId" : "DisplayUserNameNode",
+    "uid" : "ou=DisplayUserNameNode,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "DisplayUserNameNode" ]
+  },
+  "data" : {
+    "_id" : "DisplayUserNameNode",
+    "_type" : {
+      "_id" : "DisplayUserNameNode",
+      "name" : "DisplayUserNameNode",
+      "collection" : false
+    }
+  }
+}

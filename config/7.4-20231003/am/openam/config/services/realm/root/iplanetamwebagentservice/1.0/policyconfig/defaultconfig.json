@@ -1,0 +1,27 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMWebAgentService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=PolicyConfig,ou=1.0,ou=iPlanetAMWebAgentService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMWebAgentService",
+      "name" : "iPlanetAMWebAgentService",
+      "collection" : false
+    },
+    "POST" : null,
+    "DELETE" : null,
+    "PATCH" : null,
+    "HEAD" : null,
+    "GET" : null,
+    "PUT" : null,
+    "OPTIONS" : null
+  }
+}

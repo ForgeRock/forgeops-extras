@@ -1,0 +1,21 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetG11NSettings",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetG11NSettings,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetG11NSettings",
+      "name" : "iPlanetG11NSettings",
+      "collection" : false
+    },
+    "commonNameFormats" : [ "zh={sn}{givenname}" ]
+  }
+}

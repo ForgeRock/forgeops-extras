@@ -1,0 +1,20 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "sunFMWSFederationMetadataService",
+    "entityId" : "sunFMWSFederationMetadataService",
+    "uid" : "ou=sunFMWSFederationMetadataService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "sunService", "top" ],
+    "pathParams" : { },
+    "ou" : [ "sunFMWSFederationMetadataService" ]
+  },
+  "data" : {
+    "_id" : "sunFMWSFederationMetadataService",
+    "_type" : {
+      "_id" : "sunFMWSFederationMetadataService",
+      "name" : "sunFMWSFederationMetadataService",
+      "collection" : false
+    }
+  }
+}

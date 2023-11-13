@@ -1,0 +1,51 @@
+{
+  "metadata" : {
+    "realm" : "/",
+    "entityType" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+    "entityId" : "defaultconfig",
+    "uid" : "ou=defaultconfig,ou=OrganizationConfig,ou=1.0,ou=iPlanetAMAuthSocialAuthWeChatMobileService,ou=services,ou=am-config",
+    "sunServiceID" : null,
+    "objectClass" : [ "organizationalunit", "sunServiceComponent", "top" ],
+    "pathParams" : { },
+    "ou" : [ "defaultconfig" ]
+  },
+  "data" : {
+    "_id" : "defaultconfig",
+    "_type" : {
+      "_id" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+      "name" : "iPlanetAMAuthSocialAuthWeChatMobileService",
+      "collection" : false
+    },
+    "accountProvisioning" : {
+      "accountMapperConfiguration" : [ "openid=uid" ],
+      "saveAttributesInSession" : true,
+      "anonymousUserName" : "anonymous",
+      "enableRegistrationService" : false,
+      "attributeMapperConfiguration" : [ "nickname=givenName", "openid=uid", "nickname=cn", "nickname=sn" ],
+      "attributeMappingClasses" : [ "org.forgerock.openam.authentication.modules.common.mapping.JsonAttributeMapper|uid|wechat-" ],
+      "promptPasswordFlag" : false,
+      "accountProviderClass" : "org.forgerock.openam.authentication.modules.common.mapping.DefaultAccountProvider",
+      "mapToAnonymousUser" : false,
+      "createAccount" : true,
+      "accountMapperClass" : "org.forgerock.openam.authentication.modules.common.mapping.JsonAttributeMapper|*|wechat-"
+    },
+    "core" : {
+      "scope" : [ "snsapi_userinfo" ],
+      "subjectProperty" : "openid",
+      "ssoProxyUrl" : "http://am:80/am/oauth2c/OAuthProxy.jsp",
+      "authenticationLevel" : 0,
+      "userInfoEndpoint" : "https://api.wechat.com/sns/userinfo",
+      "provider" : "WeChat"
+    },
+    "emailSettings" : {
+      "smtpSslEnabled" : null,
+      "smtpUsername" : null,
+      "smtpPassword" : null,
+      "smtpPort" : "25",
+      "smtpFromAddress" : null,
+      "smtpHost" : "localhost",
+      "emailGateway" : "org.forgerock.openam.authentication.modules.oauth2.DefaultEmailGatewayImpl",
+      "emailAttribute" : null
+    }
+  }
+}
