@@ -55,7 +55,7 @@ resource "helm_release" "aws_ebs_csi_driver" {
   name = "aws-ebs-csi-driver"
   repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
   chart = "aws-ebs-csi-driver"
-  version = "2.17.2"
+  version = "2.25.0"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -78,7 +78,7 @@ resource "helm_release" "snapshot_controller" {
   name = "snapshot-controller"
   repository = "https://piraeus.io/helm-charts"
   chart = "snapshot-controller"
-  version = "1.7.2"
+  version = "2.0.3"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -117,7 +117,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   name = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart = "aws-load-balancer-controller"
-  version = "1.6.1"
+  version = "1.6.2"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -152,7 +152,7 @@ resource "helm_release" "cluster_autoscaler" {
   name = "cluster-autoscaler"
   repository = "https://kubernetes.github.io/autoscaler"
   chart = "cluster-autoscaler"
-  version = "9.28.0"
+  version = "9.34.0"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -166,10 +166,9 @@ resource "helm_release" "cluster_autoscaler" {
 }
 
 resource "aws_eip" "ingress" {
-  #count = length(module.vpc.public_subnets)
   count = length(distinct(var.cluster.location.zones))
 
-  vpc = true
+  domain = "vpc"
 
   tags = {
     cluster_name = local.cluster_name

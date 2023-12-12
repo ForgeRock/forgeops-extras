@@ -26,7 +26,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -172,7 +172,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -246,7 +246,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -392,7 +392,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -466,7 +466,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -612,7 +612,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -686,7 +686,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -790,7 +790,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -864,7 +864,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -968,7 +968,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1042,7 +1042,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -1146,7 +1146,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1218,7 +1218,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -1324,7 +1324,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1396,7 +1396,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -1502,7 +1502,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1574,7 +1574,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.27"
+      kubernetes_version = "1.28"
     }
 
     location = {
@@ -1680,7 +1680,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "7.3"
+        version = "7.4"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
