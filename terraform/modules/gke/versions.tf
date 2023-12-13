@@ -2,14 +2,14 @@
 
 terraform {
   required_providers {
-    google = "~> 4.53"
+    google     = "~> 5.9"
 
-    kubernetes = "~> 2.16"
-    helm       = "~> 2.7"
+    kubernetes = "~> 2.24"
+    helm       = "~> 2.12"
 
-    random     = "~> 3.1"
-    external   = "~> 2.2"
-    local      = "~> 2.2"
+    random     = "~> 3.6"
+    external   = "~> 2.3"
+    local      = "~> 2.4"
   }
 }
 

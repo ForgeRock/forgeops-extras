@@ -30,7 +30,7 @@ locals {
 
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "~> 26.0"
+  version = "~> 29.0"
 
   project_id = var.cluster.auth.project_id
   name       = local.cluster_name
@@ -38,10 +38,10 @@ module "gke" {
   zones      = var.cluster.location.zones
   #network                              = "vpc-01"
   #subnetwork                           = "${var.cluster.location.region}-01"
-  network           = "default"
-  subnetwork        = "default"
-  ip_range_pods     = null
-  ip_range_services = null
+  network                              = "default"
+  subnetwork                           = "default"
+  ip_range_pods                        = null
+  ip_range_services                    = null
   #ip_range_pods                        = "${var.cluster.location.region}-01-gke-01-pods"
   #ip_range_services                    = "${var.cluster.location.region}-01-gke-01-services"
   http_load_balancing                  = false
@@ -49,6 +49,7 @@ module "gke" {
   horizontal_pod_autoscaling           = true
   filestore_csi_driver                 = true
   monitoring_enable_managed_prometheus = false
+  deletion_protection                  = false
 
   monitoring_service = lookup(var.cluster.meta, "enable_monitoring", null) == null ? "monitoring.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_monitoring", true)) ? "monitoring.googleapis.com/kubernetes" : "none")
   logging_service    = lookup(var.cluster.meta, "enable_logging", null) == null ? "logging.googleapis.com/kubernetes" : (tobool(lookup(var.cluster.meta, "enable_logging", true)) ? "logging.googleapis.com/kubernetes" : "none")

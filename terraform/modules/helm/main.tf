@@ -28,7 +28,7 @@ resource "helm_release" "metrics_server" {
   name                  = "metrics-server"
   repository            = "https://kubernetes-sigs.github.io/metrics-server"
   chart                 = "metrics-server"
-  version               = "3.7.0"
+  version               = "3.11.0"
   namespace             = "kube-system"
   reuse_values          = false
   reset_values          = true
@@ -70,7 +70,7 @@ resource "helm_release" "external_secrets" {
   name                  = "external-secrets"
   repository            = "https://charts.external-secrets.io"
   chart                 = "external-secrets"
-  version               = "0.9.5"
+  version               = "0.9.9"
   namespace             = "external-secrets"
   create_namespace      = true
   reuse_values          = false
@@ -115,7 +115,7 @@ resource "helm_release" "external_dns" {
   name                  = "external-dns"
   repository            = contains(keys(var.chart_configs["external-dns"]), "repository") ? var.chart_configs["external-dns"]["repository"] : "https://charts.bitnami.com/bitnami"
   chart                 = "external-dns"
-  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "6.9.0"
+  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "6.28.6"
   namespace             = "external-dns"
   create_namespace      = true
   reuse_values          = false
@@ -172,7 +172,7 @@ resource "helm_release" "ingress_nginx" {
   name                  = "ingress-nginx"
   repository            = contains(keys(var.chart_configs["ingress-nginx"]), "repository") ? var.chart_configs["ingress-nginx"]["repository"] : "https://kubernetes.github.io/ingress-nginx"
   chart                 = "ingress-nginx"
-  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.8.0"
+  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.8.4"
   namespace             = "ingress-nginx"
   create_namespace      = true
   reuse_values          = false
@@ -286,7 +286,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.13.0"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.13.2"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -318,7 +318,7 @@ resource "helm_release" "trust_manager" {
   name                  = "trust-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "trust-manager"
-  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.5.0"
+  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.7.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -395,9 +395,10 @@ resource "helm_release" "raw_cert_manager" {
   count = local.deploy_cert_manager ? 1 : 0
 
   name                  = "raw-cert-manager"
-  repository            = "https://bedag.github.io/helm-charts" # "https://charts.itscontained.io"
+  #repository            = "https://buttahtoast.github.io/helm-charts"
+  repository            = "https://bedag.github.io/helm-charts"
   chart                 = "raw"
-  version               = "1.1.0" # "0.2.5"
+  version               = "2.0.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -424,7 +425,7 @@ resource "helm_release" "kube_prometheus_stack" {
   name                  = "kube-prometheus-stack"
   repository            = contains(keys(var.chart_configs["kube-prometheus-stack"]), "repository") ? var.chart_configs["kube-prometheus-stack"]["repository"] : "https://prometheus-community.github.io/helm-charts"
   chart                 = "kube-prometheus-stack"
-  version               = contains(keys(var.chart_configs["kube-prometheus-stack"]), "version") ? var.chart_configs["prometheus"]["version"] : "40.3.1"
+  version               = contains(keys(var.chart_configs["kube-prometheus-stack"]), "version") ? var.chart_configs["prometheus"]["version"] : "55.1.0"
   namespace             = "kube-prometheus-stack"
   create_namespace      = true
   reuse_values          = false
@@ -455,7 +456,7 @@ resource "helm_release" "elasticsearch" {
   name                  = "elasticsearch"
   repository            = contains(keys(var.chart_configs["elasticsearch"]), "repository") ? var.chart_configs["elasticsearch"]["repository"] : "https://helm.elastic.co"
   chart                 = "elasticsearch"
-  version               = contains(keys(var.chart_configs["elasticsearch"]), "version") ? var.chart_configs["prometheus"]["version"] : "7.17.3"
+  version               = contains(keys(var.chart_configs["elasticsearch"]), "version") ? var.chart_configs["prometheus"]["version"] : "8.5.1"
   namespace             = "elk-stack" # "elasticsearch"
   create_namespace      = true
   reuse_values          = false
@@ -486,7 +487,7 @@ resource "helm_release" "logstash" {
   name                  = "logstash"
   repository            = contains(keys(var.chart_configs["logstash"]), "repository") ? var.chart_configs["logstash"]["repository"] : "https://helm.elastic.co"
   chart                 = "logstash"
-  version               = contains(keys(var.chart_configs["logstash"]), "version") ? var.chart_configs["logstash"]["version"] : "7.17.3"
+  version               = contains(keys(var.chart_configs["logstash"]), "version") ? var.chart_configs["logstash"]["version"] : "8.5.1"
   namespace             = "elk-stack" # "logstash"
   create_namespace      = true
   reuse_values          = false
@@ -517,7 +518,7 @@ resource "helm_release" "kibana" {
   name                  = "kibana"
   repository            = contains(keys(var.chart_configs["kibana"]), "repository") ? var.chart_configs["kibana"]["repository"] : "https://helm.elastic.co"
   chart                 = "kibana"
-  version               = contains(keys(var.chart_configs["kibana"]), "version") ? var.chart_configs["kibana"]["version"] : "7.17.3"
+  version               = contains(keys(var.chart_configs["kibana"]), "version") ? var.chart_configs["kibana"]["version"] : "8.5.1"
   namespace             = "elk-stack" # "kibana"
   create_namespace      = true
   reuse_values          = false
@@ -542,9 +543,10 @@ resource "helm_release" "raw_k8s_resources" {
   count = local.deploy_raw_k8s_resources ? 1 : 0
 
   name                  = "raw-k8s-resources"
-  repository            = "https://bedag.github.io/helm-charts" # "https://charts.itscontained.io"
+  #repository            = "https://buttahtoast.github.io/helm-charts"
+  repository            = "https://bedag.github.io/helm-charts"
   chart                 = "raw"
-  version               = "1.1.0" # "0.2.5"
+  version               = "2.0.0"
   namespace             = "identity-platform"
   create_namespace      = true
   reuse_values          = false
