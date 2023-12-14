@@ -91,6 +91,19 @@ resource "helm_release" "snapshot_controller" {
   depends_on = [module.eks, module.vpc, helm_release.aws_ebs_csi_driver, local_file.kube_config]
 }
 
+resource "terraform_data" "aws_lbc_sleep_after_destroy" {
+  triggers_replace = {
+    sleep_after_destroy = "sleep 200"
+  }
+
+  provisioner "local-exec" {
+    when = destroy
+    command = self.triggers_replace.sleep_after_destroy
+  }
+
+  depends_on = [module.eks, module.vpc, local_file.kube_config]
+}
+
 locals {
   values_aws_load_balancer_controller = <<-EOF
   # Values from terraform EKS module
@@ -127,7 +140,7 @@ resource "helm_release" "aws_load_balancer_controller" {
 
   values = [local.values_aws_load_balancer_controller]
 
-  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["aws-load-balancer-controller"], local_file.kube_config]
+  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["aws-load-balancer-controller"], local_file.kube_config, terraform_data.aws_lbc_sleep_after_destroy]
 }
 
 locals {
