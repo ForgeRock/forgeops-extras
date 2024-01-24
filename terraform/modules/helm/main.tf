@@ -354,6 +354,12 @@ locals {
           - http01:
               ingress:
                 class: ${local.ingressClass}
+                podTemplate:
+                  spec:
+                    tolerations:
+                      - key: kubernetes.io/arch
+                        operator: Exists
+                        effect: NoSchedule
     - apiVersion: cert-manager.io/v1
       kind: ClusterIssuer
       metadata:
@@ -371,6 +377,12 @@ locals {
           - http01:
               ingress:
                 class: ${local.ingressClass}
+                podTemplate:
+                  spec:
+                    tolerations:
+                      - key: kubernetes.io/arch
+                        operator: Exists
+                        effect: NoSchedule
     - apiVersion: cert-manager.io/v1
       kind: ClusterIssuer
       metadata:
@@ -388,6 +400,12 @@ locals {
           - http01:
               ingress:
                 class: ${local.ingressClass}
+                podTemplate:
+                  spec:
+                    tolerations:
+                      - key: kubernetes.io/arch
+                        operator: Exists
+                        effect: NoSchedule
   EOF
 }
 
