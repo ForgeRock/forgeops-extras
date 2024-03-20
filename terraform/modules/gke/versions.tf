@@ -2,7 +2,7 @@
 
 terraform {
   required_providers {
-    google     = "~> 5.9"
+    google     = "~> 5.21"
 
     kubernetes = "~> 2.24"
     helm       = "~> 2.12"
