@@ -246,7 +246,7 @@ locals {
 
   installCRDs: true
 
-  featureGates: "ExperimentalCertificateSigningRequestControllers=true"
+  featureGates: "LiteralCertificateSubject=true,ExperimentalCertificateSigningRequestControllers=true"
 
   ingressShim:
     defaultIssuerName: default-issuer
@@ -273,6 +273,7 @@ locals {
         effect: NoSchedule
 
   webhook:
+    featureGates: "LiteralCertificateSubject=true"
     tolerations:  # Ignore any arch taints
       - key: kubernetes.io/arch
         operator: Exists
@@ -286,7 +287,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.13.2"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.14.4"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
