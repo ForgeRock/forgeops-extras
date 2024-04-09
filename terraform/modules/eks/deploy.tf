@@ -31,44 +31,6 @@ locals {
 }
 
 locals {
-  values_aws_ebs_csi_driver = <<-EOF
-  # Values from terraform EKS module
-  image:
-    repository: ${lookup(local.eks_registries, var.cluster.location["region"], local.eks_registries["us-east-1"])}/eks/aws-ebs-csi-driver
-
-  controller:
-    serviceAccount:
-      create: true
-      name: ebs-csi-controller-sa
-      annotations:
-        eks.amazonaws.com/role-arn: "${module.iam_assumable_role_admin["aws-ebs-csi-driver"].iam_role_arn}"
-
-  #storageClasses:
-  # - name: fast
-  #   annotations:
-  #     storageclass.kubernetes.io/is-default-class: "true"
-  #   volumeBindingMode: WaitForFirstConsumer
-  EOF
-}
-
-resource "helm_release" "aws_ebs_csi_driver" {
-  name = "aws-ebs-csi-driver"
-  repository = "https://kubernetes-sigs.github.io/aws-ebs-csi-driver"
-  chart = "aws-ebs-csi-driver"
-  version = "2.25.0"
-  namespace = "kube-system"
-  reuse_values = false
-  reset_values = true
-  max_history = 12
-  render_subchart_notes = false
-  timeout = 600
-
-  values = [local.values_aws_ebs_csi_driver]
-
-  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["aws-ebs-csi-driver"], local_file.kube_config]
-}
-
-locals {
   values_snapshot_controller = <<-EOF
   # Values from terraform EKS module
   EOF
@@ -88,7 +50,7 @@ resource "helm_release" "snapshot_controller" {
 
   values = [local.values_snapshot_controller]
 
-  depends_on = [module.eks, module.vpc, helm_release.aws_ebs_csi_driver, local_file.kube_config]
+  depends_on = [module.eks, module.vpc, local_file.kube_config]
 }
 
 resource "terraform_data" "aws_lbc_sleep_after_destroy" {
@@ -370,6 +332,6 @@ EOF
     }
   }
 
-  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["external-dns"], aws_eip.ingress, local_file.kube_config, helm_release.aws_ebs_csi_driver, helm_release.snapshot_controller, helm_release.aws_load_balancer_controller, helm_release.cluster_autoscaler, terraform_data.helm_module_sleep_after_destroy]
+  depends_on = [module.eks, module.vpc, module.iam_assumable_role_admin["external-dns"], aws_eip.ingress, local_file.kube_config, helm_release.snapshot_controller, helm_release.aws_load_balancer_controller, helm_release.cluster_autoscaler, terraform_data.helm_module_sleep_after_destroy]
 }
 

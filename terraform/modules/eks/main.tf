@@ -131,6 +131,12 @@ module "eks" {
   subnet_ids  = module.vpc.private_subnets
   #enable_irsa = true
 
+  cluster_addons = {
+    aws-ebs-csi-driver = {
+      most_recent = true
+    }
+  }
+
   cluster_security_group_additional_rules = {
     ingress_nodes_ephemeral_ports_tcp = {
       description                = "Allow cluster ingress access from the nodes."
@@ -194,6 +200,7 @@ module "eks" {
 
     iam_role_additional_policies = {
       AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
+      AmazonEBSCSIDriverPolicy           = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
       EC2Describe                        = aws_iam_policy.ec2_describe.arn
     }
   }
