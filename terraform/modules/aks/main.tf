@@ -95,10 +95,6 @@ resource "azurerm_kubernetes_cluster" "cluster" {
     min_count           = local.default_node_pool.min_count
     max_count           = local.default_node_pool.max_count
     node_labels         = lookup(local.default_node_pool, "labels", null) == null ? module.common.asset_labels : merge(module.common.asset_labels, lookup(local.default_node_pool, "labels", null))
-    node_taints         = lookup(local.default_node_pool, "taints", null) == null ? [] : [
-      for taint in (lookup(local.default_node_pool, "taints", null) == null ? []: lookup(local.default_node_pool, "taints", null)):
-        format("%s=%s:%s", taint["key"], taint["value"], taint["effect"])
-    ]
     tags                = module.common.asset_labels
   }
 
