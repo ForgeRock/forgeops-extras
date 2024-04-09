@@ -30,6 +30,29 @@ locals {
   }
 }
 
+locals {
+  values_snapshot_controller = <<-EOF
+  # Values from terraform EKS module
+  EOF
+}
+
+resource "helm_release" "snapshot_controller" {
+  name = "snapshot-controller"
+  repository = "https://piraeus.io/helm-charts"
+  chart = "snapshot-controller"
+  version = "2.0.3"
+  namespace = "kube-system"
+  reuse_values = false
+  reset_values = true
+  max_history = 12
+  render_subchart_notes = false
+  timeout = 600
+
+  values = [local.values_snapshot_controller]
+
+  depends_on = [module.eks, module.vpc, local_file.kube_config]
+}
+
 resource "terraform_data" "aws_lbc_sleep_after_destroy" {
   triggers_replace = {
     sleep_after_destroy = "sleep 200"
