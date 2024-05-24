@@ -172,7 +172,7 @@ resource "helm_release" "ingress_nginx" {
   name                  = "ingress-nginx"
   repository            = contains(keys(var.chart_configs["ingress-nginx"]), "repository") ? var.chart_configs["ingress-nginx"]["repository"] : "https://kubernetes.github.io/ingress-nginx"
   chart                 = "ingress-nginx"
-  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.9.0"
+  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.10.1"
   namespace             = "ingress-nginx"
   create_namespace      = true
   reuse_values          = false

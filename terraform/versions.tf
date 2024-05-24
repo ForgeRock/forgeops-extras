@@ -5,7 +5,7 @@ terraform {
 
   required_providers {
     google     = "~> 5.21"
-    aws        = "~> 5.30"
+    aws        = "~> 5.51"
     azurerm     = "~> 3.84"
 
     kubernetes = "~> 2.24"
