@@ -597,7 +597,7 @@ resource "helm_release" "secret_agent" {
   name                  = "secret-agent"
   repository            = contains(keys(var.chart_configs["secret-agent"]), "repository") ? var.chart_configs["secret-agent"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "secret-agent"
-  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.0"
+  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.2"
   namespace             = "secret-agent"
   create_namespace      = true
   reuse_values          = false
