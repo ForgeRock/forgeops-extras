@@ -40,7 +40,7 @@ resource "helm_release" "snapshot_controller" {
   name = "snapshot-controller"
   repository = "https://piraeus.io/helm-charts"
   chart = "snapshot-controller"
-  version = "2.0.3"
+  version = "2.2.2"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -92,7 +92,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   name = "aws-load-balancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart = "aws-load-balancer-controller"
-  version = "1.6.2"
+  version = "1.8.0"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -127,7 +127,7 @@ resource "helm_release" "cluster_autoscaler" {
   name = "cluster-autoscaler"
   repository = "https://kubernetes.github.io/autoscaler"
   chart = "cluster-autoscaler"
-  version = "9.34.0"
+  version = "9.37.0"
   namespace = "kube-system"
   reuse_values = false
   reset_values = true
@@ -141,7 +141,7 @@ resource "helm_release" "cluster_autoscaler" {
 }
 
 resource "aws_eip" "ingress" {
-  count = length(distinct(var.cluster.location.zones))
+  count = length(module.vpc.public_subnets)
 
   domain = "vpc"
 

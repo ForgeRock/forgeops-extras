@@ -47,7 +47,7 @@ resource "terraform_data" "aws_availability_zones_available" {
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.4"
+  version = "~> 5.8"
 
   name = "${local.cluster_name}-vpc"
   cidr = "10.0.0.0/16"
@@ -109,13 +109,13 @@ locals {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.21"
+  version = "~> 20.13"
 
   cluster_name                   = local.cluster_name
   cluster_version                = var.cluster.meta.kubernetes_version
-
   cluster_endpoint_public_access = true
-  manage_aws_auth_configmap      = true
+
+  enable_cluster_creator_admin_permissions = true
 
   create_iam_role                = true
   iam_role_name                  = local.cluster_name

@@ -100,7 +100,7 @@ resource "helm_release" "workload_identity_webhook" {
   name                  = "workload-identity-webhook"
   repository            = "https://azure.github.io/azure-workload-identity/charts"
   chart                 = "workload-identity-webhook"
-  version               = "v0.13.0"
+  version               = "v1.2.2"
   namespace             = "workload-identity-webook"
   create_namespace      = true
   reuse_values          = false
@@ -131,7 +131,7 @@ resource "helm_release" "aad_pod_identity" {
   name                  = "aad-pod-identity"
   repository            = "https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts"
   chart                 = "aad-pod-identity"
-  version               = "4.1.13"
+  version               = "4.1.18"
   namespace             = "aad-pod-identity"
   create_namespace      = true
   reuse_values          = false

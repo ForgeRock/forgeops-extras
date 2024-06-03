@@ -28,7 +28,7 @@ resource "helm_release" "metrics_server" {
   name                  = "metrics-server"
   repository            = "https://kubernetes-sigs.github.io/metrics-server"
   chart                 = "metrics-server"
-  version               = "3.11.0"
+  version               = "3.12.1"
   namespace             = "kube-system"
   reuse_values          = false
   reset_values          = true
@@ -70,7 +70,7 @@ resource "helm_release" "external_secrets" {
   name                  = "external-secrets"
   repository            = "https://charts.external-secrets.io"
   chart                 = "external-secrets"
-  version               = "0.9.9"
+  version               = "0.9.18"
   namespace             = "external-secrets"
   create_namespace      = true
   reuse_values          = false
@@ -115,7 +115,7 @@ resource "helm_release" "external_dns" {
   name                  = "external-dns"
   repository            = contains(keys(var.chart_configs["external-dns"]), "repository") ? var.chart_configs["external-dns"]["repository"] : "https://charts.bitnami.com/bitnami"
   chart                 = "external-dns"
-  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "6.28.6"
+  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "7.5.2"
   namespace             = "external-dns"
   create_namespace      = true
   reuse_values          = false
@@ -172,7 +172,7 @@ resource "helm_release" "ingress_nginx" {
   name                  = "ingress-nginx"
   repository            = contains(keys(var.chart_configs["ingress-nginx"]), "repository") ? var.chart_configs["ingress-nginx"]["repository"] : "https://kubernetes.github.io/ingress-nginx"
   chart                 = "ingress-nginx"
-  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.9.0"
+  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.10.1"
   namespace             = "ingress-nginx"
   create_namespace      = true
   reuse_values          = false
@@ -222,7 +222,7 @@ resource "helm_release" "haproxy_ingress" {
   name                  = "haproxy-ingress"
   repository            = contains(keys(var.chart_configs["haproxy-ingress"]), "repository") ? var.chart_configs["haproxy-ingress"]["repository"] : "https://haproxy-ingress.github.io/charts"
   chart                 = "haproxy-ingress"
-  version               = contains(keys(var.chart_configs["haproxy-ingress"]), "version") ? var.chart_configs["haproxy-ingress"]["version"] : "0.14.5"
+  version               = contains(keys(var.chart_configs["haproxy-ingress"]), "version") ? var.chart_configs["haproxy-ingress"]["version"] : "0.14.6"
   namespace             = "haproxy-ingress"
   create_namespace      = true
   reuse_values          = false
@@ -287,7 +287,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.14.4"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.14.5"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -319,7 +319,7 @@ resource "helm_release" "trust_manager" {
   name                  = "trust-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "trust-manager"
-  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.7.0"
+  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.10.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -444,7 +444,7 @@ resource "helm_release" "kube_prometheus_stack" {
   name                  = "kube-prometheus-stack"
   repository            = contains(keys(var.chart_configs["kube-prometheus-stack"]), "repository") ? var.chart_configs["kube-prometheus-stack"]["repository"] : "https://prometheus-community.github.io/helm-charts"
   chart                 = "kube-prometheus-stack"
-  version               = contains(keys(var.chart_configs["kube-prometheus-stack"]), "version") ? var.chart_configs["prometheus"]["version"] : "55.1.0"
+  version               = contains(keys(var.chart_configs["kube-prometheus-stack"]), "version") ? var.chart_configs["prometheus"]["version"] : "59.0.0"
   namespace             = "kube-prometheus-stack"
   create_namespace      = true
   reuse_values          = false
@@ -597,7 +597,7 @@ resource "helm_release" "secret_agent" {
   name                  = "secret-agent"
   repository            = contains(keys(var.chart_configs["secret-agent"]), "repository") ? var.chart_configs["secret-agent"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "secret-agent"
-  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.0"
+  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.2"
   namespace             = "secret-agent"
   create_namespace      = true
   reuse_values          = false

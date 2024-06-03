@@ -329,7 +329,7 @@ module "iam_assumable_role_admin" {
   for_each         = local.iam_policies
 
   source           = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version          = "~> 5.32"
+  version          = "~> 5.39"
 
   create_role      = true
   role_name_prefix = substr("${local.cluster_name}-${each.key}", 0, 32)
