@@ -26,7 +26,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -140,11 +140,11 @@ clusters = {
     helm = {
       external-dns = {
         deploy = true
-        #values  = <<-EOF
+        values  = <<-EOF
         # Values from tfvars configuration
         #google:
         #  project: <alt_google_cloud_dns_project>
-        #EOF
+        EOF
       },
       cert-manager = {
         deploy = true
@@ -154,6 +154,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -246,7 +254,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -360,11 +368,11 @@ clusters = {
     helm = {
       external-dns = {
         deploy = true
-        #values  = <<-EOF
+        values  = <<-EOF
         # Values from tfvars configuration
         #google:
         #  project: <alt_google_cloud_dns_project>
-        #EOF
+        EOF
       },
       cert-manager = {
         deploy = true
@@ -374,6 +382,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -466,7 +482,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -580,11 +596,11 @@ clusters = {
     helm = {
       external-dns = {
         deploy = true
-        #values  = <<-EOF
+        values  = <<-EOF
         # Values from tfvars configuration
         #google:
         #  project: <alt_google_cloud_dns_project>
-        #EOF
+        EOF
       },
       cert-manager = {
         deploy = true
@@ -594,6 +610,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -686,7 +710,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -772,6 +796,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -864,7 +896,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -950,6 +982,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -1042,7 +1082,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -1128,6 +1168,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -1218,7 +1266,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -1306,6 +1354,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -1396,7 +1452,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -1484,6 +1540,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false
@@ -1574,7 +1638,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.29"
+      kubernetes_version = "1.30"
     }
 
     location = {
@@ -1662,6 +1726,14 @@ clusters = {
       },
       haproxy-ingress = {
         deploy = false
+      },
+      intezer = {
+        deploy = false
+        values  = <<-EOF
+        # Values from tfvars configuration
+        sensorConfig:
+          license_key: # A license key is required
+        EOF
       },
       kube-prometheus-stack = {
         deploy = false

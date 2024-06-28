@@ -240,6 +240,11 @@ module "helm" {
           omitClusterIP: true
       EOF
     },
+    "intezer" = {
+      "values" = <<-EOF
+      # Values from terraform EKS module
+      EOF
+    },
     "cert-manager" = {
       "values" = <<-EOF
       # Values from terraform EKS module

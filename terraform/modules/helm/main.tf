@@ -85,6 +85,37 @@ resource "helm_release" "external_secrets" {
 }
 
 locals {
+  deploy_intezer = contains(keys(var.charts), "intezer") && contains(keys(var.chart_configs), "intezer") ? (var.chart_configs["intezer"]["deploy"] ? true : false) : false
+  values_intezer = <<-EOF
+  # Values from terraform helm module
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
+  EOF
+}
+
+resource "helm_release" "intezer" {
+  count = local.deploy_intezer ? 1 : 0
+
+  name                  = "intezer"
+  repository            = contains(keys(var.chart_configs["intezer"]), "repository") ? var.chart_configs["intezer"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
+  chart                 = "intezer"
+  version               = contains(keys(var.chart_configs["identity-platform"]), "version") ? var.chart_configs["identity-platform"]["version"] : "7.1.6"
+  namespace             = "intezer"
+  create_namespace      = true
+  reuse_values          = false
+  reset_values          = true
+  max_history           = 12
+  render_subchart_notes = false
+  timeout               = 600
+
+  values = [local.values_intezer, var.charts["intezer"]["values"], contains(keys(var.chart_configs), "intezer") ? (contains(keys(var.chart_configs["intezer"]), "values") ? var.chart_configs["intezer"]["values"] : "") : ""]
+
+  depends_on = []
+}
+
+locals {
   deploy_external_dns = contains(keys(var.charts), "external-dns") && contains(keys(var.chart_configs), "external-dns") ? (var.chart_configs["external-dns"]["deploy"] ? true : false) : false
   values_external_dns = <<-EOF
   # Values from terraform helm module

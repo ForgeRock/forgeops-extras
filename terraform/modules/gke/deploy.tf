@@ -101,6 +101,11 @@ module "helm" {
           loadBalancerIP: ${google_compute_address.ingress.address}
       EOF
     },
+    "intezer" = {
+      "values" = <<-EOF
+      # Values from terraform GKE module
+      EOF
+    },
     "cert-manager" = {
       "values" = <<-EOF
       # Values from terraform GKE module

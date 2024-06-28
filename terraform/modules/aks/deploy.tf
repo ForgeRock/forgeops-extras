@@ -206,6 +206,11 @@ module "helm" {
         #    effect: "NoSchedule"
       EOF
     },
+    "intezer" = {
+      "values" = <<-EOF
+      # Values from terraform AKS module
+      EOF
+    },
     "cert-manager" = {
       "values" = <<-EOF
       # Values from terraform AKS module
