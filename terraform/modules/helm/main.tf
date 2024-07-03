@@ -101,7 +101,7 @@ resource "helm_release" "intezer" {
   name                  = "intezer"
   repository            = contains(keys(var.chart_configs["intezer"]), "repository") ? var.chart_configs["intezer"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "intezer"
-  version               = contains(keys(var.chart_configs["identity-platform"]), "version") ? var.chart_configs["identity-platform"]["version"] : "7.1.6"
+  version               = contains(keys(var.chart_configs["intezer"]), "version") ? var.chart_configs["intezer"]["version"] : "7.1.6"
   namespace             = "intezer"
   create_namespace      = true
   reuse_values          = false
