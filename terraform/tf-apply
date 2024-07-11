@@ -1,7 +1,13 @@
 #!/bin/bash
 
 terraform_dir=$(dirname $0)
-terraform_bin=$(type -p terraform)
+
+if [ -z "${TERRAFORM_BIN}" ] ; then
+    terraform_bin=$(type -p terraform)
+else
+    terraform_bin=${TERRAFORM_BIN}
+fi
+
 if [ -z "$terraform_bin" ]; then
     echo "Could not find terraform binary in PATH.  Exiting."
     exit 1
