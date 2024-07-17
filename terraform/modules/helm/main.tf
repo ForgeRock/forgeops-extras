@@ -378,7 +378,7 @@ locals {
           server: https://acme-v02.api.letsencrypt.org/directory
           #server: https://acme-staging-v02.api.letsencrypt.org/directory
           # Email address used for ACME registration.
-          email: forgeops-team@forgerock.com
+          email: forgeops-team@pingidentity.com
           # Name of a secret used to store the ACME account private key.
           privateKeySecretRef:
             name: letsencrypt-default
@@ -401,7 +401,7 @@ locals {
           # The ACME server URL.
           server: https://acme-v02.api.letsencrypt.org/directory
           # Email address used for ACME registration.
-          email: forgeops-team@forgerock.com
+          email: forgeops-team@pingidentity.com
           # Name of a secret used to store the ACME account private key.
           privateKeySecretRef:
             name: letsencrypt-production
@@ -424,7 +424,7 @@ locals {
           # The ACME server URL.
           server: https://acme-staging-v02.api.letsencrypt.org/directory
           # Email address used for ACME registration.
-          email: forgeops-team@forgerock.com
+          email: forgeops-team@pingidentity.com
           # Name of a secret used to store the ACME account private key.
           privateKeySecretRef:
             name: letsencrypt-staging
