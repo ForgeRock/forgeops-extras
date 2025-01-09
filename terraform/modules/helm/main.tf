@@ -661,7 +661,7 @@ resource "helm_release" "identity_platform" {
   count = local.deploy_identity_platform ? 1 : 0
 
   name                  = "identity-platform"
-  repository            = contains(keys(var.chart_configs["identity-platform"]), "repository") ? var.chart_configs["identity-platform"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
+  repository            = contains(keys(var.chart_configs["identity-platform"]), "repository") ? var.chart_configs["identity-platform"]["repository"] : "https://ForgeRock.github.io/forgeops/"
   chart                 = "identity-platform"
   version               = contains(keys(var.chart_configs["identity-platform"]), "version") ? var.chart_configs["identity-platform"]["version"] : null
   namespace             = "identity-platform"
