@@ -8,7 +8,7 @@
 # such software or services to legal entities who have entered into a
 # binding license agreement with Ping Identity Corporation.
 #
-FROM azul/zulu-openjdk-debian:17 AS JDK
+FROM azul/zulu-openjdk-debian:21 AS JDK
 RUN   apt-get update && apt-get install -y binutils wget \
       && jlink --compress=2 \
           --no-header-files \
@@ -16,8 +16,8 @@ RUN   apt-get update && apt-get install -y binutils wget \
           --strip-debug \
           --add-modules ALL-MODULE-PATH \
           --output /opt/jdk \
-   && cp /usr/lib/jvm/zulu17/bin/jstack /opt/jdk/bin \
-   && cp /usr/lib/jvm/zulu17/bin/jps /opt/jdk/bin \
+   && cp /usr/lib/jvm/zulu21/bin/jstack /opt/jdk/bin \
+   && cp /usr/lib/jvm/zulu21/bin/jps /opt/jdk/bin \
    && strip -p --strip-unneeded /opt/jdk/lib/server/libjvm.so
 
 # This installs the GCP stack driver profiler. Adds approx 8MB
@@ -36,7 +36,7 @@ RUN mkdir -p /opt/async-profiler && \
 FROM debian:bullseye-slim
 
 COPY --from=JDK /opt /opt
-COPY Dockerfile /Dockerfile.java-17
+COPY Dockerfile /Dockerfile.java-21
 
 # Add in ca-certificates needed for uploads to google cloud storage.
 RUN adduser --home "/home/forgerock" -uid 11111 --gid 0 forgerock --disabled-password --gecos "forgerock user" && \
