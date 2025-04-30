@@ -1,21 +1,19 @@
-# Base Java Image for ForgeRock Identity Platform. Used for DS, amster, IGx and IDM (Anything that does not need a web
+# Base Java Image for ForgeRock Identity Platform. Used for DS, amster, IG and IDM (Anything that does not need a web
 # container)
 #
-# Copyright 2019-2023 ForgeRock AS. All Rights Reserved
+# Copyright 2019-2024 Ping Identity Corporation. All Rights Reserved
 #
-# Use of this code requires a commercial software license with ForgeRock AS.
-# or with one of its affiliates. All use shall be exclusively subject
-# to such license between the licensee and ForgeRock AS.
+# This code is to be used exclusively in connection with Ping Identity
+# Corporation software or services. Ping Identity Corporation only offers
+# such software or services to legal entities who have entered into a
+# binding license agreement with Ping Identity Corporation.
 #
 FROM azul/zulu-openjdk-debian:11-latest
 RUN jlink --compress=2 \
           --no-header-files \
           --no-man-pages \
           --strip-debug \
-          --add-modules java.base,java.compiler,java.desktop,java.instrument,java.management.rmi,java.prefs,java.security.jgss,\
-java.security.sasl,java.sql,jdk.security.auth,jdk.unsupported,java.datatransfer,java.logging,java.naming,java.rmi,java.scripting,\
-java.sql.rowset,java.transaction.xa,java.xml,java.xml.crypto,jdk.xml.dom,\
-jdk.crypto.ec,jdk.crypto.cryptoki,jdk.jfr,jdk.jcmd,jdk.jdwp.agent,jdk.naming.dns,jdk.zipfs,jdk.management.agent \
+          --add-modules ALL-MODULE-PATH \
           --output /opt/jdk \
    && cp /usr/bin/jstack /opt/jdk/bin \
    && cp /usr/bin/jps /opt/jdk/bin \
@@ -36,9 +34,8 @@ RUN mkdir -p /opt/async-profiler && \
 
 
 FROM debian:buster-slim
-# TODO: Upgrade to bullseye whehn pipeline is stable
+# TODO: Upgrade to bullseye when pipeline is stable
 # FROM debian:bullseye-slim
-
 
 COPY --from=0 /opt /opt
 COPY Dockerfile /Dockerfile.java-11
