@@ -26,7 +26,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -254,7 +254,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -482,7 +482,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -710,7 +710,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
@@ -896,7 +896,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
@@ -1082,7 +1082,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
@@ -1266,7 +1266,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
@@ -1452,7 +1452,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
@@ -1638,7 +1638,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.30"
+      kubernetes_version = "1.32"
     }
 
     location = {
