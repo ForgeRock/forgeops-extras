@@ -178,6 +178,9 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
+      secret-generator = {
+        deploy = false
+      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "2025.1.1"
@@ -404,6 +407,9 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      secret-generator = {
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -634,6 +640,9 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
+      secret-generator = {
+        deploy = false
+      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "2025.1.1"
@@ -818,6 +827,9 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      secret-generator = {
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -1006,6 +1018,9 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
+      secret-generator = {
+        deploy = false
+      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "2025.1.1"
@@ -1190,6 +1205,9 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      secret-generator = {
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
@@ -1378,6 +1396,9 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
+      secret-generator = {
+        deploy = false
+      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "2025.1.1"
@@ -1564,6 +1585,9 @@ clusters = {
       secret-agent = { # Technology preview, not supported
         deploy = false
       },
+      secret-generator = {
+        deploy = false
+      },
       identity-platform = { # Technology preview, not supported
         deploy  = false
         version = "2025.1.1"
@@ -1748,6 +1772,9 @@ clusters = {
         deploy = false
       },
       secret-agent = { # Technology preview, not supported
+        deploy = false
+      },
+      secret-generator = {
         deploy = false
       },
       identity-platform = { # Technology preview, not supported
