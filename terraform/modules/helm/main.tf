@@ -463,6 +463,32 @@ resource "helm_release" "raw_cert_manager" {
 }
 
 locals {
+  deploy_secret_generator = contains(keys(var.charts), "secret-generator") && contains(keys(var.chart_configs), "secret-generator") ? (var.chart_configs["secret-generator"]["deploy"] ? true : false) : false
+  values_secret_generator = <<-EOF
+  secretLength: 26
+  EOF
+}
+
+resource "helm_release" "secret_generator" {
+  count = local.deploy_secret_generator ? 1 : 0
+
+  name                  = "secret-generator"
+  repository            = "https://helm.mittwald.de"
+  chart                 = "secret-generator"
+  version               = contains(keys(var.chart_configs["secret-generator"]), "version") ? var.chart_configs["secret-generator"]["version"] : "v3.4.0"
+  namespace             = "secret-generator"
+  create_namespace      = true
+  reuse_values          = false
+  reset_values          = true
+  max_history           = 12
+  render_subchart_notes = false
+  timeout               = 600
+
+  values = [local.values_secret_generator, var.charts["secret-generator"]["values"], contains(keys(var.chart_configs), "secret-generator") ? (contains(keys(var.chart_configs["secret-generator"]), "values") ? var.chart_configs["secret-generator"]["values"] : "") : ""]
+
+  depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns, helm_release.cert_manager]
+}
+locals {
   deploy_kube_prometheus_stack = contains(keys(var.charts), "kube-prometheus-stack") && contains(keys(var.chart_configs), "kube-prometheus-stack") ? (var.chart_configs["kube-prometheus-stack"]["deploy"] ? true : false) : false
   values_kube_prometheus_stack = <<-EOF
   # Values from terraform helm module
