@@ -293,6 +293,11 @@ EOF
       # Values from terraform AKS module
       EOF
     },
+    "secret-generator" = {
+      "values" = <<-EOF
+      # Values from terraform AKS module
+      EOF
+    },
     "identity-platform" = {
       "values" = <<-EOF
       # Values from terraform AKS module
