@@ -111,11 +111,6 @@ module "helm" {
       # Values from terraform GKE module
       EOF
     },
-    #"trust-manager" = {
-    #  "values" = <<-EOF
-    #  # Values from terraform GKE module
-    #  EOF
-    #},
     "kube-prometheus-stack" = {
       "values" = <<-EOF
       # Values from terraform GKE module
@@ -180,6 +175,11 @@ EOF
       EOF
   },
   "secret-agent" = {
+    "values" = <<-EOF
+      # Values from terraform GKE module
+      EOF
+  },
+  "secret-generator" = {
     "values" = <<-EOF
       # Values from terraform GKE module
       EOF
