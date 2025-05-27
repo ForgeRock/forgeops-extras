@@ -179,7 +179,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -410,7 +410,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -641,7 +641,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -830,7 +830,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -1019,7 +1019,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -1208,7 +1208,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -1397,7 +1397,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -1586,7 +1586,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
@@ -1775,7 +1775,7 @@ clusters = {
         deploy = false
       },
       secret-generator = {
-        deploy = false
+        deploy = true
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
