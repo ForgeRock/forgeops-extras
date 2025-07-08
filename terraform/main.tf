@@ -24,15 +24,12 @@ resource "local_file" "clusters" {
     client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
     client_key             = module.${key}.kube_config["client_key"]
     token                  = module.${key}.kube_config["token"]
-    experiments {
-      manifest_resource = true
-    }
   }
 
   provider "helm" {
     alias = "${key}"
 
-    kubernetes {
+    kubernetes = {
       host                   = module.${key}.kube_config["host"]
       cluster_ca_certificate = base64decode(module.${key}.kube_config["cluster_ca_certificate"])
       client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
@@ -78,15 +75,12 @@ resource "local_file" "clusters" {
     client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
     client_key             = module.${key}.kube_config["client_key"]
     token                  = module.${key}.kube_config["token"]
-    experiments {
-      manifest_resource = true
-    }
   }
 
   provider "helm" {
     alias = "${key}"
 
-    kubernetes {
+    kubernetes = {
       host                   = module.${key}.kube_config["host"]
       cluster_ca_certificate = base64decode(module.${key}.kube_config["cluster_ca_certificate"])
       client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
@@ -136,15 +130,12 @@ resource "local_file" "clusters" {
     client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
     client_key             = base64decode(module.${key}.kube_config["client_key"])
     token                  = module.${key}.kube_config["token"]
-    experiments {
-      manifest_resource = true
-    }
   }
 
   provider "helm" {
     alias = "${key}"
 
-    kubernetes {
+    kubernetes = {
       host                   = module.${key}.kube_config["host"]
       cluster_ca_certificate = base64decode(module.${key}.kube_config["cluster_ca_certificate"])
       client_certificate     = base64decode(module.${key}.kube_config["client_certificate"])
