@@ -213,7 +213,6 @@ module "eks" {
     for pool_name, pool in var.cluster["node_pools"]:
       pool_name => {
         name = pool_name
-        use_custom_launch_template = false
 
         instance_types = [pool.type]
         subnet_ids = lookup(pool.meta, "zones", null) == null ? module.vpc.private_subnets : [
