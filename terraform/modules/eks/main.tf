@@ -200,7 +200,7 @@ module "eks" {
     ami_type = "BOTTLEROCKET_x86_64"
 
     use_custom_launch_template            = true
-    attach_cluster_primary_security_group = true
+    attach_cluster_primary_security_group = false
 
     iam_role_additional_policies = {
       AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"

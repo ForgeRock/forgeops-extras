@@ -276,6 +276,8 @@ locals {
       namespace: cert-manager
 
   installCRDs: true
+  crds:
+    enabled: true
 
   featureGates: "LiteralCertificateSubject=true,ExperimentalCertificateSigningRequestControllers=true"
 
@@ -330,38 +332,6 @@ resource "helm_release" "cert_manager" {
   values = [local.values_cert_manager, var.charts["cert-manager"]["values"], contains(keys(var.chart_configs), "cert-manager") ? (contains(keys(var.chart_configs["cert-manager"]), "values") ? var.chart_configs["cert-manager"]["values"] : "") : ""]
 
   depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns]
-}
-
-locals {
-  deploy_trust_manager = contains(keys(var.charts), "trust-manager") && contains(keys(var.chart_configs), "trust-manager") ? (var.chart_configs["trust-manager"]["deploy"] ? true : false) : false
-  values_trust_manager = <<-EOF
-  # Values from terraform helm module
-  tolerations:  # Ignore any arch taints
-    - key: kubernetes.io/arch
-      operator: Exists
-      effect: NoSchedule
-
-  EOF
-}
-
-resource "helm_release" "trust_manager" {
-  count = local.deploy_trust_manager ? 1 : 0
-
-  name                  = "trust-manager"
-  repository            = "https://charts.jetstack.io"
-  chart                 = "trust-manager"
-  version               = contains(keys(var.chart_configs["trust-manager"]), "version") ? var.chart_configs["trust-manager"]["version"] : "v0.10.0"
-  namespace             = "cert-manager"
-  create_namespace      = true
-  reuse_values          = false
-  reset_values          = true
-  max_history           = 12
-  render_subchart_notes = false
-  timeout               = 600
-
-  values = [local.values_trust_manager, var.charts["trust-manager"]["values"], contains(keys(var.chart_configs), "trust-manager") ? (contains(keys(var.chart_configs["trust-manager"]), "values") ? var.chart_configs["trust-manager"]["values"] : "") : ""]
-
-  depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns, helm_release.cert_manager]
 }
 
 locals {
@@ -462,6 +432,32 @@ resource "helm_release" "raw_cert_manager" {
   depends_on = [helm_release.cert_manager]
 }
 
+locals {
+  deploy_secret_generator = contains(keys(var.charts), "secret-generator") && contains(keys(var.chart_configs), "secret-generator") ? (var.chart_configs["secret-generator"]["deploy"] ? true : false) : false
+  values_secret_generator = <<-EOF
+  secretLength: 26
+  EOF
+}
+
+resource "helm_release" "secret_generator" {
+  count = local.deploy_secret_generator ? 1 : 0
+
+  name                  = "secret-generator"
+  repository            = "https://helm.mittwald.de"
+  chart                 = "kubernetes-secret-generator"
+  version               = contains(keys(var.chart_configs["secret-generator"]), "version") ? var.chart_configs["secret-generator"]["version"] : "v3.4.1"
+  namespace             = "secret-generator"
+  create_namespace      = true
+  reuse_values          = false
+  reset_values          = true
+  max_history           = 12
+  render_subchart_notes = false
+  timeout               = 600
+
+  values = [local.values_secret_generator, var.charts["secret-generator"]["values"], contains(keys(var.chart_configs), "secret-generator") ? (contains(keys(var.chart_configs["secret-generator"]), "values") ? var.chart_configs["secret-generator"]["values"] : "") : ""]
+
+  depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns, helm_release.cert_manager]
+}
 locals {
   deploy_kube_prometheus_stack = contains(keys(var.charts), "kube-prometheus-stack") && contains(keys(var.chart_configs), "kube-prometheus-stack") ? (var.chart_configs["kube-prometheus-stack"]["deploy"] ? true : false) : false
   values_kube_prometheus_stack = <<-EOF
@@ -608,7 +604,7 @@ resource "helm_release" "raw_k8s_resources" {
 
   values = [local.values_raw_k8s_resources, var.charts["raw-k8s-resources"]["values"]]
 
-  depends_on = [helm_release.metrics_server, helm_release.external_secrets, helm_release.external_dns, helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.cert_manager, helm_release.raw_cert_manager, helm_release.trust_manager, helm_release.kube_prometheus_stack, helm_release.elasticsearch, helm_release.logstash, helm_release.kibana]
+  depends_on = [helm_release.metrics_server, helm_release.external_secrets, helm_release.external_dns, helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.cert_manager, helm_release.raw_cert_manager, helm_release.kube_prometheus_stack, helm_release.elasticsearch, helm_release.logstash, helm_release.kibana]
 }
 
 locals {
@@ -675,5 +671,5 @@ resource "helm_release" "identity_platform" {
 
   values = [local.values_identity_platform, var.charts["identity-platform"]["values"], contains(keys(var.chart_configs), "identity-platform") ? (contains(keys(var.chart_configs["identity-platform"]), "values") ? var.chart_configs["identity-platform"]["values"] : "") : ""]
 
-  depends_on = [helm_release.raw_k8s_resources, helm_release.secret_agent]
+  depends_on = [helm_release.raw_k8s_resources, helm_release.secret_agent, helm_release.secret_generator]
 }
