@@ -183,7 +183,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -414,7 +414,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -645,7 +645,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -834,7 +834,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1023,7 +1023,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1212,7 +1212,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1401,7 +1401,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1590,7 +1590,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:
@@ -1779,7 +1779,7 @@ clusters = {
       },
       identity-platform = { # Technology preview, not supported
         deploy  = false
-        version = "2025.1.1"
+        version = "2025.1.2"
         values  = <<-EOF
         # Values from tfvars configuration
         #platform:

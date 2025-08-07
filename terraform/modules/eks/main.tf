@@ -45,15 +45,22 @@ resource "terraform_data" "aws_availability_zones_available" {
   }
 }
 
+locals {
+  azs = data.aws_availability_zones.available.names
+  cidr = "10.0.0.0/16"
+}
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.8"
+  version = "~> 5.21"
 
   name = "${local.cluster_name}-vpc"
-  cidr = "10.0.0.0/16"
-  azs = data.aws_availability_zones.available.names
-  public_subnets = length(data.aws_availability_zones.available.names) > 2 ? ["10.0.0.0/19", "10.0.32.0/19", "10.0.64.0/19", "10.0.96.0/19"] : ["10.0.0.0/18", "10.0.64.0/18"]
-  private_subnets = length(data.aws_availability_zones.available.names) > 2 ? ["10.0.128.0/19", "10.0.160.0/19", "10.0.192.0/19", "10.0.224.0/19"] : ["10.0.128.0/18", "10.0.192.0/18"]
+  cidr = local.cidr
+  azs  = local.azs
+  private_subnets = [for k, v in local.azs : cidrsubnet(local.cidr, 4, k)]
+  public_subnets  = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k + 48)]
+  intra_subnets   = [for k, v in local.azs : cidrsubnet(local.cidr, 8, k + 52)]
+
   enable_dns_hostnames = true
   enable_dns_support = true
   enable_nat_gateway = true
@@ -109,7 +116,7 @@ locals {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 20.13"
+  version = "~> 20.37"
 
   cluster_name                   = local.cluster_name
   cluster_version                = var.cluster.meta.kubernetes_version
@@ -137,66 +144,63 @@ module "eks" {
     }
   }
 
+  cluster_security_group_name = local.cluster_name
+  cluster_security_group_description = "${local.cluster_name} cluster security group"
+
   cluster_security_group_additional_rules = {
-    ingress_nodes_ephemeral_ports_tcp = {
-      description                = "Allow cluster ingress access from the nodes."
-      protocol                   = "-1"
-      from_port                  = 0
-      to_port                    = 65535
-      type                       = "ingress"
-      source_node_security_group = true
+    egress_internet_all = {
+        description = "Allow cluster egress access to the Internet."
+        protocol = "-1"
+        from_port = 0
+        to_port = 65535
+        type = "egress"
+        cidr_blocks = ["0.0.0.0/0"]
     }
-    ingress_http = {
-      description                = "Remote host to control plane"
-      protocol                   = "tcp"
-      from_port                  = 80
-      to_port                    = 80
-      type                       = "ingress"
-      cidr_blocks                = ["0.0.0.0/0"]
-    }
-    ingress_https = {
-      description                = "Remote host to control plane"
-      protocol                   = "tcp"
-      from_port                  = 443
-      to_port                    = 443
-      type                       = "ingress"
-      cidr_blocks                = ["0.0.0.0/0"]
+    ingress_nodes_all = {
+        description = "Allow cluster ingress access from the nodes."
+        protocol = "-1"
+        from_port = 0
+        to_port = 65535
+        type = "ingress"
+        source_node_security_group = true
     }
   }
 
   node_security_group_additional_rules = {
-    egress_self_all = {
-      description = "Allow nodes to communicate with each other."
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 65535
-      type        = "egress"
-      self        = true
-    }
-    ingress_self_all = {
-      description = "Node to node all ports/protocols"
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 65535
-      type        = "ingress"
-      self        = true
-    }
     ingress_cluster_all = {
-      description = "Allow worker pods to receive communication from the cluster control plane."
-      protocol    = "-1"
-      from_port   = 0
-      to_port     = 65535
-      type        = "ingress"
-      source_cluster_security_group = true
-    }
+         description = "Allow workers pods to receive communication from the cluster control plane."
+         protocol = "-1"
+         from_port = 0
+         to_port = 65535
+         type = "ingress"
+         source_cluster_security_group = true
+     }
+     egress_self_all = {
+         description = "Allow nodes to communicate with each other."
+         protocol = "-1"
+         from_port = 0
+         to_port = 65535
+         type = "egress"
+         self = true
+     }
+     ingress_self_all = {
+         description = "Allow nodes to communicate with each other."
+         protocol = "-1"
+         from_port = 0
+         to_port = 65535
+         type = "ingress"
+         self = true
+     }
   }
 
   eks_managed_node_group_defaults = {
+    create_security_group = false
+
     platform = "bottlerocket"
     ami_type = "BOTTLEROCKET_x86_64"
 
-    use_custom_launch_template            = false
-    attach_cluster_primary_security_group = true
+    use_custom_launch_template            = true
+    attach_cluster_primary_security_group = false
 
     iam_role_additional_policies = {
       AmazonEC2ContainerRegistryReadOnly = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
@@ -209,7 +213,6 @@ module "eks" {
     for pool_name, pool in var.cluster["node_pools"]:
       pool_name => {
         name = pool_name
-        #use_custom_launch_template = false
 
         instance_types = [pool.type]
         subnet_ids = lookup(pool.meta, "zones", null) == null ? module.vpc.private_subnets : [
@@ -242,11 +245,22 @@ module "eks" {
             }
         ]
 
+        launch_template_tags = merge(
+          local.tags,
+          {
+            "k8s.io/cluster-autoscaler/enabled" = "true"
+            "k8s.io/cluster-autoscaler/${local.cluster_name}" = "owned"
+            "kubernetes.io/cluster/${local.cluster_name}" = "owned"
+            "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/instance-type" = pool.type
+            "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/arch" = contains(data.aws_ec2_instance_type.pools[pool_name].supported_architectures, "arm64") ? "arm64" : "amd64"
+          }
+        )
         tags = merge(
           local.tags,
           {
             "k8s.io/cluster-autoscaler/enabled" = "true"
             "k8s.io/cluster-autoscaler/${local.cluster_name}" = "owned"
+            "kubernetes.io/cluster/${local.cluster_name}" = "owned"
             "k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/instance-type" = pool.type
             "k8s.io/cluster-autoscaler/node-template/label/kubernetes.io/arch" = contains(data.aws_ec2_instance_type.pools[pool_name].supported_architectures, "arm64") ? "arm64" : "amd64"
           }
