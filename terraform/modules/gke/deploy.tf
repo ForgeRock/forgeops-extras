@@ -51,6 +51,7 @@ resource "google_service_account_iam_member" "external_dns_workload_identity_use
 resource "google_compute_address" "ingress" {
   name         = "${local.cluster_name}-${var.cluster.location.region}"
   address_type = "EXTERNAL"
+  network_tier = "PREMIUM"
 
   depends_on = [module.gke]
 }
