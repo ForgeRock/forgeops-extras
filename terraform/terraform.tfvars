@@ -1276,7 +1276,7 @@ clusters = {
 
     node_pools = {
       default = {
-        type          = "Standard_DS4_v2"
+        type          = "Standard_D8ps_v5"
         disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
@@ -1462,7 +1462,7 @@ clusters = {
 
     node_pools = {
       default = {
-        type          = "Standard_F32s_v2"
+        type          = "Standard_E32ps_v5"
         disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
@@ -1648,7 +1648,7 @@ clusters = {
 
     node_pools = {
       default = {
-        type          = "Standard_F32s_v2"
+        type          = "Standard_E32ps_v5"
         disk_size_gb  = 50
         initial_count = 3
         min_count     = 3
