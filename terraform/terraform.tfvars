@@ -15,6 +15,7 @@ forgerock = {
   es_zone         = null
 }
 
+# Only one backend may be enabled at a time.
 backends = {
   local = {
     enabled = true
