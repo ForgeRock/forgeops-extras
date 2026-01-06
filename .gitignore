@@ -32,8 +32,9 @@ override.tf.json
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
 
-# Ignore dynamically created clusters.tf
+# Ignore dynamically created *.tf files
 clusters.tf
+backend.tf
 
 # Ignore temporary vi files
 *.swp

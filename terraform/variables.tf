@@ -35,6 +35,24 @@ variable "forgerock" {
   }
 }
 
+variable "backends" {
+  description = "Backend settings"
+  type = map(object({
+    enabled = bool
+    type    = string
+    args = object({
+      path   = optional(string)
+      bucket = optional(string)
+      prefix = optional(string)
+      key    = optional(string)
+      region = optional(string)
+      access_key           = optional(string)
+      storage_account_name = optional(string)
+      container_name       = optional(string)
+    })
+  }))
+}
+
 variable "clusters" {
   description = "Cluster settings"
   type = map(object({
