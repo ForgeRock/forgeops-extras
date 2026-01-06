@@ -15,6 +15,43 @@ forgerock = {
   es_zone         = null
 }
 
+backends = {
+  local = {
+    enabled = true
+    type    = "local"
+    args = {
+      path = "terraform.tfstate"
+    }
+  }
+  gcs = {
+    enabled = false
+    type    = "gcs"
+    args = {
+      bucket = "tf-state"
+      prefix = "terraform/state"
+    }
+  }
+  s3 = {
+    enabled = false
+    type    = "s3"
+    args = {
+      bucket = "tf-state"
+      key    = "terraform/state"
+      region = "us-east-1"
+    }
+  }
+  azurerm = {
+    enabled = false
+    type    = "azurerm"
+    args = {
+      access_key           = null
+      storage_account_name = null
+      container_name       = "tfstate"
+      key                  = "terraform.tfstate"
+    }
+  }
+}
+
 clusters = {
   tf_cluster_gke_small = {
     enabled = false
