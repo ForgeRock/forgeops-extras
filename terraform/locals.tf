@@ -1,6 +1,10 @@
 # locals.tf - root module local variable definitions
 
 locals {
+  backends = {
+    for key in keys(var.backends):
+      key => var.backends[key] if var.backends[key].enabled == true
+  }
   clusters = {
     gke = {
       for key in keys(var.clusters):
