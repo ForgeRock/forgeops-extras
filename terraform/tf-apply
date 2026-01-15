@@ -16,8 +16,8 @@ terraform="$terraform_bin -chdir=$terraform_dir"
 
 set -e
 $terraform init -upgrade
-$terraform apply -target=null_resource.backend -auto-approve -compact-warnings -concise $*
-$terraform apply -target=null_resource.clusters -auto-approve -compact-warnings -concise $*
+$terraform apply -target=null_resource.backend -auto-approve -compact-warnings $*
+$terraform apply -target=null_resource.clusters -auto-approve -compact-warnings $*
 $terraform init -upgrade
 $terraform apply $*
 
