@@ -17,6 +17,10 @@ data "google_project" "cluster" {
 # google_client_config and kubernetes provider must be explicitly specified like the following.
 data "google_client_config" "default" {}
 
+resource "google_compute_project_default_network_tier" "default" {
+  network_tier = "PREMIUM"
+}
+
 locals {
   cluster_name = replace(var.cluster.meta.cluster_name, "<id>", random_id.cluster.hex)
   project      = trimprefix(data.google_project.cluster.id, "projects/")
@@ -30,7 +34,7 @@ locals {
 
 module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google"
-  version = "~> 30.3"
+  version = "~> 43.0"
 
   project_id = var.cluster.auth.project_id
   name       = local.cluster_name
@@ -40,11 +44,13 @@ module "gke" {
   #subnetwork                           = "${var.cluster.location.region}-01"
   network                              = "default"
   subnetwork                           = "default"
+  network_tier_config                  = "NETWORK_TIER_PREMIUM"
   ip_range_pods                        = null
   ip_range_services                    = null
   #ip_range_pods                        = "${var.cluster.location.region}-01-gke-01-pods"
   #ip_range_services                    = "${var.cluster.location.region}-01-gke-01-services"
-  http_load_balancing                  = false
+  #gateway_api_channel                  = "CHANNEL_STANDARD"
+  http_load_balancing                  = true
   network_policy                       = false
   horizontal_pod_autoscaling           = true
   filestore_csi_driver                 = true

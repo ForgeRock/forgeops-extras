@@ -182,14 +182,14 @@ module "helm" {
       txtOwnerId: "${local.cluster_name}.${var.cluster.location.region}"
       EOF
     },
-    "ingress-nginx" = {
+    "traefik" = {
       "values" = <<-EOF
       # Values from terraform AKS module
-      controller:
-        service:
-          loadBalancerIP: ${azurerm_public_ip.ingress.ip_address}
-          annotations:
-            service.beta.kubernetes.io/azure-load-balancer-resource-group: ${azurerm_resource_group.main.name}
+      service:
+        type: LoadBalancer
+        loadBalancerIP: ${azurerm_public_ip.ingress.ip_address}
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-resource-group: ${azurerm_resource_group.main.name}
       EOF
     },
     "haproxy-ingress" = {

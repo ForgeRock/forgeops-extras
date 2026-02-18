@@ -5,7 +5,7 @@ output "metadata" {
     "metrics-server"        = length(helm_release.metrics_server) > 0 ? helm_release.metrics_server[0].metadata : null,
     "external-secrets"      = length(helm_release.external_secrets) > 0 ? helm_release.external_secrets[0].metadata : null,
     "external-dns"          = length(helm_release.external_dns) > 0 ? helm_release.external_dns[0].metadata : null,
-    "ingress-nginx"         = length(helm_release.ingress_nginx) > 0 ? helm_release.ingress_nginx[0].metadata : null
+    "traefik      "         = length(helm_release.traefik) > 0 ? helm_release.traefik[0].metadata : null
     "haproxy-ingress"       = length(helm_release.haproxy_ingress) > 0 ? helm_release.haproxy_ingress[0].metadata : null
     "cert-manager"          = length(helm_release.cert_manager) > 0 ? helm_release.cert_manager[0].metadata : null
     "raw-cert-manager"      = length(helm_release.raw_cert_manager) > 0 ? helm_release.raw_cert_manager[0].metadata : null

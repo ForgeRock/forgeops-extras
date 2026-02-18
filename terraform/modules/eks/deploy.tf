@@ -202,19 +202,20 @@ module "helm" {
           eks.amazonaws.com/role-arn: "${module.iam_assumable_role_admin["external-dns"].iam_role_arn}"
       EOF
     },
-    "ingress-nginx" = {
+    "traefik" = {
       "values" = <<-EOF
-      # Values from terraform EKS module
-      controller:
-        service:
+      # Values from terraform GKE module
+      service:
+        type: LoadBalancer
+        spec:
           loadBalancerIP: ${aws_eip.ingress[0].public_ip}
-          annotations:
-            service.beta.kubernetes.io/aws-load-balancer-type: external
-            #service.beta.kubernetes.io/aws-load-balancer-type: nlb
-            service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
-            service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-            service.beta.kubernetes.io/aws-load-balancer-eip-allocations: ${join(",", aws_eip.ingress.*.id)}
-            service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: cluster=${local.cluster_name}
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-type: external
+          #service.beta.kubernetes.io/aws-load-balancer-type: nlb
+          service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          service.beta.kubernetes.io/aws-load-balancer-eip-allocations: ${join(",", aws_eip.ingress.*.id)}
+          service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: cluster=${local.cluster_name}
       EOF
     },
     "haproxy-ingress" = {

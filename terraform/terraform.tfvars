@@ -187,7 +187,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -418,7 +418,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -649,7 +649,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -838,7 +838,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1027,7 +1027,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1216,7 +1216,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1405,7 +1405,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1594,7 +1594,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1783,7 +1783,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {

@@ -4,7 +4,7 @@ terraform {
   required_version = "~> 1.4"
 
   required_providers {
-    google     = "~> 5.31"
+    google     = "~> 7.17"
     aws        = "~> 5.100"
     azurerm     = "~> 3.105"
 
