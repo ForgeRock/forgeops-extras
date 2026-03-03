@@ -169,6 +169,8 @@ locals {
   deploy_traefik = contains(keys(var.charts), "traefik") && contains(keys(var.chart_configs), "traefik") ? (var.chart_configs["traefik"]["deploy"] ? true : false) : false
   values_traefik = <<-EOF
   # Values from terraform helm module
+  deployment:
+    replicas: 2
   ingressClass:
     enabled: true
   #  isDefaultClass: true

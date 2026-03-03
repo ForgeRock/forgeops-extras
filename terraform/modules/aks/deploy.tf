@@ -187,7 +187,8 @@ module "helm" {
       # Values from terraform AKS module
       service:
         type: LoadBalancer
-        loadBalancerIP: ${azurerm_public_ip.ingress.ip_address}
+        spec:
+          loadBalancerIP: ${azurerm_public_ip.ingress.ip_address}
         annotations:
           service.beta.kubernetes.io/azure-load-balancer-resource-group: ${azurerm_resource_group.main.name}
       EOF
