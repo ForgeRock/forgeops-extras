@@ -119,13 +119,19 @@ locals {
   deploy_external_dns = contains(keys(var.charts), "external-dns") && contains(keys(var.chart_configs), "external-dns") ? (var.chart_configs["external-dns"]["deploy"] ? true : false) : false
   values_external_dns = <<-EOF
   # Values from terraform helm module
+  global:
+    security:
+      allowInsecureImages: true
+
   image:
     registry: us.gcr.io
     repository: k8s-artifacts-prod/external-dns/external-dns
-    tag: v0.12.2
+    tag: v0.13.4
+    #tag: v0.12.2
 
   sources:
     - ingress
+    #- gateway-httproute
 
   dryRun: false
 
@@ -146,7 +152,7 @@ resource "helm_release" "external_dns" {
   name                  = "external-dns"
   repository            = contains(keys(var.chart_configs["external-dns"]), "repository") ? var.chart_configs["external-dns"]["repository"] : "https://charts.bitnami.com/bitnami"
   chart                 = "external-dns"
-  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "7.5.2"
+  version               = contains(keys(var.chart_configs["external-dns"]), "version") ? var.chart_configs["external-dns"]["version"] : "9.0.3"
   namespace             = "external-dns"
   create_namespace      = true
   reuse_values          = false
@@ -161,50 +167,68 @@ resource "helm_release" "external_dns" {
 }
 
 locals {
-  deploy_ingress_nginx = contains(keys(var.charts), "ingress-nginx") && contains(keys(var.chart_configs), "ingress-nginx") ? (var.chart_configs["ingress-nginx"]["deploy"] ? true : false) : false
-  values_ingress_nginx = <<-EOF
+  deploy_traefik = contains(keys(var.charts), "traefik") && contains(keys(var.chart_configs), "traefik") ? (var.chart_configs["traefik"]["deploy"] ? true : false) : false
+  values_traefik = <<-EOF
   # Values from terraform helm module
-  controller:
-    kind: Deployment
-    replicaCount: 2
-    service:
-      type: LoadBalancer
-      externalTrafficPolicy: Local
-      omitClusterIP: true
-    publishService:
+  deployment:
+    replicas: 2
+  ingressClass:
+    enabled: true
+  #  isDefaultClass: true
+  ingressRoute:
+    dashboard:
+      enabled: false
+  providers:
+    kubernetesIngressNginx:
       enabled: true
-    stats:
+      ingressClassByName: true
+      publishService:
+        enabled: true
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+    kubernetesGateway:
       enabled: true
-      service:
-        omitClusterIP: true
-    tolerations:  # Ignore any arch taints
-      - key: kubernetes.io/arch
-        operator: Exists
-        effect: NoSchedule
-    admissionWebhooks:
-      patch:
-        tolerations:  # Ignore any arch taints
-          - key: kubernetes.io/arch
-            operator: Exists
-            effect: NoSchedule
-    allowSnippetAnnotations: true
-
-  defaultBackend:
-    tolerations:  # Ignore any arch taints
-      - key: kubernetes.io/arch
-        operator: Exists
-        effect: NoSchedule
+  #additionalArguments:
+  #  - "--serverstransport.insecureskipverify=true"
+  ports:
+    websecure:
+      #asDefault: true
+      appProtocol: HTTPS
+  gateway:
+    enabled: false
+  tolerations:  # Ignore any arch taints
+    - key: kubernetes.io/arch
+      operator: Exists
+      effect: NoSchedule
   EOF
 }
 
-resource "helm_release" "ingress_nginx" {
-  count = local.deploy_ingress_nginx ? 1 : 0
+resource "kubernetes_ingress_class" "nginx" {
+  count = local.deploy_traefik ? 1 : 0
+  metadata {
+    name = "nginx"
+    labels = {
+      "app.kubernetes.io/component" = "controller",
+      "app.kubernetes.io/managed-by" = "Terraform",
+      "app.kubernetes.io/name" = "traefik",
+      "app.kubernetes.io/part-of" = "traefik"
+    }
+  }
 
-  name                  = "ingress-nginx"
-  repository            = contains(keys(var.chart_configs["ingress-nginx"]), "repository") ? var.chart_configs["ingress-nginx"]["repository"] : "https://kubernetes.github.io/ingress-nginx"
-  chart                 = "ingress-nginx"
-  version               = contains(keys(var.chart_configs["ingress-nginx"]), "version") ? var.chart_configs["ingress-nginx"]["version"] : "4.14.0"
-  namespace             = "ingress-nginx"
+  spec {
+    controller = "traefik.io/ingress-controller"
+  }
+}
+
+resource "helm_release" "traefik" {
+  count = local.deploy_traefik ? 1 : 0
+
+  name                  = "traefik"
+  repository            = contains(keys(var.chart_configs["traefik"]), "repository") ? var.chart_configs["traefik"]["repository"] : "https://traefik.github.io/charts"
+  chart                 = "traefik"
+  version               = contains(keys(var.chart_configs["traefik"]), "version") ? var.chart_configs["traefik"]["version"] : "39.0.1"
+  namespace             = "traefik"
   create_namespace      = true
   reuse_values          = false
   reset_values          = true
@@ -212,9 +236,9 @@ resource "helm_release" "ingress_nginx" {
   render_subchart_notes = false
   timeout               = 600
 
-  values = [local.values_ingress_nginx, var.charts["ingress-nginx"]["values"], contains(keys(var.chart_configs), "ingress-nginx") ? (contains(keys(var.chart_configs["ingress-nginx"]), "values") ? var.chart_configs["ingress-nginx"]["values"] : "") : ""]
+  values = [local.values_traefik, var.charts["traefik"]["values"], contains(keys(var.chart_configs), "traefik") ? (contains(keys(var.chart_configs["traefik"]), "values") ? var.chart_configs["traefik"]["values"] : "") : ""]
 
-  depends_on = [helm_release.external_dns]
+  depends_on = [kubernetes_ingress_class.nginx, helm_release.external_dns]
 }
 
 locals {
@@ -279,7 +303,12 @@ locals {
   crds:
     enabled: true
 
-  featureGates: "LiteralCertificateSubject=true,ExperimentalCertificateSigningRequestControllers=true"
+  config:
+    enableGatewayAPI: true
+    #featureGates:
+    #  ExperimentalGatewayAPISupport: true
+
+  featureGates: "LiteralCertificateSubject=true,ExperimentalCertificateSigningRequestControllers=true,ExperimentalGatewayAPISupport=true"
 
   ingressShim:
     defaultIssuerName: default-issuer
@@ -320,7 +349,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.14.5"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.20.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -331,7 +360,7 @@ resource "helm_release" "cert_manager" {
 
   values = [local.values_cert_manager, var.charts["cert-manager"]["values"], contains(keys(var.chart_configs), "cert-manager") ? (contains(keys(var.chart_configs["cert-manager"]), "values") ? var.chart_configs["cert-manager"]["values"] : "") : ""]
 
-  depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns]
+  depends_on = [helm_release.traefik, helm_release.haproxy_ingress, helm_release.external_dns]
 }
 
 locals {
@@ -456,7 +485,7 @@ resource "helm_release" "secret_generator" {
 
   values = [local.values_secret_generator, var.charts["secret-generator"]["values"], contains(keys(var.chart_configs), "secret-generator") ? (contains(keys(var.chart_configs["secret-generator"]), "values") ? var.chart_configs["secret-generator"]["values"] : "") : ""]
 
-  depends_on = [helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.external_dns, helm_release.cert_manager]
+  depends_on = [helm_release.traefik, helm_release.haproxy_ingress, helm_release.external_dns, helm_release.cert_manager]
 }
 locals {
   deploy_kube_prometheus_stack = contains(keys(var.charts), "kube-prometheus-stack") && contains(keys(var.chart_configs), "kube-prometheus-stack") ? (var.chart_configs["kube-prometheus-stack"]["deploy"] ? true : false) : false
@@ -604,7 +633,7 @@ resource "helm_release" "raw_k8s_resources" {
 
   values = [local.values_raw_k8s_resources, var.charts["raw-k8s-resources"]["values"]]
 
-  depends_on = [helm_release.metrics_server, helm_release.external_secrets, helm_release.external_dns, helm_release.ingress_nginx, helm_release.haproxy_ingress, helm_release.cert_manager, helm_release.raw_cert_manager, helm_release.kube_prometheus_stack, helm_release.elasticsearch, helm_release.logstash, helm_release.kibana]
+  depends_on = [helm_release.metrics_server, helm_release.external_secrets, helm_release.external_dns, helm_release.traefik, helm_release.haproxy_ingress, helm_release.cert_manager, helm_release.raw_cert_manager, helm_release.kube_prometheus_stack, helm_release.elasticsearch, helm_release.logstash, helm_release.kibana]
 }
 
 locals {
@@ -624,7 +653,7 @@ resource "helm_release" "secret_agent" {
   name                  = "secret-agent"
   repository            = contains(keys(var.chart_configs["secret-agent"]), "repository") ? var.chart_configs["secret-agent"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "secret-agent"
-  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.7"
+  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.8"
   namespace             = "secret-agent"
   create_namespace      = true
   reuse_values          = false
@@ -640,6 +669,7 @@ resource "helm_release" "secret_agent" {
 }
 
 locals {
+  #gatewayClassName = "traefik"
   ingressClass = contains(keys(var.charts), "haproxy-ingress") && contains(keys(var.chart_configs), "haproxy-ingress") ? (var.chart_configs["haproxy-ingress"]["deploy"] ? "haproxy" : "nginx") : "nginx"
 
   deploy_identity_platform = contains(keys(var.charts), "identity-platform") && contains(keys(var.chart_configs), "identity-platform") ? (var.chart_configs["identity-platform"]["deploy"] ? true : false) : false
@@ -648,6 +678,8 @@ locals {
   timestamp: "${timestamp()}"
 
   platform:
+    #gateway:
+    #  gatewayClassName: ${""}
     ingress:
       className: ${local.ingressClass}
   EOF

@@ -56,6 +56,14 @@ resource "google_compute_address" "ingress" {
   depends_on = [module.gke]
 }
 
+#resource "google_compute_address" "gateway" {
+#  name         = "${local.cluster_name}-${var.cluster.location.region}-gw"
+#  address_type = "EXTERNAL"
+#  network_tier = "PREMIUM"
+#
+#  depends_on = [module.gke]
+#}
+
 locals {
   deploy_identity_platform = contains(keys(var.cluster.helm), "identity-platform") ? tobool(lookup(var.cluster.helm["identity-platform"], "deploy", false)) : false
 }
@@ -86,11 +94,12 @@ module "helm" {
           iam.gke.io/gcp-service-account: "${google_service_account.external_dns.email}"
       EOF
     },
-    "ingress-nginx" = {
+    "traefik" = {
       "values" = <<-EOF
       # Values from terraform GKE module
-      controller:
-        service:
+      service:
+        type: LoadBalancer
+        spec:
           loadBalancerIP: ${google_compute_address.ingress.address}
       EOF
     },
@@ -192,6 +201,14 @@ EOF
         ingress:
           hosts:
             - identity-platform.${google_compute_address.ingress.address}.nip.io
+        #gateway:
+          #addresses:
+          #- type: IPAddress
+          #  value: {google_compute_address.gateway.address}
+          #- type: NamedAddress
+          #  value: ${local.cluster_name}-${var.cluster.location.region}-gw
+          #hostnames:
+          #  - identity-platform.{google_compute_address.gateway.address}.nip.io
         storage:
           storage_class:
             name: fast
@@ -207,5 +224,6 @@ EOF
   }
 }
 
+#depends_on = [module.gke, google_compute_address.ingress, google_compute_address.gateway]
 depends_on = [module.gke, google_compute_address.ingress]
 }

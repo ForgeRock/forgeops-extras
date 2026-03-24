@@ -64,7 +64,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -187,7 +187,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -295,7 +295,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -418,7 +418,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -526,7 +526,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
       release_channel    = "UNSPECIFIED" # "REGULAR"
 
       enable_monitoring = true
@@ -649,7 +649,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -757,7 +757,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -838,7 +838,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -946,7 +946,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -1027,7 +1027,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1135,7 +1135,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -1216,7 +1216,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1322,7 +1322,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -1405,7 +1405,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1511,7 +1511,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -1594,7 +1594,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
@@ -1700,7 +1700,7 @@ clusters = {
 
     meta = {
       cluster_name       = "tf-idp-<id>"
-      kubernetes_version = "1.32"
+      kubernetes_version = "1.34"
     }
 
     location = {
@@ -1783,7 +1783,7 @@ clusters = {
       cert-manager = {
         deploy = true
       },
-      ingress-nginx = {
+      traefik = {
         deploy = true
       },
       haproxy-ingress = {
