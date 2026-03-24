@@ -2,7 +2,7 @@
 
 terraform {
   required_providers {
-    azurerm = "~> 3.105"
+    azurerm = "~> 4.62"
 
     kubernetes = "~> 2.37"
     helm       = "~> 3.0"

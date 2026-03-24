@@ -127,10 +127,11 @@ locals {
     registry: us.gcr.io
     repository: k8s-artifacts-prod/external-dns/external-dns
     tag: v0.13.4
+    #tag: v0.12.2
 
   sources:
     - ingress
-    - gateway-httproute
+    #- gateway-httproute
 
   dryRun: false
 
@@ -348,7 +349,7 @@ resource "helm_release" "cert_manager" {
   name                  = "cert-manager"
   repository            = "https://charts.jetstack.io"
   chart                 = "cert-manager"
-  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.19.3"
+  version               = contains(keys(var.chart_configs["cert-manager"]), "version") ? var.chart_configs["cert-manager"]["version"] : "v1.20.0"
   namespace             = "cert-manager"
   create_namespace      = true
   reuse_values          = false
@@ -652,7 +653,7 @@ resource "helm_release" "secret_agent" {
   name                  = "secret-agent"
   repository            = contains(keys(var.chart_configs["secret-agent"]), "repository") ? var.chart_configs["secret-agent"]["repository"] : "oci://us-docker.pkg.dev/forgeops-public/charts"
   chart                 = "secret-agent"
-  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.7"
+  version               = contains(keys(var.chart_configs["secret-agent"]), "version") ? var.chart_configs["secret-agent"]["version"] : "v1.2.8"
   namespace             = "secret-agent"
   create_namespace      = true
   reuse_values          = false

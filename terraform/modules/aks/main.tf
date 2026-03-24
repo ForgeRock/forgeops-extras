@@ -90,7 +90,7 @@ resource "azurerm_kubernetes_cluster" "cluster" {
 
     vm_size             = local.default_node_pool.type
     os_disk_size_gb     = lookup(local.default_node_pool, "disk_size_gb", null) == null ? 50 : lookup(local.default_node_pool, "disk_size_gb", null)
-    enable_auto_scaling = true
+    auto_scaling_enabled = true
     node_count          = local.default_node_pool.initial_count
     min_count           = local.default_node_pool.min_count
     max_count           = local.default_node_pool.max_count
@@ -133,7 +133,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "extra" {
   os_type               = "Linux"
   os_disk_size_gb       = lookup(each.value, "disk_size_gb", null) == null ? 50 : lookup(each.value, "disk_size_gb", null)
 
-  enable_auto_scaling   = true
+  auto_scaling_enabled  = true
   node_count            = each.value.initial_count
   min_count             = each.value.min_count
   max_count             = each.value.max_count
