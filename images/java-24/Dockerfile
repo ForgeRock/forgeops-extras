@@ -1,28 +1,30 @@
 # Base Java Image for ForgeRock Identity Platform. Used for DS, amster, IG and IDM (Anything that does not need a web
 # container)
 #
-# Copyright 2019-2024 Ping Identity Corporation. All Rights Reserved
+# Copyright 2025 Ping Identity Corporation. All Rights Reserved
 #
 # This code is to be used exclusively in connection with Ping Identity
 # Corporation software or services. Ping Identity Corporation only offers
 # such software or services to legal entities who have entered into a
 # binding license agreement with Ping Identity Corporation.
 #
-FROM azul/zulu-openjdk-debian:21 AS JDK
+FROM azul/zulu-openjdk-debian:24 AS JDK
 RUN   apt-get update && apt-get install -y binutils \
-      && jlink --compress=2 \
-          --no-header-files \
-          --no-man-pages \
-          --strip-debug \
-          --add-modules ALL-MODULE-PATH \
-          --output /opt/jdk \
+   && jlink \
+      --no-header-files \
+      --no-man-pages \
+      --strip-debug \
+      --add-modules ALL-MODULE-PATH \
+      --module-path /usr/lib/jvm/zulu24/jmods \
+      --output /opt/jdk \
    && strip -p --strip-unneeded /opt/jdk/lib/server/libjvm.so
-
 
 FROM debian:bookworm-slim
 
-COPY --from=JDK /opt /opt
-COPY Dockerfile /Dockerfile.java-21
+RUN mkdir /opt/jdk
+
+COPY --from=JDK /opt/jdk /opt/jdk
+COPY Dockerfile /Dockerfile.java-24
 
 # Add in ca-certificates needed for uploads to google cloud storage.
 RUN adduser --home "/home/forgerock" -uid 11111 --gid 0 forgerock --disabled-password --gecos "forgerock user" && \
