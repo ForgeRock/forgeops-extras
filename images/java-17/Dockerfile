@@ -33,7 +33,7 @@ RUN mkdir -p /opt/async-profiler && \
     | tar xzv -C /opt/async-profiler
 
 
-FROM debian:bullseye-slim
+FROM debian:bookworm-slim
 
 COPY --from=JDK /opt /opt
 COPY Dockerfile /Dockerfile.java-17
