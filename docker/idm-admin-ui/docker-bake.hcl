@@ -47,7 +47,7 @@ variable "BUILD_TAGS" {
 }
 
 variable "FROM_TAG" {
-  default = "1.31.5-alpine"
+  default = "1.31.8-alpine"
 }
 
 # Helper functions
