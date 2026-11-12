@@ -1,5 +1,5 @@
 ARG REPO=nginx
-ARG TAG=1.31.5-alpine
+ARG TAG=1.31.8-alpine
 
 FROM ${REPO}:${TAG}
 ARG VERSION=8.1.1
